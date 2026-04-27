@@ -170,71 +170,198 @@ when this sprite clicked → change [color] effect by (25)</div>
 
 <h4>Broadcast Messages — Sprite-to-Sprite Communication</h4>
 
-<p>Broadcast messages let sprites talk to each other! One sprite sends a message, and any sprite listening for that message will run its script.</p>
+<p>Broadcasting is one of the most powerful concepts in Scratch. It's how sprites send messages to each other — like a walkie-talkie system!</p>
 
-<!-- SVG 2: Broadcast Message Diagram -->
+<h4>The Sender &amp; Receiver Pattern</h4>
+
+<p>In real life, communication always has two parts: a <strong>Sender</strong> who sends the message, and a <strong>Receiver</strong> who gets it and acts on it. Scratch broadcasting works the same way.</p>
+
+<!-- SVG: Sender/Receiver Concept -->
 <div class="svg-container">
-<svg width="620" height="320" viewBox="0 0 620 320">
-  <rect x="0" y="0" width="620" height="320" rx="12" fill="#f8f9ff" stroke="#FFBF00" stroke-width="2"/>
-  <text x="310" y="28" text-anchor="middle" font-size="15" fill="#333" font-weight="bold">Broadcast Messages: Sprite Communication</text>
+<svg width="720" height="400" viewBox="0 0 720 400">
+  <rect x="0" y="0" width="720" height="400" rx="12" fill="#f8f9ff" stroke="#FFBF00" stroke-width="2"/>
+  <text x="360" y="28" text-anchor="middle" font-size="17" fill="#333" font-weight="bold">Broadcasting: The Sender &amp; Receiver Pattern</text>
 
-  <!-- Sprite A -->
-  <rect x="30" y="60" width="170" height="200" rx="12" fill="white" stroke="#4C97FF" stroke-width="2"/>
-  <text x="115" y="85" text-anchor="middle" font-size="13" fill="#4C97FF" font-weight="bold">🧙 Sprite A (Wizard)</text>
+  <!-- SENDER -->
+  <rect x="30" y="55" width="200" height="200" rx="14" fill="#4C97FF" stroke="#3373CC" stroke-width="2"/>
+  <text x="130" y="80" text-anchor="middle" font-size="14" fill="white" font-weight="bold">📡 SENDER</text>
+  <text x="130" y="100" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.9)">Uses: broadcast [message]</text>
+  <text x="130" y="135" text-anchor="middle" font-size="36">🧙</text>
+  <text x="130" y="165" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">Sprite A (Wizard)</text>
+  <!-- Sender script -->
+  <rect x="45" y="180" width="170" height="20" rx="4" fill="#FFBF00"/>
+  <text x="130" y="194" text-anchor="middle" font-size="9" fill="#333">broadcast [dragon turn]</text>
+  <text x="130" y="220" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Shouts the message</text>
+  <text x="130" y="232" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">to EVERYONE</text>
+  <text x="130" y="248" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Doesn't need to know</text>
+  <text x="130" y="260" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">who's listening!</text>
 
-  <!-- Sprite A script -->
-  <rect x="42" y="100" width="146" height="22" rx="5" fill="#FFBF00"/>
-  <text x="115" y="115" text-anchor="middle" font-size="9" fill="#333">when green flag clicked</text>
-  <rect x="42" y="126" width="146" height="22" rx="5" fill="#855CD6"/>
-  <text x="115" y="141" text-anchor="middle" font-size="9" fill="white">say [Halt!] for 2 secs</text>
-  <rect x="42" y="152" width="146" height="22" rx="5" fill="#FFBF00"/>
-  <text x="115" y="167" text-anchor="middle" font-size="9" fill="#333">broadcast [dragon turn]</text>
+  <!-- Message traveling -->
+  <rect x="260" y="110" width="200" height="80" rx="20" fill="#FFBF00" stroke="#E6AC00" stroke-width="2"/>
+  <text x="360" y="138" text-anchor="middle" font-size="14" fill="#333" font-weight="bold">📨 Message:</text>
+  <text x="360" y="158" text-anchor="middle" font-size="13" fill="#333" font-family="monospace">"dragon turn"</text>
+  <text x="360" y="178" text-anchor="middle" font-size="10" fill="#888">Goes to ALL sprites</text>
 
-  <!-- Sending indicator -->
-  <circle cx="115" cy="200" r="14" fill="#FFBF00" opacity="0.3"/>
-  <circle cx="115" cy="200" r="9" fill="#FFBF00" opacity="0.5"/>
-  <circle cx="115" cy="200" r="5" fill="#FFBF00"/>
-  <text x="115" y="235" text-anchor="middle" font-size="10" fill="#E6AC00" font-weight="bold">📡 Sending</text>
+  <!-- Radio waves from sender -->
+  <path d="M 230,150 Q 245,130 260,150" fill="none" stroke="#FFBF00" stroke-width="2.5" opacity="0.8"/>
+  <!-- Radio waves to receivers -->
+  <path d="M 460,130 Q 475,115 490,130" fill="none" stroke="#FFBF00" stroke-width="2.5" opacity="0.8"/>
+  <path d="M 460,160 Q 475,145 490,160" fill="none" stroke="#FFBF00" stroke-width="2" opacity="0.6"/>
 
-  <!-- Radio waves -->
-  <path d="M 210,160 Q 230,140 250,160" fill="none" stroke="#FFBF00" stroke-width="2.5" opacity="0.9"/>
-  <path d="M 250,140 Q 280,110 310,140" fill="none" stroke="#FFBF00" stroke-width="2" opacity="0.7"/>
-  <path d="M 310,125 Q 345,90 380,125" fill="none" stroke="#FFBF00" stroke-width="1.5" opacity="0.5"/>
+  <!-- RECEIVER 1 -->
+  <rect x="490" y="55" width="210" height="110" rx="14" fill="#CF63CF" stroke="#A84DA8" stroke-width="2"/>
+  <text x="595" y="78" text-anchor="middle" font-size="13" fill="white" font-weight="bold">📡 RECEIVER 1</text>
+  <text x="595" y="96" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)">Uses: when I receive [message]</text>
+  <text x="540" y="125" text-anchor="middle" font-size="24">🐉</text>
+  <text x="640" y="120" font-size="9" fill="rgba(255,255,255,0.85)">Dragon hears it!</text>
+  <rect x="505" y="135" width="180" height="18" rx="4" fill="#FFBF00"/>
+  <text x="595" y="148" text-anchor="middle" font-size="8" fill="#333">when I receive [dragon turn]</text>
+  <text x="595" y="162" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.7)">→ Runs its script</text>
 
-  <!-- Message bubble -->
-  <rect x="240" y="170" width="140" height="40" rx="20" fill="#FFBF00" stroke="#E6AC00" stroke-width="1.5"/>
-  <text x="310" y="195" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">📨 "dragon turn"</text>
+  <!-- RECEIVER 2 -->
+  <rect x="490" y="180" width="210" height="80" rx="14" fill="#5CB1D6" stroke="#3D8EB3" stroke-width="2"/>
+  <text x="595" y="203" text-anchor="middle" font-size="13" fill="white" font-weight="bold">📡 RECEIVER 2</text>
+  <text x="540" y="235" text-anchor="middle" font-size="20">🎵</text>
+  <text x="630" y="230" font-size="9" fill="rgba(255,255,255,0.85)">Music sprite</text>
+  <text x="630" y="245" font-size="9" fill="rgba(255,255,255,0.85)">also hears it!</text>
 
-  <!-- More radio waves going right -->
-  <path d="M 380,170 Q 400,150 420,170" fill="none" stroke="#FFBF00" stroke-width="2.5" opacity="0.9"/>
-  <path d="M 390,185 Q 415,165 440,185" fill="none" stroke="#FFBF00" stroke-width="2" opacity="0.7"/>
+  <!-- NON-RECEIVER -->
+  <rect x="490" y="275" width="210" height="60" rx="14" fill="#eee" stroke="#ccc" stroke-width="1" stroke-dasharray="4"/>
+  <text x="540" y="310" text-anchor="middle" font-size="20" opacity="0.5">🐱</text>
+  <text x="630" y="305" font-size="9" fill="#999">Cat has no</text>
+  <text x="630" y="318" font-size="9" fill="#999">"when I receive" block</text>
+  <text x="630" y="331" font-size="9" fill="#999">→ Ignores the message</text>
 
-  <!-- Sprite B -->
-  <rect x="420" y="60" width="170" height="200" rx="12" fill="white" stroke="#CF63CF" stroke-width="2"/>
-  <text x="505" y="85" text-anchor="middle" font-size="13" fill="#CF63CF" font-weight="bold">🐉 Sprite B (Dragon)</text>
-
-  <!-- Sprite B script -->
-  <rect x="432" y="100" width="146" height="22" rx="5" fill="#FFBF00"/>
-  <text x="505" y="115" text-anchor="middle" font-size="9" fill="#333">when I receive [dragon turn]</text>
-  <rect x="432" y="126" width="146" height="22" rx="5" fill="#855CD6"/>
-  <text x="505" y="141" text-anchor="middle" font-size="9" fill="white">say [Never!] for 2 secs</text>
-  <rect x="432" y="152" width="146" height="22" rx="5" fill="#CF63CF"/>
-  <text x="505" y="167" text-anchor="middle" font-size="9" fill="white">play sound [Dragon]</text>
-
-  <!-- Receiving indicator -->
-  <circle cx="505" cy="200" r="14" fill="#CF63CF" opacity="0.3"/>
-  <circle cx="505" cy="200" r="9" fill="#CF63CF" opacity="0.5"/>
-  <circle cx="505" cy="200" r="5" fill="#CF63CF"/>
-  <text x="505" y="235" text-anchor="middle" font-size="10" fill="#A84DA8" font-weight="bold">📡 Receiving</text>
-
-  <!-- Bottom note -->
-  <rect x="100" y="280" width="420" height="28" rx="8" fill="#E8F5E9"/>
-  <text x="310" y="299" text-anchor="middle" font-size="12" fill="#333">💡 Any sprite can listen for the same broadcast — they ALL respond!</text>
+  <!-- Analogies at bottom -->
+  <rect x="30" y="280" width="430" height="105" rx="10" fill="#FFF3CD" stroke="#FFBF00" stroke-width="1"/>
+  <text x="245" y="302" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">🧒 Kid-Friendly Analogies</text>
+  <text x="45" y="322" font-size="10" fill="#555">📻 <tspan font-weight="bold">Radio:</tspan> broadcast = radio station sends signal. when I receive = radio tuned to that channel</text>
+  <text x="45" y="342" font-size="10" fill="#555">📬 <tspan font-weight="bold">Post Office:</tspan> broadcast = letter in every mailbox. when I receive = checking your mailbox</text>
+  <text x="45" y="362" font-size="10" fill="#555">🏫 <tspan font-weight="bold">School:</tspan> broadcast = principal on loudspeaker. when I receive = students hear &amp; follow</text>
+  <text x="45" y="382" font-size="10" fill="#555">🍽️ <tspan font-weight="bold">Restaurant:</tspan> broadcast = "Order 42 ready!" when I receive = customer 42 picks up food</text>
 </svg>
 </div>
 
+<h4>Types of Broadcast</h4>
+
+<table>
+  <tr><th>Block</th><th>What It Does</th><th>When to Use</th></tr>
+  <tr>
+    <td><span class="scratch-block block-events">broadcast [message]</span></td>
+    <td>Sends message and immediately continues</td>
+    <td>When the sender doesn't need to wait</td>
+  </tr>
+  <tr>
+    <td><span class="scratch-block block-events">broadcast [message] and wait</span></td>
+    <td>Sends message and WAITS until all receivers finish</td>
+    <td>When things need to happen in order (stories)</td>
+  </tr>
+</table>
+
+<h4>Common Broadcasting Patterns</h4>
+
+<p><strong>Pattern 1: Scene Changes (Story)</strong></p>
+<div class="code-block">-- Narrator broadcasts:
+broadcast [scene 2]
+
+-- All sprites listen:
+when I receive [scene 2]
+  switch backdrop to [castle]
+  go to x: (100) y: (0)
+  show</div>
+
+<p><strong>Pattern 2: Game Events</strong></p>
+<div class="code-block">-- When player loses:
+broadcast [game over]
+
+-- Score sprite listens:
+when I receive [game over]
+  say [Final Score: ...] for (3) seconds
+
+-- Enemy sprite listens:
+when I receive [game over]
+  stop [other scripts in sprite]
+  hide</div>
+
+<p><strong>Pattern 3: Chain Reaction (Conversation)</strong></p>
+<div class="code-block">-- Sprite A says something, then tells B to respond:
+say [Hello!] for (2) seconds
+broadcast [B's turn]
+
+-- Sprite B waits for its turn:
+when I receive [B's turn]
+say [Hi back!] for (2) seconds
+broadcast [A's turn again]</div>
+
+<!-- SVG: 1-to-Many Diagram -->
+<div class="svg-container">
+<svg width="620" height="220" viewBox="0 0 620 220">
+  <rect x="0" y="0" width="620" height="220" rx="12" fill="#f8f9ff"/>
+  <text x="310" y="25" text-anchor="middle" font-size="14" fill="#333" font-weight="bold">1 Sender → Many Receivers (1-to-Many)</text>
+
+  <!-- Sender -->
+  <circle cx="100" cy="110" r="45" fill="#4C97FF" stroke="#3373CC" stroke-width="2"/>
+  <text x="100" y="100" text-anchor="middle" font-size="22">🧙</text>
+  <text x="100" y="120" text-anchor="middle" font-size="9" fill="white" font-weight="bold">SENDER</text>
+  <text x="100" y="135" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)">broadcast</text>
+  <text x="100" y="147" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)">[start game]</text>
+
+  <!-- Arrows to receivers -->
+  <defs><marker id="arrowMsg" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#FFBF00"/></marker></defs>
+  <line x1="145" y1="85" x2="240" y2="55" stroke="#FFBF00" stroke-width="2" marker-end="url(#arrowMsg)"/>
+  <line x1="145" y1="100" x2="240" y2="100" stroke="#FFBF00" stroke-width="2" marker-end="url(#arrowMsg)"/>
+  <line x1="145" y1="115" x2="240" y2="145" stroke="#FFBF00" stroke-width="2" marker-end="url(#arrowMsg)"/>
+  <line x1="145" y1="130" x2="240" y2="185" stroke="#FFBF00" stroke-width="2" marker-end="url(#arrowMsg)"/>
+
+  <!-- Receivers -->
+  <rect x="250" y="35" width="160" height="35" rx="8" fill="#CF63CF"/>
+  <text x="330" y="57" text-anchor="middle" font-size="10" fill="white">🐉 Dragon → starts moving</text>
+
+  <rect x="250" y="82" width="160" height="35" rx="8" fill="#4CAF50"/>
+  <text x="330" y="104" text-anchor="middle" font-size="10" fill="white">🎵 Music → starts playing</text>
+
+  <rect x="250" y="130" width="160" height="35" rx="8" fill="#FF8C1A"/>
+  <text x="330" y="152" text-anchor="middle" font-size="10" fill="white">📊 Score → shows on screen</text>
+
+  <rect x="250" y="177" width="160" height="35" rx="8" fill="#5CB1D6"/>
+  <text x="330" y="199" text-anchor="middle" font-size="10" fill="white">⏱️ Timer → starts counting</text>
+
+  <!-- Key rules -->
+  <rect x="440" y="45" width="170" height="150" rx="10" fill="#f0f4ff" stroke="#4C97FF" stroke-width="1"/>
+  <text x="525" y="68" text-anchor="middle" font-size="11" fill="#4C97FF" font-weight="bold">Key Rules</text>
+  <text x="450" y="90" font-size="9" fill="#555">✅ 1 sender → many receivers</text>
+  <text x="450" y="108" font-size="9" fill="#555">✅ Sender doesn't need to</text>
+  <text x="450" y="120" font-size="9" fill="#555">   know who's listening</text>
+  <text x="450" y="138" font-size="9" fill="#555">✅ A sprite can be both</text>
+  <text x="450" y="150" font-size="9" fill="#555">   sender AND receiver</text>
+  <text x="450" y="168" font-size="9" fill="#555">✅ Messages are just text</text>
+  <text x="450" y="180" font-size="9" fill="#555">   labels you create</text>
+</svg>
+</div>
+
+<div class="tip-box">
+  💡 <strong>Creating a new message:</strong> Drag a <span class="scratch-block block-events">broadcast</span> block, click the dropdown, click "New message", type a name (e.g., "start game"), click OK. Use descriptive names — <code>game over</code> is better than <code>message1</code>!
+</div>
+
+<div class="activity-box">
+  <strong>🎮 Activity: Build a Broadcast Chain</strong>
+  <p><strong>Sprite 1 (Cat):</strong></p>
+  <div class="code-block">when green flag clicked
+say [Watch this!] for (2) seconds
+broadcast [do a trick]</div>
+  <p><strong>Sprite 2 (Dog):</strong></p>
+  <div class="code-block">when I receive [do a trick]
+turn right (360) degrees
+say [Ta-da!] for (2) seconds
+broadcast [take a bow]</div>
+  <p><strong>Sprite 1 (Cat) — second script:</strong></p>
+  <div class="code-block">when I receive [take a bow]
+say [Great job!] for (2) seconds</div>
+  <p>Ask kids: "Who is the sender? Who is the receiver? Can a sprite be both?" (Answer: Yes! The Cat sends AND receives!)</p>
+</div>
+
 <div class="key-concept">
-  🔑 <strong>Key Concept:</strong> <span class="scratch-block block-events">broadcast</span> sends a message to ALL sprites. Any sprite with a matching <span class="scratch-block block-events">when I receive</span> block will run its script. This is how sprites coordinate!
+  🔑 <strong>Key Concept:</strong> <span class="scratch-block block-events">broadcast</span> sends a message to ALL sprites. Any sprite with a matching <span class="scratch-block block-events">when I receive</span> block will run its script. This is how sprites coordinate — like a messaging queue where one sender can trigger many receivers!
 </div>
 
 <hr class="section-divider">
