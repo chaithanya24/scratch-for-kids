@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 5: Variables &amp; Score</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f4ff; color: #333; line-height: 1.7; padding: 20px; }
+  .container { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
+  .header { background: linear-gradient(135deg, #4C97FF, #855CD6); color: white; padding: 40px; text-align: center; }
+  .header h1 { font-size: 2.2em; margin-bottom: 8px; }
+  .header .subtitle { font-size: 1.1em; opacity: 0.9; }
+  .meta { display: flex; justify-content: center; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
+  .meta span { background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 20px; font-size: 0.9em; }
+  .content { padding: 40px; }
+  h2 { color: #4C97FF; font-size: 1.6em; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 3px solid #4C97FF; }
+  h3 { color: #855CD6; font-size: 1.3em; margin: 24px 0 12px; }
+  h4 { color: #CF63CF; font-size: 1.1em; margin: 20px 0 10px; }
+  .objectives { background: #f0f4ff; border-left: 4px solid #4C97FF; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .objectives li { margin: 6px 0; margin-left: 20px; }
+  .time-badge { display: inline-block; background: #FFBF00; color: #333; padding: 2px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; margin-left: 8px; }
+  .tip-box { background: #FFF3CD; border-left: 4px solid #FFBF00; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .activity-box { background: #E8F5E9; border-left: 4px solid #4CAF50; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .key-concept { background: #FCE4EC; border-left: 4px solid #E91E63; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  ul, ol { margin: 10px 0 10px 24px; }
+  li { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  th { background: #4C97FF; color: white; padding: 10px 14px; text-align: left; }
+  td { padding: 10px 14px; border-bottom: 1px solid #e0e0e0; }
+  tr:nth-child(even) { background: #f8f9ff; }
+  .scratch-block { display: inline-block; padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 0.95em; margin: 2px 0; }
+  .block-motion { background: #4C97FF; color: white; }
+  .block-looks { background: #855CD6; color: white; }
+  .block-events { background: #FFBF00; color: #333; }
+  .block-control { background: #FFAB19; color: #333; }
+  .block-sound { background: #CF63CF; color: white; }
+  .block-sensing { background: #5CB1D6; color: white; }
+  .block-variables { background: #FF8C1A; color: white; }
+  .svg-container { text-align: center; margin: 24px 0; }
+  .project-card { background: #f8f9ff; border: 2px solid #e0e0ff; border-radius: 12px; padding: 20px; margin: 20px 0; }
+  .project-card h4 { color: #4C97FF; margin-top: 0; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 16px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9em; margin: 12px 0; overflow-x: auto; white-space: pre-wrap; }
+  .section-divider { border: none; height: 2px; background: linear-gradient(to right, #4C97FF, #855CD6, #CF63CF); margin: 32px 0; }
+  .page-break { page-break-before: always; }
+  @media print { body { background: white; padding: 0; } .container { box-shadow: none; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>📊 Class 5: Variables &amp; Score</h1>
+  <div class="subtitle">Using variables to track score, lives, and timers</div>
+  <div class="meta">
+    <span>⏱ 1 Hour</span>
+    <span>👶 Ages 7–12</span>
+    <span>📋 Classes 1–4 completed</span>
+    <span>💻 Scratch 3.0</span>
+  </div>
+</div>
+
+<div class="content">
+
+<h2>🎯 Learning Objectives</h2>
+<div class="objectives">
+<ul>
+  <li>Understand what variables are and why they're useful</li>
+  <li>Create, set, and change variables in Scratch</li>
+  <li>Use variables to track score, lives, and timers</li>
+  <li>Display variables on the stage</li>
+</ul>
+</div>
+
+<hr class="section-divider">
+
+<h2>📖 Session Breakdown</h2>
+
+<h3>Review &amp; Warm-Up <span class="time-badge">5 min</span></h3>
+<ul>
+  <li>Quick recap of loops and conditions</li>
+  <li>"Today we're going to add something that makes games feel like <em>real</em> games — scores, lives, and timers!"</li>
+</ul>
+
+<hr class="section-divider">
+
+<h3>What is a Variable? <span class="time-badge">10 min</span></h3>
+
+<div class="key-concept">
+  🧠 <strong>Simple Explanation:</strong> "A variable is like a labeled box. You can put a number or word inside it, look at what's inside, and change what's inside."
+</div>
+
+<!-- SVG DIAGRAM 1: Variable as a Box -->
+<div class="svg-container">
+<svg width="720" height="320" viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg">
+  <text x="360" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">Variables = Labeled Boxes</text>
+
+  <!-- Box 1: Score = 0 -->
+  <rect x="40" y="55" width="180" height="120" rx="10" fill="#FFF3CD" stroke="#FF8C1A" stroke-width="3"/>
+  <rect x="60" y="45" width="80" height="26" rx="6" fill="#FF8C1A"/>
+  <text x="100" y="63" text-anchor="middle" font-size="13" fill="white" font-weight="bold">Score</text>
+  <text x="130" y="130" text-anchor="middle" font-size="48" fill="#FF8C1A" font-weight="bold">0</text>
+
+  <!-- Box 2: Lives = 3 -->
+  <rect x="270" y="55" width="180" height="120" rx="10" fill="#FCE4EC" stroke="#E91E63" stroke-width="3"/>
+  <rect x="290" y="45" width="80" height="26" rx="6" fill="#E91E63"/>
+  <text x="330" y="63" text-anchor="middle" font-size="13" fill="white" font-weight="bold">Lives</text>
+  <text x="360" y="130" text-anchor="middle" font-size="48" fill="#E91E63" font-weight="bold">3</text>
+
+  <!-- Box 3: Timer = 10 -->
+  <rect x="500" y="55" width="180" height="120" rx="10" fill="#E8F5E9" stroke="#4CAF50" stroke-width="3"/>
+  <rect x="520" y="45" width="80" height="26" rx="6" fill="#4CAF50"/>
+  <text x="560" y="63" text-anchor="middle" font-size="13" fill="white" font-weight="bold">Timer</text>
+  <text x="590" y="130" text-anchor="middle" font-size="48" fill="#4CAF50" font-weight="bold">10</text>
+
+  <!-- "set to" arrows -->
+  <text x="130" y="210" text-anchor="middle" font-size="13" fill="#555" font-weight="bold">⬇ Operations</text>
+
+  <!-- set to block -->
+  <rect x="30" y="225" width="200" height="34" rx="6" fill="#FF8C1A"/>
+  <text x="130" y="247" text-anchor="middle" font-size="12" fill="white" font-family="monospace" font-weight="bold">set [Score] to (0)</text>
+  <text x="130" y="280" text-anchor="middle" font-size="11" fill="#888">Puts a value in the box</text>
+
+  <!-- change by block -->
+  <rect x="260" y="225" width="200" height="34" rx="6" fill="#FF8C1A"/>
+  <text x="360" y="247" text-anchor="middle" font-size="12" fill="white" font-family="monospace" font-weight="bold">change [Score] by (1)</text>
+  <text x="360" y="280" text-anchor="middle" font-size="11" fill="#888">Adds to the current value</text>
+
+  <!-- read block -->
+  <rect x="490" y="225" width="200" height="34" rx="17" fill="#FF8C1A"/>
+  <text x="590" y="247" text-anchor="middle" font-size="12" fill="white" font-family="monospace" font-weight="bold">(Score)</text>
+  <text x="590" y="280" text-anchor="middle" font-size="11" fill="#888">Reads the value inside</text>
+
+  <!-- Arrows from boxes to operations -->
+  <line x1="130" y1="175" x2="130" y2="220" stroke="#FF8C1A" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="360" y1="175" x2="360" y2="220" stroke="#E91E63" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="590" y1="175" x2="590" y2="220" stroke="#4CAF50" stroke-width="2" stroke-dasharray="4,4"/>
+</svg>
+</div>
+
+<h4>Real-life Examples</h4>
+<ul>
+  <li>Your <strong>age</strong> is a variable — it changes every year</li>
+  <li>The <strong>temperature</strong> outside is a variable — it changes every hour</li>
+  <li>Your <strong>score</strong> in a game is a variable — it changes when you earn points</li>
+</ul>
+
+<hr class="section-divider">
+
+<h3>Creating &amp; Using Variables <span class="time-badge">15 min</span></h3>
+
+<h4>How to Create a Variable</h4>
+<ol>
+  <li>Click the "Variables" category (orange)</li>
+  <li>Click "Make a Variable"</li>
+  <li>Name it (e.g., "Score")</li>
+  <li>Choose "For all sprites" (shared) or "For this sprite only" (private)</li>
+  <li>Click OK — new blocks appear!</li>
+</ol>
+
+<h4>Key Variable Blocks</h4>
+<table>
+  <tr><th>Block</th><th>What It Does</th></tr>
+  <tr><td><span class="scratch-block block-variables">set [Score] to (0)</span></td><td>Puts a specific value in the variable</td></tr>
+  <tr><td><span class="scratch-block block-variables">change [Score] by (1)</span></td><td>Adds to the current value (use negative to subtract)</td></tr>
+  <tr><td><span class="scratch-block block-variables">(Score)</span></td><td>The round block — use this to read the variable's value</td></tr>
+  <tr><td><span class="scratch-block block-variables">show variable [Score]</span></td><td>Shows the variable display on stage</td></tr>
+  <tr><td><span class="scratch-block block-variables">hide variable [Score]</span></td><td>Hides the variable display</td></tr>
+</table>
+
+<h4>Guided Activity — Build a Click Counter</h4>
+<div class="activity-box">
+  🎯 <strong>Try it!</strong> Click the sprite to increase the score.
+</div>
+<div class="code-block">when green flag clicked
+set [Score] to (0)
+
+when this sprite clicked
+change [Score] by (1)
+say (join [Score: ] (Score)) for (0.5) seconds</div>
+
+<h4>Using Variables in Conditions</h4>
+<div class="code-block">when green flag clicked
+set [Score] to (0)
+forever
+  if &lt;(Score) &gt; (10)&gt; then
+    say [You win! Score over 10!] for (2) seconds
+    stop [all]
+  end
+end</div>
+
+<h4>Multiple Variables</h4>
+<p>Create "Score", "Lives", and "Timer" — each can be displayed on stage independently.</p>
+
+<!-- SVG DIAGRAM 2: Game HUD Mockup -->
+<div class="svg-container">
+<svg width="500" height="400" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+  <text x="250" y="24" text-anchor="middle" font-size="17" font-weight="bold" fill="#333">Game HUD — Variables on Stage</text>
+
+  <!-- Stage background -->
+  <rect x="30" y="40" width="440" height="340" rx="8" fill="#fff" stroke="#ccc" stroke-width="2"/>
+  <!-- Stage inner area (sky blue) -->
+  <rect x="34" y="44" width="432" height="332" rx="6" fill="#87CEEB"/>
+
+  <!-- Ground -->
+  <rect x="34" y="310" width="432" height="66" rx="0" fill="#8BC34A"/>
+
+  <!-- Score display (top-left) -->
+  <rect x="44" y="54" width="120" height="32" rx="6" fill="rgba(0,0,0,0.6)"/>
+  <text x="54" y="75" font-size="13" fill="#FF8C1A" font-weight="bold" font-family="monospace">Score: 7</text>
+
+  <!-- Lives display (top-center) -->
+  <rect x="190" y="54" width="120" height="32" rx="6" fill="rgba(0,0,0,0.6)"/>
+  <text x="200" y="75" font-size="13" fill="#E91E63" font-weight="bold" font-family="monospace">Lives: ❤❤❤</text>
+
+  <!-- Timer display (top-right) -->
+  <rect x="340" y="54" width="120" height="32" rx="6" fill="rgba(0,0,0,0.6)"/>
+  <text x="350" y="75" font-size="13" fill="#4CAF50" font-weight="bold" font-family="monospace">Timer: 25</text>
+
+  <!-- Cat sprite -->
+  <text x="120" y="300" font-size="40">🐱</text>
+
+  <!-- Apple falling -->
+  <text x="300" y="180" font-size="30">🍎</text>
+  <line x1="315" y1="190" x2="315" y2="230" stroke="#F44336" stroke-width="2" stroke-dasharray="4,4"/>
+  <polygon points="315,238 309,228 321,228" fill="#F44336"/>
+
+  <!-- Coin -->
+  <text x="200" y="250" font-size="24">🪙</text>
+
+  <!-- Labels pointing to HUD elements -->
+  <line x1="104" y1="90" x2="104" y2="115" stroke="#FF8C1A" stroke-width="2"/>
+  <text x="104" y="130" text-anchor="middle" font-size="10" fill="#FF8C1A" font-weight="bold">Variable!</text>
+
+  <line x1="250" y1="90" x2="250" y2="115" stroke="#E91E63" stroke-width="2"/>
+  <text x="250" y="130" text-anchor="middle" font-size="10" fill="#E91E63" font-weight="bold">Variable!</text>
+
+  <line x1="400" y1="90" x2="400" y2="115" stroke="#4CAF50" stroke-width="2"/>
+  <text x="400" y="130" text-anchor="middle" font-size="10" fill="#4CAF50" font-weight="bold">Variable!</text>
+
+  <!-- Stage label -->
+  <text x="250" y="390" text-anchor="middle" font-size="11" fill="#888">Scratch Stage (480 × 360)</text>
+</svg>
+</div>
+
+<hr class="section-divider">
+
+<h3>Guided Project: Catch the Apple <span class="time-badge">20 min</span></h3>
+
+<div class="activity-box">
+  🎮 <strong>Build together!</strong> A cat catches falling apples. Score goes up for catches, lives go down for misses!
+</div>
+
+<h4>Setup</h4>
+<ul>
+  <li>Keep the Cat sprite at the bottom</li>
+  <li>Add an Apple sprite</li>
+  <li>Create variables: "Score" and "Lives"</li>
+</ul>
+
+<!-- SVG DIAGRAM 3: Apple Catching Game Flowchart -->
+<div class="svg-container">
+<svg width="600" height="520" viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg">
+  <text x="300" y="24" text-anchor="middle" font-size="17" font-weight="bold" fill="#333">Apple Catching Game — Logic Flow</text>
+
+  <!-- Start -->
+  <rect x="215" y="42" width="170" height="36" rx="18" fill="#4CAF50"/>
+  <text x="300" y="65" text-anchor="middle" font-size="13" fill="white" font-weight="bold">🍎 Apple falls from top</text>
+
+  <!-- Arrow down -->
+  <line x1="300" y1="78" x2="300" y2="105" stroke="#555" stroke-width="2"/>
+  <polygon points="300,112 294,102 306,102" fill="#555"/>
+
+  <!-- Diamond: Touches Cat? -->
+  <polygon points="300,115 420,165 300,215 180,165" fill="#5CB1D6" stroke="#3A8FB7" stroke-width="2"/>
+  <text x="300" y="160" text-anchor="middle" font-size="12" fill="white" font-weight="bold">Touches</text>
+  <text x="300" y="176" text-anchor="middle" font-size="12" fill="white" font-weight="bold">Cat? 🐱</text>
+
+  <!-- YES arrow (left) -->
+  <line x1="180" y1="165" x2="90" y2="165" stroke="#4CAF50" stroke-width="2"/>
+  <polygon points="83,165 93,159 93,171" fill="#4CAF50"/>
+  <text x="138" y="155" font-size="12" fill="#4CAF50" font-weight="bold">Yes!</text>
+
+  <!-- YES: Score +1 -->
+  <rect x="15" y="195" width="150" height="44" rx="8" fill="#FF8C1A"/>
+  <text x="90" y="213" text-anchor="middle" font-size="12" fill="white" font-weight="bold">Score + 1 🎉</text>
+  <text x="90" y="230" text-anchor="middle" font-size="10" fill="#FFE0B2">play Collect sound</text>
+  <line x1="90" y1="165" x2="90" y2="195" stroke="#4CAF50" stroke-width="2"/>
+
+  <!-- Arrow from Score+1 back to top -->
+  <line x1="15" y1="217" x2="15" y2="42" stroke="#888" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="15" y1="42" x2="215" y2="60" stroke="#888" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="50" y="35" font-size="10" fill="#888">restart apple</text>
+
+  <!-- NO arrow (right) -->
+  <line x1="420" y1="165" x2="510" y2="165" stroke="#E91E63" stroke-width="2"/>
+  <polygon points="517,165 507,159 507,171" fill="#E91E63"/>
+  <text x="462" y="155" font-size="12" fill="#E91E63" font-weight="bold">No</text>
+
+  <!-- Keeps falling label -->
+  <rect x="480" y="185" width="110" height="30" rx="6" fill="#f0f0f0" stroke="#ccc"/>
+  <text x="535" y="205" text-anchor="middle" font-size="11" fill="#555">keeps falling ⬇</text>
+  <line x1="535" y1="165" x2="535" y2="185" stroke="#E91E63" stroke-width="2"/>
+
+  <!-- Arrow down from keeps falling -->
+  <line x1="535" y1="215" x2="535" y2="250" stroke="#555" stroke-width="2"/>
+  <polygon points="535,257 529,247 541,247" fill="#555"/>
+
+  <!-- Diamond: Reaches bottom? -->
+  <polygon points="535,260 620,300 535,340 450,300" fill="#855CD6" stroke="#6A3FB5" stroke-width="2"/>
+  <text x="535" y="296" text-anchor="middle" font-size="11" fill="white" font-weight="bold">Reaches</text>
+  <text x="535" y="311" text-anchor="middle" font-size="11" fill="white" font-weight="bold">bottom?</text>
+
+  <!-- YES from bottom -->
+  <line x1="535" y1="340" x2="535" y2="370" stroke="#E91E63" stroke-width="2"/>
+  <polygon points="535,377 529,367 541,367" fill="#E91E63"/>
+  <text x="555" y="360" font-size="11" fill="#E91E63" font-weight="bold">Yes</text>
+
+  <!-- Lives -1 -->
+  <rect x="465" y="380" width="140" height="40" rx="8" fill="#E91E63"/>
+  <text x="535" y="400" text-anchor="middle" font-size="12" fill="white" font-weight="bold">Lives - 1 💔</text>
+  <text x="535" y="414" text-anchor="middle" font-size="10" fill="#FFCDD2">play Oops sound</text>
+
+  <!-- Arrow down from Lives-1 -->
+  <line x1="535" y1="420" x2="535" y2="445" stroke="#555" stroke-width="2"/>
+  <polygon points="535,452 529,442 541,442" fill="#555"/>
+
+  <!-- Diamond: Lives = 0? -->
+  <polygon points="535,455 600,480 535,505 470,480" fill="#333" stroke="#000" stroke-width="2"/>
+  <text x="535" y="483" text-anchor="middle" font-size="10" fill="white" font-weight="bold">Lives=0?</text>
+
+  <!-- YES: Game Over -->
+  <line x1="600" y1="480" x2="600" y2="480" stroke="#E91E63" stroke-width="2"/>
+  <rect x="370" y="490" width="100" height="28" rx="6" fill="#F44336"/>
+  <text x="420" y="509" text-anchor="middle" font-size="11" fill="white" font-weight="bold">GAME OVER</text>
+  <line x1="500" y1="505" x2="470" y2="505" stroke="#E91E63" stroke-width="2"/>
+
+  <!-- NO from Lives=0: loop back -->
+  <line x1="535" y1="505" x2="585" y2="510" stroke="#888" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="570" y="515" font-size="9" fill="#888">restart</text>
+</svg>
+</div>
+
+<h4>Cat Script</h4>
+<div class="code-block">when green flag clicked
+go to x: (0) y: (-150)
+forever
+  if &lt;key [left arrow] pressed?&gt; then
+    change x by (-7)
+  end
+  if &lt;key [right arrow] pressed?&gt; then
+    change x by (7)
+  end
+end</div>
+
+<h4>Apple Script</h4>
+<div class="code-block">when green flag clicked
+set [Score] to (0)
+set [Lives] to (3)
+forever
+  go to x: (pick random (-200) to (200)) y: (180)
+  show
+  repeat until &lt;(y position) &lt; (-170)&gt;
+    change y by (-4)
+    if &lt;touching [Cat]?&gt; then
+      change [Score] by (1)
+      start sound [Collect]
+      hide
+    end
+  end
+  if &lt;(y position) &lt; (-170)&gt; then
+    change [Lives] by (-1)
+    start sound [Oops]
+  end
+  if &lt;(Lives) &lt; (1)&gt; then
+    say (join [Game Over! Score: ] (Score)) for (3) seconds
+    stop [all]
+  end
+end</div>
+
+<div class="tip-box">
+  💡 <strong>Walk through each section:</strong>
+  <ol>
+    <li>Initialize variables at the start</li>
+    <li>Apple falls from random x position</li>
+    <li>If cat catches it → score goes up, apple hides</li>
+    <li>If apple reaches the bottom → lose a life</li>
+    <li>If lives reach 0 → game over</li>
+  </ol>
+</div>
+
+<hr class="section-divider">
+
+<h3>Wrap-Up <span class="time-badge">5 min</span></h3>
+<div class="key-concept">
+  🧠 <strong>Key Takeaways:</strong>
+  <ul>
+    <li><strong>Variables</strong> let us remember things — scores, lives, anything we need to track.</li>
+    <li>Use <span class="scratch-block block-variables">set</span> to initialize, <span class="scratch-block block-variables">change</span> to update.</li>
+    <li>Variables + conditions = real game logic!</li>
+  </ul>
+</div>
+<p>🔮 <strong>Preview:</strong> "Next class we learn <em>cloning</em> — making copies of sprites while the game is running!"</p>
+
+<hr class="section-divider">
+<div class="page-break"></div>
+
+<h2>🛠️ Project Work</h2>
+<p>Four projects to practice using variables. Try them all!</p>
+
+<!-- PROJECT 1 -->
+<div class="project-card">
+  <h4>⏱ Project 1: Click Counter Challenge</h4>
+  <p><strong>Goal:</strong> Click the sprite as many times as you can in 10 seconds.</p>
+  <h4>Instructions</h4>
+  <ol>
+    <li>Create variables "Score" and "Time"</li>
+    <li>On green flag: set Score to 0, set Time to 10</li>
+    <li>Use a <span class="scratch-block block-control">repeat until</span> loop that waits 1 second and decreases Time by 1</li>
+    <li>When Time reaches 0, show the final score and stop</li>
+    <li>On sprite click: increase Score by 1, play a sound, move sprite to a random position</li>
+  </ol>
+  <p><strong>Concepts practiced:</strong> Timer using a variable, combining click events with variables.</p>
+</div>
+
+<!-- PROJECT 2 -->
+<div class="project-card">
+  <h4>🧮 Project 2: Math Quiz</h4>
+  <p><strong>Goal:</strong> The sprite asks math questions. Score goes up for correct answers.</p>
+  <h4>Instructions</h4>
+  <ol>
+    <li>Create variables "Score", "Number1", "Number2"</li>
+    <li>Use a <span class="scratch-block block-control">repeat (5)</span> loop for 5 questions</li>
+    <li>Set Number1 and Number2 to random numbers (1–10)</li>
+    <li>Use <span class="scratch-block block-sensing">ask</span> block to show the question (e.g., "3 + 7")</li>
+    <li>Use <span class="scratch-block block-control">if</span> to check if <span class="scratch-block block-sensing">answer</span> equals the correct sum</li>
+    <li>Show final score at the end</li>
+  </ol>
+  <p><strong>Concepts practiced:</strong> <span class="scratch-block block-sensing">ask</span> and <span class="scratch-block block-sensing">answer</span> blocks, operators (addition), variables for dynamic content.</p>
+</div>
+
+<!-- PROJECT 3 -->
+<div class="project-card">
+  <h4>🐾 Project 3: Virtual Pet</h4>
+  <p><strong>Goal:</strong> A pet with hunger and happiness meters. Feed it and play with it to keep the meters up.</p>
+  <h4>Instructions</h4>
+  <ol>
+    <li>Create variables "Hunger" (starts at 100) and "Happiness" (starts at 100)</li>
+    <li>In a <span class="scratch-block block-control">forever</span> loop, gradually decrease both variables</li>
+    <li>If either reaches 0, game over</li>
+    <li>Press "f" to feed (increase Hunger by 20)</li>
+    <li>Press "p" to play (increase Happiness by 20)</li>
+    <li>Add warnings when meters get low (below 30)</li>
+  </ol>
+  <p><strong>Concepts practiced:</strong> Multiple variables interacting, gradual decrease, key events to modify variables.</p>
+</div>
+
+<!-- PROJECT 4 -->
+<div class="project-card">
+  <h4>🪙 Project 4: Coin Collector with Levels</h4>
+  <p><strong>Goal:</strong> Collect coins to score points. After 5 coins, speed increases (level up).</p>
+  <h4>Instructions</h4>
+  <ol>
+    <li>Cat sprite at bottom, Coin sprite falls from top</li>
+    <li>Create variables: "Score", "Level", "Speed"</li>
+    <li>Coin falls at the current Speed value</li>
+    <li>When cat catches coin: score +1</li>
+    <li>Every 5 points (use <span class="scratch-block block-variables">mod</span> operator): Level +1, Speed +1</li>
+    <li>Display the level-up message</li>
+  </ol>
+  <p><strong>Concepts practiced:</strong> <span class="scratch-block block-variables">mod</span> operator for level thresholds, variable-driven difficulty.</p>
+</div>
+
+<hr class="section-divider">
+<div class="page-break"></div>
+
+<h2>✅ Project Solutions</h2>
+<p>Complete block-by-block solutions for all 4 projects.</p>
+
+<!-- SOLUTION 1 -->
+<h3>Project 1: Click Counter Challenge — Solution</h3>
+<p><strong>Setup:</strong> Create variables "Score" and "Time".</p>
+
+<div class="code-block">when green flag clicked
+set [Score] to (0)
+set [Time] to (10)
+repeat until &lt;(Time) &lt; (1)&gt;
+  wait (1) seconds
+  change [Time] by (-1)
+end
+say (join [Final Score: ] (Score)) for (3) seconds
+stop [all]
+
+when this sprite clicked
+change [Score] by (1)
+start sound [Pop]
+go to x: (pick random (-200) to (200)) y: (pick random (-150) to (150))</div>
+
+<hr class="section-divider">
+
+<!-- SOLUTION 2 -->
+<h3>Project 2: Math Quiz — Solution</h3>
+<p><strong>Setup:</strong> Create variables "Score", "Number1", "Number2".</p>
+
+<div class="code-block">when green flag clicked
+set [Score] to (0)
+repeat (5)
+  set [Number1] to (pick random (1) to (10))
+  set [Number2] to (pick random (1) to (10))
+  ask (join (join (Number1) [ + ]) (Number2)) and wait
+  if &lt;(answer) = ((Number1) + (Number2))&gt; then
+    say [Correct!] for (1) seconds
+    change [Score] by (1)
+    start sound [Collect]
+  else
+    say (join [Wrong! The answer was ] ((Number1) + (Number2))) for (2) seconds
+    start sound [Oops]
+  end
+end
+say (join [You got ] (join (Score) [ out of 5!])) for (3) seconds</div>
+
+<hr class="section-divider">
+
+<!-- SOLUTION 3 -->
+<h3>Project 3: Virtual Pet — Solution</h3>
+<p><strong>Setup:</strong> Create variables "Hunger" (starts at 100) and "Happiness" (starts at 100). Cat sprite.</p>
+
+<div class="code-block">when green flag clicked
+set [Hunger] to (100)
+set [Happiness] to (100)
+forever
+  change [Hunger] by (-1)
+  change [Happiness] by (-0.5)
+  wait (1) seconds
+  if &lt;(Hunger) &lt; (1)&gt; then
+    say [I'm starving! Game over!] for (3) seconds
+    stop [all]
+  end
+  if &lt;(Happiness) &lt; (1)&gt; then
+    say [I'm so sad! Game over!] for (3) seconds
+    stop [all]
+  end
+  if &lt;(Hunger) &lt; (30)&gt; then
+    say [I'm hungry...] for (1) seconds
+  end
+  if &lt;(Happiness) &lt; (30)&gt; then
+    think [I'm bored...] for (1) seconds
+  end
+end
+
+when [f] key pressed
+change [Hunger] by (20)
+say [Yum!] for (1) seconds
+start sound [Chomp]
+
+when [p] key pressed
+change [Happiness] by (20)
+say [Wheee!] for (1) seconds
+next costume
+start sound [Pop]</div>
+
+<hr class="section-divider">
+
+<!-- SOLUTION 4 -->
+<h3>Project 4: Coin Collector with Levels — Solution</h3>
+<p><strong>Setup:</strong> Cat sprite + Coin sprite. Variables: "Score", "Level", "Speed".</p>
+
+<h4>Cat Script</h4>
+<div class="code-block">when green flag clicked
+go to x: (0) y: (-150)
+forever
+  if &lt;key [left arrow] pressed?&gt; then
+    change x by (-7)
+  end
+  if &lt;key [right arrow] pressed?&gt; then
+    change x by (7)
+  end
+end</div>
+
+<h4>Coin Script</h4>
+<div class="code-block">when green flag clicked
+set [Score] to (0)
+set [Level] to (1)
+set [Speed] to (3)
+forever
+  go to x: (pick random (-200) to (200)) y: (180)
+  show
+  repeat until &lt;(y position) &lt; (-170)&gt;
+    change y by ((0) - (Speed))
+    if &lt;touching [Cat]?&gt; then
+      change [Score] by (1)
+      start sound [Collect]
+      hide
+      if &lt;((Score) mod (5)) = (0)&gt; then
+        change [Level] by (1)
+        change [Speed] by (1)
+        say (join [Level ] (Level)) for (1) seconds
+      end
+    end
+  end
+end</div>
+
+</div><!-- end content -->
+</div><!-- end container -->
+</body>
+</html>

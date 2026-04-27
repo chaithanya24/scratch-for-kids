@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 1: Meet Scratch</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f4ff; color: #333; line-height: 1.7; padding: 20px; }
+  .container { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
+  .header { background: linear-gradient(135deg, #4C97FF, #855CD6); color: white; padding: 40px; text-align: center; }
+  .header h1 { font-size: 2.2em; margin-bottom: 8px; }
+  .header .subtitle { font-size: 1.1em; opacity: 0.9; }
+  .meta { display: flex; justify-content: center; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
+  .meta span { background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 20px; font-size: 0.9em; }
+  .content { padding: 40px; }
+  h2 { color: #4C97FF; font-size: 1.6em; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 3px solid #4C97FF; }
+  h3 { color: #855CD6; font-size: 1.3em; margin: 24px 0 12px; }
+  h4 { color: #CF63CF; font-size: 1.1em; margin: 20px 0 10px; }
+  .objectives { background: #f0f4ff; border-left: 4px solid #4C97FF; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .objectives li { margin: 6px 0; margin-left: 20px; }
+  .time-badge { display: inline-block; background: #FFBF00; color: #333; padding: 2px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; margin-left: 8px; }
+  .tip-box { background: #FFF3CD; border-left: 4px solid #FFBF00; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .activity-box { background: #E8F5E9; border-left: 4px solid #4CAF50; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .key-concept { background: #FCE4EC; border-left: 4px solid #E91E63; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  ul, ol { margin: 10px 0 10px 24px; }
+  li { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  th { background: #4C97FF; color: white; padding: 10px 14px; text-align: left; }
+  td { padding: 10px 14px; border-bottom: 1px solid #e0e0e0; }
+  tr:nth-child(even) { background: #f8f9ff; }
+  .scratch-block { display: inline-block; padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 0.95em; margin: 2px 0; }
+  .block-motion { background: #4C97FF; color: white; }
+  .block-looks { background: #855CD6; color: white; }
+  .block-events { background: #FFBF00; color: #333; }
+  .block-control { background: #FFAB19; color: #333; }
+  .block-sound { background: #CF63CF; color: white; }
+  .block-sensing { background: #5CB1D6; color: white; }
+  .block-variables { background: #FF8C1A; color: white; }
+  .svg-container { text-align: center; margin: 24px 0; }
+  .project-card { background: #f8f9ff; border: 2px solid #e0e0ff; border-radius: 12px; padding: 20px; margin: 20px 0; }
+  .project-card h4 { color: #4C97FF; margin-top: 0; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 16px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9em; margin: 12px 0; overflow-x: auto; white-space: pre-wrap; }
+  .section-divider { border: none; height: 2px; background: linear-gradient(to right, #4C97FF, #855CD6, #CF63CF); margin: 32px 0; }
+  .page-break { page-break-before: always; }
+  @media print { body { background: white; padding: 0; } .container { box-shadow: none; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🐱 Class 1: Meet Scratch</h1>
+  <div class="subtitle">Introduction to Scratch and Programming</div>
+  <div class="meta">
+    <span>⏱ 1 Hour</span>
+    <span>👶 Ages 7–12</span>
+    <span>📋 No Prerequisites</span>
+    <span>💻 Scratch 3.0</span>
+  </div>
+</div>
+
+<div class="content">
+
+<h2>🎯 Learning Objectives</h2>
+<div class="objectives">
+<ul>
+  <li>Understand what programming is in simple terms</li>
+  <li>Navigate the Scratch interface confidently</li>
+  <li>Create and run a simple script using drag-and-drop blocks</li>
+  <li>Understand the 2D coordinate system (X and Y axes, quadrants)</li>
+</ul>
+</div>
+
+<hr class="section-divider">
+
+<h2>📖 Session Breakdown</h2>
+
+<h3>Introduction <span class="time-badge">10 min</span></h3>
+
+<p><strong>What is programming?</strong></p>
+<ul>
+  <li>Analogy: "Imagine you have a robot friend. It only does exactly what you tell it. Programming is writing those instructions."</li>
+  <li>Show a fun example: a finished Scratch game (e.g., a cat chasing a mouse)</li>
+</ul>
+
+<p><strong>What is Scratch?</strong></p>
+<ul>
+  <li>Created by MIT for kids to learn coding</li>
+  <li>Used by millions of kids worldwide</li>
+  <li>No typing needed — just drag and drop</li>
+</ul>
+
+<!-- SVG: Robot Analogy -->
+<div class="svg-container">
+<svg width="500" height="180" viewBox="0 0 500 180">
+  <rect x="0" y="0" width="500" height="180" rx="12" fill="#f0f4ff" stroke="#4C97FF" stroke-width="2"/>
+  <!-- Kid -->
+  <circle cx="80" cy="70" r="25" fill="#FFBF00"/>
+  <text x="80" y="75" text-anchor="middle" font-size="20">😊</text>
+  <text x="80" y="115" text-anchor="middle" font-size="12" fill="#333">You</text>
+  <!-- Arrow -->
+  <line x1="120" y1="70" x2="200" y2="70" stroke="#4C97FF" stroke-width="3" marker-end="url(#arrow1)"/>
+  <text x="160" y="58" text-anchor="middle" font-size="11" fill="#855CD6" font-weight="bold">Instructions</text>
+  <!-- Code -->
+  <rect x="210" y="40" width="100" height="60" rx="8" fill="#2d2d2d"/>
+  <text x="260" y="65" text-anchor="middle" font-size="10" fill="#4C97FF" font-family="monospace">move 10</text>
+  <text x="260" y="80" text-anchor="middle" font-size="10" fill="#CF63CF" font-family="monospace">say Hello</text>
+  <text x="260" y="115" text-anchor="middle" font-size="12" fill="#333">Code</text>
+  <!-- Arrow -->
+  <line x1="320" y1="70" x2="380" y2="70" stroke="#4C97FF" stroke-width="3" marker-end="url(#arrow1)"/>
+  <!-- Robot -->
+  <circle cx="420" cy="70" r="25" fill="#E8F5E9"/>
+  <text x="420" y="75" text-anchor="middle" font-size="20">🤖</text>
+  <text x="420" y="115" text-anchor="middle" font-size="12" fill="#333">Computer</text>
+  <text x="250" y="155" text-anchor="middle" font-size="13" fill="#855CD6" font-style="italic">"Programming = giving instructions to a computer"</text>
+  <defs><marker id="arrow1" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#4C97FF"/></marker></defs>
+</svg>
+</div>
+
+<h3>Interface Tour <span class="time-badge">10 min</span></h3>
+
+<p>Walk kids through each part of the Scratch screen:</p>
+
+<!-- SVG: Scratch Interface Diagram -->
+<div class="svg-container">
+<svg width="700" height="400" viewBox="0 0 700 400">
+  <rect x="0" y="0" width="700" height="400" rx="12" fill="#f8f9ff" stroke="#ccc" stroke-width="1"/>
+  <!-- Title bar -->
+  <rect x="10" y="10" width="680" height="30" rx="6" fill="#4C97FF"/>
+  <text x="350" y="30" text-anchor="middle" font-size="14" fill="white" font-weight="bold">Scratch 3.0</text>
+  <!-- Green flag / Stop -->
+  <circle cx="580" cy="25" r="10" fill="#4CAF50"/><text x="580" y="29" text-anchor="middle" font-size="10" fill="white">▶</text>
+  <circle cx="610" cy="25" r="10" fill="#E53935"/><text x="610" y="29" text-anchor="middle" font-size="10" fill="white">■</text>
+  <!-- Block Palette -->
+  <rect x="10" y="50" width="160" height="290" rx="8" fill="#E8EAF6" stroke="#9FA8DA" stroke-width="1"/>
+  <text x="90" y="72" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">Block Palette</text>
+  <rect x="20" y="82" width="140" height="22" rx="6" fill="#4C97FF"/><text x="90" y="97" text-anchor="middle" font-size="10" fill="white">Motion</text>
+  <rect x="20" y="110" width="140" height="22" rx="6" fill="#855CD6"/><text x="90" y="125" text-anchor="middle" font-size="10" fill="white">Looks</text>
+  <rect x="20" y="138" width="140" height="22" rx="6" fill="#CF63CF"/><text x="90" y="153" text-anchor="middle" font-size="10" fill="white">Sound</text>
+  <rect x="20" y="166" width="140" height="22" rx="6" fill="#FFBF00"/><text x="90" y="181" text-anchor="middle" font-size="10" fill="#333">Events</text>
+  <rect x="20" y="194" width="140" height="22" rx="6" fill="#FFAB19"/><text x="90" y="209" text-anchor="middle" font-size="10" fill="white">Control</text>
+  <rect x="20" y="222" width="140" height="22" rx="6" fill="#5CB1D6"/><text x="90" y="237" text-anchor="middle" font-size="10" fill="white">Sensing</text>
+  <rect x="20" y="250" width="140" height="22" rx="6" fill="#59C059"/><text x="90" y="265" text-anchor="middle" font-size="10" fill="white">Operators</text>
+  <rect x="20" y="278" width="140" height="22" rx="6" fill="#FF8C1A"/><text x="90" y="293" text-anchor="middle" font-size="10" fill="white">Variables</text>
+  <!-- Scripts Area -->
+  <rect x="180" y="50" width="280" height="290" rx="8" fill="#fff" stroke="#ddd" stroke-width="1"/>
+  <text x="320" y="72" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">Scripts Area</text>
+  <text x="320" y="180" text-anchor="middle" font-size="11" fill="#999">Drag blocks here</text>
+  <text x="320" y="200" text-anchor="middle" font-size="11" fill="#999">to build your program</text>
+  <!-- Stage -->
+  <rect x="470" y="50" width="220" height="180" rx="8" fill="#fff" stroke="#4C97FF" stroke-width="2"/>
+  <text x="580" y="72" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">Stage</text>
+  <text x="580" y="140" text-anchor="middle" font-size="40">🐱</text>
+  <text x="580" y="165" text-anchor="middle" font-size="10" fill="#999">480 × 360 pixels</text>
+  <!-- Sprite List -->
+  <rect x="470" y="240" width="220" height="100" rx="8" fill="#FFF3E0" stroke="#FFAB19" stroke-width="1"/>
+  <text x="580" y="262" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">Sprite List</text>
+  <rect x="490" y="275" width="50" height="50" rx="6" fill="#fff" stroke="#ddd"/><text x="515" y="305" text-anchor="middle" font-size="22">🐱</text>
+  <text x="515" y="335" text-anchor="middle" font-size="9" fill="#666">Sprite1</text>
+  <!-- Labels -->
+  <rect x="10" y="350" width="680" height="40" rx="8" fill="#E8F5E9"/>
+  <text x="350" y="375" text-anchor="middle" font-size="12" fill="#333">💡 The Stage is where your project plays. The Scripts Area is where you build it!</text>
+</svg>
+</div>
+
+<div class="activity-box">
+  <strong>🎮 Activity:</strong> Have kids click through each block category and read a few block names out loud.
+</div>
+
+<h3>Understanding the Scratch Stage: The 2D Coordinate System <span class="time-badge">5 min</span></h3>
+
+<p>Before we start coding, let's understand how Scratch knows <strong>WHERE</strong> to put things on the stage. It uses a <strong>2D graph</strong> — just like the ones in math class!</p>
+
+<h4>The X Axis and Y Axis</h4>
+
+<!-- SVG: Coordinate System -->
+<div class="svg-container">
+<svg width="600" height="500" viewBox="0 0 600 500">
+  <rect x="0" y="0" width="600" height="500" rx="12" fill="#f8f9ff"/>
+  <!-- Grid lines (light) -->
+  <line x1="300" y1="40" x2="300" y2="460" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4"/>
+  <line x1="60" y1="250" x2="540" y2="250" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4"/>
+  <!-- X Axis -->
+  <line x1="40" y1="250" x2="560" y2="250" stroke="#E53935" stroke-width="3"/>
+  <polygon points="560,245 575,250 560,255" fill="#E53935"/>
+  <text x="575" y="268" font-size="16" fill="#E53935" font-weight="bold">X</text>
+  <!-- Y Axis -->
+  <line x1="300" y1="460" x2="300" y2="30" stroke="#1E88E5" stroke-width="3"/>
+  <polygon points="295,30 300,15 305,30" fill="#1E88E5"/>
+  <text x="312" y="28" font-size="16" fill="#1E88E5" font-weight="bold">Y</text>
+  <!-- Origin -->
+  <circle cx="300" cy="250" r="6" fill="#333"/>
+  <text x="315" y="270" font-size="14" fill="#333" font-weight="bold">(0, 0)</text>
+  <!-- X axis labels -->
+  <text x="60" y="275" text-anchor="middle" font-size="13" fill="#E53935" font-weight="bold">-240</text>
+  <line x1="60" y1="245" x2="60" y2="255" stroke="#E53935" stroke-width="2"/>
+  <text x="540" y="275" text-anchor="middle" font-size="13" fill="#E53935" font-weight="bold">+240</text>
+  <line x1="540" y1="245" x2="540" y2="255" stroke="#E53935" stroke-width="2"/>
+  <text x="180" y="275" text-anchor="middle" font-size="12" fill="#999">-120</text>
+  <line x1="180" y1="247" x2="180" y2="253" stroke="#ccc" stroke-width="1"/>
+  <text x="420" y="275" text-anchor="middle" font-size="12" fill="#999">+120</text>
+  <line x1="420" y1="247" x2="420" y2="253" stroke="#ccc" stroke-width="1"/>
+  <!-- Y axis labels -->
+  <text x="275" y="65" text-anchor="end" font-size="13" fill="#1E88E5" font-weight="bold">+180</text>
+  <line x1="295" y1="60" x2="305" y2="60" stroke="#1E88E5" stroke-width="2"/>
+  <text x="275" y="445" text-anchor="end" font-size="13" fill="#1E88E5" font-weight="bold">-180</text>
+  <line x1="295" y1="440" x2="305" y2="440" stroke="#1E88E5" stroke-width="2"/>
+  <text x="275" y="160" text-anchor="end" font-size="12" fill="#999">+90</text>
+  <line x1="297" y1="155" x2="303" y2="155" stroke="#ccc" stroke-width="1"/>
+  <text x="275" y="350" text-anchor="end" font-size="12" fill="#999">-90</text>
+  <line x1="297" y1="345" x2="303" y2="345" stroke="#ccc" stroke-width="1"/>
+  <!-- Direction labels -->
+  <text x="300" y="490" text-anchor="middle" font-size="12" fill="#E53935">← Negative (Left) ─── X AXIS ─── Positive (Right) →</text>
+  <text x="15" y="250" text-anchor="middle" font-size="11" fill="#1E88E5" transform="rotate(-90, 15, 250)">← Negative (Down) ─── Y AXIS ─── Positive (Up) →</text>
+  <!-- Cat at center -->
+  <text x="300" y="240" text-anchor="middle" font-size="28">🐱</text>
+</svg>
+</div>
+
+<ul>
+  <li><strong style="color:#E53935">X axis</strong> = the horizontal line (left ↔ right). Goes from <strong>-240</strong> (far left) to <strong>+240</strong> (far right)</li>
+  <li><strong style="color:#1E88E5">Y axis</strong> = the vertical line (up ↕ down). Goes from <strong>-180</strong> (very bottom) to <strong>+180</strong> (very top)</li>
+  <li><strong>Origin (0, 0)</strong> = the exact center of the stage</li>
+</ul>
+
+<div class="tip-box">
+  💡 <strong>Kid-friendly explanation:</strong> "Think of the stage like a treasure map. To find any spot, you need two numbers: how far left or right (x), and how far up or down (y)."
+</div>
+
+<h4>The 4 Quadrants</h4>
+
+<p>The X and Y axes divide the stage into 4 sections called <strong>quadrants</strong>:</p>
+
+<!-- SVG: Quadrants Diagram -->
+<div class="svg-container">
+<svg width="600" height="500" viewBox="0 0 600 500">
+  <rect x="0" y="0" width="600" height="500" rx="12" fill="#f8f9ff"/>
+  <!-- Quadrant backgrounds -->
+  <rect x="50" y="40" width="250" height="210" rx="8" fill="#E3F2FD" opacity="0.7"/>
+  <rect x="300" y="40" width="250" height="210" rx="8" fill="#E8F5E9" opacity="0.7"/>
+  <rect x="50" y="250" width="250" height="210" rx="8" fill="#FFF3E0" opacity="0.7"/>
+  <rect x="300" y="250" width="250" height="210" rx="8" fill="#FCE4EC" opacity="0.7"/>
+  <!-- Axes -->
+  <line x1="40" y1="250" x2="560" y2="250" stroke="#333" stroke-width="2.5"/>
+  <line x1="300" y1="30" x2="300" y2="470" stroke="#333" stroke-width="2.5"/>
+  <!-- Arrows -->
+  <polygon points="560,245 575,250 560,255" fill="#333"/>
+  <polygon points="295,30 300,15 305,30" fill="#333"/>
+  <text x="575" y="268" font-size="14" fill="#E53935" font-weight="bold">X</text>
+  <text x="312" y="28" font-size="14" fill="#1E88E5" font-weight="bold">Y</text>
+  <!-- Quadrant 1 (top-right) -->
+  <text x="425" y="90" text-anchor="middle" font-size="22" font-weight="bold" fill="#2E7D32">Q1</text>
+  <text x="425" y="115" text-anchor="middle" font-size="13" fill="#2E7D32">Top-Right</text>
+  <text x="425" y="140" text-anchor="middle" font-size="12" fill="#555">(+x, +y)</text>
+  <circle cx="425" cy="170" r="5" fill="#2E7D32"/>
+  <text x="440" y="175" font-size="11" fill="#555">(150, 100)</text>
+  <!-- Quadrant 2 (top-left) -->
+  <text x="175" y="90" text-anchor="middle" font-size="22" font-weight="bold" fill="#1565C0">Q2</text>
+  <text x="175" y="115" text-anchor="middle" font-size="13" fill="#1565C0">Top-Left</text>
+  <text x="175" y="140" text-anchor="middle" font-size="12" fill="#555">(-x, +y)</text>
+  <circle cx="150" cy="170" r="5" fill="#1565C0"/>
+  <text x="165" y="175" font-size="11" fill="#555">(-150, 100)</text>
+  <!-- Quadrant 3 (bottom-left) -->
+  <text x="175" y="300" text-anchor="middle" font-size="22" font-weight="bold" fill="#E65100">Q3</text>
+  <text x="175" y="325" text-anchor="middle" font-size="13" fill="#E65100">Bottom-Left</text>
+  <text x="175" y="350" text-anchor="middle" font-size="12" fill="#555">(-x, -y)</text>
+  <circle cx="150" cy="380" r="5" fill="#E65100"/>
+  <text x="165" y="385" font-size="11" fill="#555">(-150, -100)</text>
+  <!-- Quadrant 4 (bottom-right) -->
+  <text x="425" y="300" text-anchor="middle" font-size="22" font-weight="bold" fill="#C62828">Q4</text>
+  <text x="425" y="325" text-anchor="middle" font-size="13" fill="#C62828">Bottom-Right</text>
+  <text x="425" y="350" text-anchor="middle" font-size="12" fill="#555">(+x, -y)</text>
+  <circle cx="425" cy="380" r="5" fill="#C62828"/>
+  <text x="440" y="385" font-size="11" fill="#555">(150, -100)</text>
+  <!-- Origin label -->
+  <circle cx="300" cy="250" r="5" fill="#333"/>
+  <text x="315" y="268" font-size="13" fill="#333" font-weight="bold">(0, 0)</text>
+</svg>
+</div>
+
+<table>
+  <tr><th>Quadrant</th><th>X value</th><th>Y value</th><th>Position</th><th>Example</th></tr>
+  <tr><td style="color:#2E7D32;font-weight:bold">Q1 (top-right)</td><td>Positive (+)</td><td>Positive (+)</td><td>Upper right</td><td>(150, 100)</td></tr>
+  <tr><td style="color:#1565C0;font-weight:bold">Q2 (top-left)</td><td>Negative (−)</td><td>Positive (+)</td><td>Upper left</td><td>(−150, 100)</td></tr>
+  <tr><td style="color:#E65100;font-weight:bold">Q3 (bottom-left)</td><td>Negative (−)</td><td>Negative (−)</td><td>Lower left</td><td>(−150, −100)</td></tr>
+  <tr><td style="color:#C62828;font-weight:bold">Q4 (bottom-right)</td><td>Positive (+)</td><td>Negative (−)</td><td>Lower right</td><td>(150, −100)</td></tr>
+</table>
+
+<h4>Key Points on the Stage</h4>
+
+<!-- SVG: Stage with key points -->
+<div class="svg-container">
+<svg width="580" height="380" viewBox="0 0 580 380">
+  <rect x="0" y="0" width="580" height="380" rx="12" fill="#f8f9ff"/>
+  <!-- Stage outline -->
+  <rect x="50" y="30" width="480" height="320" rx="4" fill="white" stroke="#4C97FF" stroke-width="2"/>
+  <!-- Grid -->
+  <line x1="290" y1="30" x2="290" y2="350" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4"/>
+  <line x1="50" y1="190" x2="530" y2="190" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="4"/>
+  <!-- Corner points -->
+  <circle cx="50" cy="30" r="6" fill="#E53935"/>
+  <text x="55" y="22" font-size="10" fill="#E53935" font-weight="bold">(-240, 180)</text>
+  <circle cx="530" cy="30" r="6" fill="#E53935"/>
+  <text x="440" y="22" font-size="10" fill="#E53935" font-weight="bold">(240, 180)</text>
+  <circle cx="50" cy="350" r="6" fill="#E53935"/>
+  <text x="55" y="368" font-size="10" fill="#E53935" font-weight="bold">(-240, -180)</text>
+  <circle cx="530" cy="350" r="6" fill="#E53935"/>
+  <text x="435" y="368" font-size="10" fill="#E53935" font-weight="bold">(240, -180)</text>
+  <!-- Edge midpoints -->
+  <circle cx="290" cy="30" r="5" fill="#1E88E5"/>
+  <text x="295" y="48" font-size="10" fill="#1E88E5">(0, 180)</text>
+  <circle cx="290" cy="350" r="5" fill="#1E88E5"/>
+  <text x="295" y="345" font-size="10" fill="#1E88E5">(0, -180)</text>
+  <circle cx="50" cy="190" r="5" fill="#1E88E5"/>
+  <text x="58" y="185" font-size="10" fill="#1E88E5">(-240, 0)</text>
+  <circle cx="530" cy="190" r="5" fill="#1E88E5"/>
+  <text x="455" y="185" font-size="10" fill="#1E88E5">(240, 0)</text>
+  <!-- Center -->
+  <circle cx="290" cy="190" r="7" fill="#4CAF50"/>
+  <text x="300" y="210" font-size="12" fill="#4CAF50" font-weight="bold">(0, 0) Center</text>
+  <text x="290" y="180" text-anchor="middle" font-size="22">🐱</text>
+</svg>
+</div>
+
+<table>
+  <tr><th>Location</th><th>Coordinates</th></tr>
+  <tr><td>Center</td><td>(0, 0)</td></tr>
+  <tr><td>Top-left corner</td><td>(-240, 180)</td></tr>
+  <tr><td>Top-right corner</td><td>(240, 180)</td></tr>
+  <tr><td>Bottom-left corner</td><td>(-240, -180)</td></tr>
+  <tr><td>Bottom-right corner</td><td>(240, -180)</td></tr>
+  <tr><td>Top center</td><td>(0, 180)</td></tr>
+  <tr><td>Bottom center</td><td>(0, -180)</td></tr>
+  <tr><td>Left center</td><td>(-240, 0)</td></tr>
+  <tr><td>Right center</td><td>(240, 0)</td></tr>
+</table>
+
+<div class="activity-box">
+  <strong>🎮 Fun Activity: "Where Am I?"</strong><br>
+  The instructor calls out coordinates, kids point to where on the stage that would be:
+  <ol>
+    <li><strong>(0, 0)</strong> → "Center! Right in the middle."</li>
+    <li><strong>(200, 150)</strong> → "Top-right area — Quadrant 1"</li>
+    <li><strong>(-200, 150)</strong> → "Top-left area — Quadrant 2"</li>
+    <li><strong>(-200, -150)</strong> → "Bottom-left area — Quadrant 3"</li>
+    <li><strong>(200, -150)</strong> → "Bottom-right area — Quadrant 4"</li>
+    <li><strong>(0, 180)</strong> → "Very top, middle"</li>
+    <li><strong>(-240, 0)</strong> → "Far left, halfway up"</li>
+  </ol>
+  <strong>Reverse game:</strong> Point to a spot on the stage and ask kids to guess the coordinates!
+</div>
+
+<div class="tip-box">
+  💡 <strong>Tip for kids:</strong> "If you ever forget, just hover your mouse over the stage — Scratch shows the x and y position at the bottom right!"
+</div>
+
+<hr class="section-divider">
+
+<h3>Guided Coding <span class="time-badge">15 min</span></h3>
+
+<p>Build this together step by step:</p>
+
+<!-- SVG: Block sequence diagram -->
+<div class="svg-container">
+<svg width="340" height="200" viewBox="0 0 340 200">
+  <rect x="0" y="0" width="340" height="200" rx="12" fill="#f8f9ff"/>
+  <rect x="30" y="15" width="280" height="38" rx="8" fill="#FFBF00"/>
+  <text x="170" y="40" text-anchor="middle" font-size="13" fill="#333" font-weight="bold">🏁 when green flag clicked</text>
+  <rect x="30" y="58" width="280" height="38" rx="8" fill="#855CD6"/>
+  <text x="170" y="83" text-anchor="middle" font-size="13" fill="white" font-weight="bold">💬 say [Hello!] for (2) seconds</text>
+  <rect x="30" y="101" width="280" height="38" rx="8" fill="#4C97FF"/>
+  <text x="170" y="126" text-anchor="middle" font-size="13" fill="white" font-weight="bold">➡️ move (10) steps</text>
+  <rect x="30" y="144" width="280" height="38" rx="8" fill="#4C97FF"/>
+  <text x="170" y="169" text-anchor="middle" font-size="13" fill="white" font-weight="bold">↩️ turn (15) degrees</text>
+</svg>
+</div>
+
+<ol>
+  <li>Click the <span class="scratch-block block-events">Events</span> category → drag <code>when green flag clicked</code></li>
+  <li>Click <span class="scratch-block block-looks">Looks</span> → drag <code>say [Hello!] for [2] seconds</code> and snap it below</li>
+  <li>Click <span class="scratch-block block-motion">Motion</span> → drag <code>move [10] steps</code> and snap it below</li>
+  <li>Click the Green Flag — watch the cat say "Hello!" and move</li>
+  <li>Add <code>turn [15] degrees</code> and another <code>move [10] steps</code></li>
+  <li>Click Green Flag again — the cat talks, moves, and turns!</li>
+</ol>
+
+<div class="key-concept">
+  🔑 <strong>Key Concept:</strong> Blocks run from top to bottom, one after another. This is called <strong>sequence</strong>.
+</div>
+
+<h3>Free Exploration <span class="time-badge">10 min</span></h3>
+<ul>
+  <li>Change the number in <code>move</code> to make the cat go farther</li>
+  <li>Change the text in <code>say</code> to anything they want</li>
+  <li>Try adding more blocks from Motion and Looks</li>
+  <li>Try clicking the cat sprite on stage and dragging it around</li>
+</ul>
+
+<h3>Wrap-Up & Discussion <span class="time-badge">5 min</span></h3>
+<ul>
+  <li>"What did you make the cat do?"</li>
+  <li>"What happens if you change the numbers in the blocks?"</li>
+  <li>Preview next class: "Next time we'll make our sprites move in cool ways and change how they look!"</li>
+</ul>
+
+<hr class="section-divider">
+
+<h2 class="page-break">🛠️ Project Work</h2>
+
+<div class="project-card">
+  <h4>Project 1: Greeting Cat</h4>
+  <p><strong>Goal:</strong> Cat walks and greets the user.</p>
+  <ol>
+    <li>Start a new Scratch project (the Cat sprite is already there)</li>
+    <li>From <span class="scratch-block block-events">Events</span>, drag <code>when green flag clicked</code></li>
+    <li>From <span class="scratch-block block-looks">Looks</span>, add <code>say [Hi! I'm Scratchy!] for (2) seconds</code></li>
+    <li>From <span class="scratch-block block-motion">Motion</span>, add <code>move (100) steps</code></li>
+    <li>From <span class="scratch-block block-looks">Looks</span>, add <code>say [Nice to meet you!] for (2) seconds</code></li>
+  </ol>
+</div>
+
+<div class="project-card">
+  <h4>Project 2: Spinning Star</h4>
+  <p><strong>Goal:</strong> Add a star sprite that spins in place.</p>
+  <ol>
+    <li>Delete the cat sprite (right-click → delete)</li>
+    <li>Click "Choose a Sprite" → search "Star"</li>
+    <li>From <span class="scratch-block block-events">Events</span>, drag <code>when green flag clicked</code></li>
+    <li>From <span class="scratch-block block-motion">Motion</span>, add <code>turn right (45) degrees</code> — duplicate 4 times</li>
+  </ol>
+</div>
+
+<div class="project-card">
+  <h4>Project 3: Two Friends Talking</h4>
+  <p><strong>Goal:</strong> Two sprites have a conversation.</p>
+  <ol>
+    <li>Keep the Cat sprite, add a Duck sprite</li>
+    <li>Position them on opposite sides of the stage</li>
+    <li>Build separate scripts for each sprite</li>
+    <li>Use <code>wait</code> blocks to time the conversation</li>
+  </ol>
+</div>
+
+<div class="project-card">
+  <h4>Project 4: Cat's Big Adventure</h4>
+  <p><strong>Goal:</strong> Cat moves to different spots on the stage.</p>
+  <ol>
+    <li>Use <code>go to x: y:</code> to set a starting position</li>
+    <li>Use <code>glide</code> blocks to move smoothly between locations</li>
+    <li>Add <code>say</code> blocks between movements to narrate the journey</li>
+    <li>Try different x and y values to explore the stage</li>
+  </ol>
+</div>
+
+<hr class="section-divider">
+
+<h2 class="page-break">✅ Project Solutions</h2>
+
+<div class="project-card">
+  <h4>Project 1: Greeting Cat — Solution</h4>
+  <div class="code-block">when green flag clicked
+say [Hi! I'm Scratchy!] for (2) seconds
+move (100) steps
+say [Nice to meet you!] for (2) seconds</div>
+</div>
+
+<div class="project-card">
+  <h4>Project 2: Spinning Star — Solution</h4>
+  <p><em>Setup: Delete the cat. Choose a Sprite → search "Star".</em></p>
+  <div class="code-block">when green flag clicked
+turn right (45) degrees
+turn right (45) degrees
+turn right (45) degrees
+turn right (45) degrees</div>
+</div>
+
+<div class="project-card">
+  <h4>Project 3: Two Friends Talking — Solution</h4>
+  <p><em>Setup: Add a Duck sprite. Position them on opposite sides.</em></p>
+  <p><strong>Cat script:</strong></p>
+  <div class="code-block">when green flag clicked
+say [Hey Duck, what's up?] for (2) seconds
+wait (2) seconds
+say [Me too! Let's play!] for (2) seconds</div>
+  <p><strong>Duck script:</strong></p>
+  <div class="code-block">when green flag clicked
+wait (2) seconds
+say [Not much! Just coding!] for (2) seconds</div>
+</div>
+
+<div class="project-card">
+  <h4>Project 4: Cat's Big Adventure — Solution</h4>
+  <div class="code-block">when green flag clicked
+go to x: (-200) y: (0)
+say [Starting my adventure!] for (2) seconds
+glide (1) secs to x: (0) y: (100)
+say [I'm on top of the world!] for (2) seconds
+glide (1) secs to x: (200) y: (0)
+say [What a journey!] for (2) seconds</div>
+</div>
+
+</div><!-- end content -->
+</div><!-- end container -->
+</body>
+</html>

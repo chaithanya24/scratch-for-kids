@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 3: Events &amp; Sound</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f4ff; color: #333; line-height: 1.7; padding: 20px; }
+  .container { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
+  .header { background: linear-gradient(135deg, #4C97FF, #855CD6); color: white; padding: 40px; text-align: center; }
+  .header h1 { font-size: 2.2em; margin-bottom: 8px; }
+  .header .subtitle { font-size: 1.1em; opacity: 0.9; }
+  .meta { display: flex; justify-content: center; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
+  .meta span { background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 20px; font-size: 0.9em; }
+  .content { padding: 40px; }
+  h2 { color: #4C97FF; font-size: 1.6em; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 3px solid #4C97FF; }
+  h3 { color: #855CD6; font-size: 1.3em; margin: 24px 0 12px; }
+  h4 { color: #CF63CF; font-size: 1.1em; margin: 20px 0 10px; }
+  .objectives { background: #f0f4ff; border-left: 4px solid #4C97FF; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .objectives li { margin: 6px 0; margin-left: 20px; }
+  .time-badge { display: inline-block; background: #FFBF00; color: #333; padding: 2px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; margin-left: 8px; }
+  .tip-box { background: #FFF3CD; border-left: 4px solid #FFBF00; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .activity-box { background: #E8F5E9; border-left: 4px solid #4CAF50; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .key-concept { background: #FCE4EC; border-left: 4px solid #E91E63; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  ul, ol { margin: 10px 0 10px 24px; }
+  li { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  th { background: #4C97FF; color: white; padding: 10px 14px; text-align: left; }
+  td { padding: 10px 14px; border-bottom: 1px solid #e0e0e0; }
+  tr:nth-child(even) { background: #f8f9ff; }
+  .scratch-block { display: inline-block; padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 0.95em; margin: 2px 0; }
+  .block-motion { background: #4C97FF; color: white; }
+  .block-looks { background: #855CD6; color: white; }
+  .block-events { background: #FFBF00; color: #333; }
+  .block-control { background: #FFAB19; color: #333; }
+  .block-sound { background: #CF63CF; color: white; }
+  .block-sensing { background: #5CB1D6; color: white; }
+  .block-variables { background: #FF8C1A; color: white; }
+  .svg-container { text-align: center; margin: 24px 0; }
+  .project-card { background: #f8f9ff; border: 2px solid #e0e0ff; border-radius: 12px; padding: 20px; margin: 20px 0; }
+  .project-card h4 { color: #4C97FF; margin-top: 0; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 16px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9em; margin: 12px 0; overflow-x: auto; white-space: pre-wrap; }
+  .section-divider { border: none; height: 2px; background: linear-gradient(to right, #4C97FF, #855CD6, #CF63CF); margin: 32px 0; }
+  .page-break { page-break-before: always; }
+  @media print { body { background: white; padding: 0; } .container { box-shadow: none; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🎵 Class 3: Events &amp; Sound</h1>
+  <div class="subtitle">Making interactive projects with events and sound</div>
+  <div class="meta">
+    <span>⏱ 1 Hour</span>
+    <span>👶 Ages 7–12</span>
+    <span>📋 Classes 1–2 completed</span>
+    <span>💻 Scratch 3.0</span>
+  </div>
+</div>
+
+<div class="content">
+
+<h2>🎯 Learning Objectives</h2>
+<div class="objectives">
+<ul>
+  <li>Understand events as triggers that start scripts</li>
+  <li>Use keyboard and mouse events to make interactive projects</li>
+  <li>Add and control sounds in Scratch projects</li>
+  <li>Use broadcast messages for sprite-to-sprite communication</li>
+</ul>
+</div>
+
+<hr class="section-divider">
+
+<h2>📖 Session Breakdown</h2>
+
+<h3>Review &amp; Warm-Up <span class="time-badge">5 min</span></h3>
+<ul>
+  <li>"Last class we made sprites move and change looks. Today we make them interactive — they'll respond to YOU!"</li>
+  <li>Quick challenge: "Make your cat say something when you click the green flag" (review)</li>
+</ul>
+
+<hr class="section-divider">
+
+<h3>Events Deep Dive <span class="time-badge">15 min</span></h3>
+
+<h4>Key Event Blocks</h4>
+
+<table>
+  <tr><th>Block</th><th>What It Does</th></tr>
+  <tr><td><span class="scratch-block block-events">when green flag clicked</span></td><td>Runs when the green flag is pressed</td></tr>
+  <tr><td><span class="scratch-block block-events">when [space] key pressed</span></td><td>Runs when a specific key is pressed</td></tr>
+  <tr><td><span class="scratch-block block-events">when this sprite clicked</span></td><td>Runs when you click on the sprite</td></tr>
+  <tr><td><span class="scratch-block block-events">when backdrop switches to [backdrop1]</span></td><td>Runs when the background changes</td></tr>
+  <tr><td><span class="scratch-block block-events">when I receive [message1]</span></td><td>Runs when a broadcast message is received</td></tr>
+  <tr><td><span class="scratch-block block-events">broadcast [message1]</span></td><td>Sends a message to all sprites</td></tr>
+  <tr><td><span class="scratch-block block-events">broadcast [message1] and wait</span></td><td>Sends a message and waits for all receivers to finish</td></tr>
+</table>
+
+<h4>How Events Work</h4>
+
+<p>Events are like doorbells. When someone presses the doorbell (the event), you go answer the door (the script runs).</p>
+
+<!-- SVG 1: Event Flow Diagram -->
+<div class="svg-container">
+<svg width="650" height="280" viewBox="0 0 650 280">
+  <rect x="0" y="0" width="650" height="280" rx="12" fill="#f8f9ff" stroke="#FFBF00" stroke-width="2"/>
+  <text x="325" y="28" text-anchor="middle" font-size="15" fill="#333" font-weight="bold">How Events Work in Scratch</text>
+
+  <defs>
+    <marker id="arrowEvent" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4C97FF"/>
+    </marker>
+  </defs>
+
+  <!-- Event: Green Flag -->
+  <rect x="20" y="55" width="130" height="70" rx="12" fill="#4CAF50" stroke="#388E3C" stroke-width="2"/>
+  <text x="85" y="82" text-anchor="middle" font-size="22">🏁</text>
+  <text x="85" y="105" text-anchor="middle" font-size="11" fill="white" font-weight="bold">Green Flag</text>
+
+  <!-- Event: Key Press -->
+  <rect x="20" y="140" width="130" height="70" rx="12" fill="#5CB1D6" stroke="#3D8FB0" stroke-width="2"/>
+  <text x="85" y="167" text-anchor="middle" font-size="22">⌨️</text>
+  <text x="85" y="192" text-anchor="middle" font-size="11" fill="white" font-weight="bold">Key Press</text>
+
+  <!-- Event: Sprite Click -->
+  <rect x="20" y="225" width="130" height="45" rx="12" fill="#CF63CF" stroke="#A84DA8" stroke-width="2"/>
+  <text x="85" y="253" text-anchor="middle" font-size="11" fill="white" font-weight="bold">🖱️ Sprite Click</text>
+
+  <!-- "triggers" label -->
+  <line x1="160" y1="90" x2="240" y2="140" stroke="#4C97FF" stroke-width="2.5" marker-end="url(#arrowEvent)"/>
+  <line x1="160" y1="175" x2="240" y2="150" stroke="#4C97FF" stroke-width="2.5" marker-end="url(#arrowEvent)"/>
+  <line x1="160" y1="247" x2="240" y2="160" stroke="#4C97FF" stroke-width="2.5" marker-end="url(#arrowEvent)"/>
+
+  <!-- Triggers box -->
+  <rect x="245" y="110" width="120" height="70" rx="16" fill="#FFBF00" stroke="#E6AC00" stroke-width="2"/>
+  <text x="305" y="140" text-anchor="middle" font-size="14" fill="#333" font-weight="bold">⚡ Triggers</text>
+  <text x="305" y="162" text-anchor="middle" font-size="11" fill="#555">activates a</text>
+  <text x="305" y="176" text-anchor="middle" font-size="11" fill="#555">script</text>
+
+  <!-- Arrow to script -->
+  <line x1="370" y1="145" x2="430" y2="145" stroke="#4C97FF" stroke-width="3" marker-end="url(#arrowEvent)"/>
+
+  <!-- Script runs box -->
+  <rect x="435" y="60" width="195" height="175" rx="12" fill="#2d2d2d" stroke="#555" stroke-width="2"/>
+  <text x="532" y="85" text-anchor="middle" font-size="13" fill="#4C97FF" font-weight="bold">📜 Script Runs!</text>
+  <rect x="450" y="98" width="165" height="24" rx="6" fill="#FFBF00"/>
+  <text x="532" y="115" text-anchor="middle" font-size="10" fill="#333">when green flag clicked</text>
+  <rect x="450" y="126" width="165" height="24" rx="6" fill="#855CD6"/>
+  <text x="532" y="143" text-anchor="middle" font-size="10" fill="white">say [Hello!] for 2 secs</text>
+  <rect x="450" y="154" width="165" height="24" rx="6" fill="#4C97FF"/>
+  <text x="532" y="171" text-anchor="middle" font-size="10" fill="white">move (10) steps</text>
+  <rect x="450" y="182" width="165" height="24" rx="6" fill="#CF63CF"/>
+  <text x="532" y="199" text-anchor="middle" font-size="10" fill="white">play sound [Meow]</text>
+
+  <!-- Bottom note -->
+  <text x="325" y="268" text-anchor="middle" font-size="12" fill="#855CD6" font-style="italic">"Events are like doorbells — they tell your code WHEN to run!"</text>
+</svg>
+</div>
+
+<div class="activity-box">
+  <strong>🎮 Activity:</strong> Add 4 different event blocks to the same sprite, each doing something different:
+  <div class="code-block">when green flag clicked → say [Game starting!]
+when [space] key pressed → move (20) steps
+when [up arrow] key pressed → change y by (20)
+when this sprite clicked → change [color] effect by (25)</div>
+</div>
+
+<h4>Broadcast Messages — Sprite-to-Sprite Communication</h4>
+
+<p>Broadcast messages let sprites talk to each other! One sprite sends a message, and any sprite listening for that message will run its script.</p>
+
+<!-- SVG 2: Broadcast Message Diagram -->
+<div class="svg-container">
+<svg width="620" height="320" viewBox="0 0 620 320">
+  <rect x="0" y="0" width="620" height="320" rx="12" fill="#f8f9ff" stroke="#FFBF00" stroke-width="2"/>
+  <text x="310" y="28" text-anchor="middle" font-size="15" fill="#333" font-weight="bold">Broadcast Messages: Sprite Communication</text>
+
+  <!-- Sprite A -->
+  <rect x="30" y="60" width="170" height="200" rx="12" fill="white" stroke="#4C97FF" stroke-width="2"/>
+  <text x="115" y="85" text-anchor="middle" font-size="13" fill="#4C97FF" font-weight="bold">🧙 Sprite A (Wizard)</text>
+
+  <!-- Sprite A script -->
+  <rect x="42" y="100" width="146" height="22" rx="5" fill="#FFBF00"/>
+  <text x="115" y="115" text-anchor="middle" font-size="9" fill="#333">when green flag clicked</text>
+  <rect x="42" y="126" width="146" height="22" rx="5" fill="#855CD6"/>
+  <text x="115" y="141" text-anchor="middle" font-size="9" fill="white">say [Halt!] for 2 secs</text>
+  <rect x="42" y="152" width="146" height="22" rx="5" fill="#FFBF00"/>
+  <text x="115" y="167" text-anchor="middle" font-size="9" fill="#333">broadcast [dragon turn]</text>
+
+  <!-- Sending indicator -->
+  <circle cx="115" cy="200" r="14" fill="#FFBF00" opacity="0.3"/>
+  <circle cx="115" cy="200" r="9" fill="#FFBF00" opacity="0.5"/>
+  <circle cx="115" cy="200" r="5" fill="#FFBF00"/>
+  <text x="115" y="235" text-anchor="middle" font-size="10" fill="#E6AC00" font-weight="bold">📡 Sending</text>
+
+  <!-- Radio waves -->
+  <path d="M 210,160 Q 230,140 250,160" fill="none" stroke="#FFBF00" stroke-width="2.5" opacity="0.9"/>
+  <path d="M 250,140 Q 280,110 310,140" fill="none" stroke="#FFBF00" stroke-width="2" opacity="0.7"/>
+  <path d="M 310,125 Q 345,90 380,125" fill="none" stroke="#FFBF00" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Message bubble -->
+  <rect x="240" y="170" width="140" height="40" rx="20" fill="#FFBF00" stroke="#E6AC00" stroke-width="1.5"/>
+  <text x="310" y="195" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">📨 "dragon turn"</text>
+
+  <!-- More radio waves going right -->
+  <path d="M 380,170 Q 400,150 420,170" fill="none" stroke="#FFBF00" stroke-width="2.5" opacity="0.9"/>
+  <path d="M 390,185 Q 415,165 440,185" fill="none" stroke="#FFBF00" stroke-width="2" opacity="0.7"/>
+
+  <!-- Sprite B -->
+  <rect x="420" y="60" width="170" height="200" rx="12" fill="white" stroke="#CF63CF" stroke-width="2"/>
+  <text x="505" y="85" text-anchor="middle" font-size="13" fill="#CF63CF" font-weight="bold">🐉 Sprite B (Dragon)</text>
+
+  <!-- Sprite B script -->
+  <rect x="432" y="100" width="146" height="22" rx="5" fill="#FFBF00"/>
+  <text x="505" y="115" text-anchor="middle" font-size="9" fill="#333">when I receive [dragon turn]</text>
+  <rect x="432" y="126" width="146" height="22" rx="5" fill="#855CD6"/>
+  <text x="505" y="141" text-anchor="middle" font-size="9" fill="white">say [Never!] for 2 secs</text>
+  <rect x="432" y="152" width="146" height="22" rx="5" fill="#CF63CF"/>
+  <text x="505" y="167" text-anchor="middle" font-size="9" fill="white">play sound [Dragon]</text>
+
+  <!-- Receiving indicator -->
+  <circle cx="505" cy="200" r="14" fill="#CF63CF" opacity="0.3"/>
+  <circle cx="505" cy="200" r="9" fill="#CF63CF" opacity="0.5"/>
+  <circle cx="505" cy="200" r="5" fill="#CF63CF"/>
+  <text x="505" y="235" text-anchor="middle" font-size="10" fill="#A84DA8" font-weight="bold">📡 Receiving</text>
+
+  <!-- Bottom note -->
+  <rect x="100" y="280" width="420" height="28" rx="8" fill="#E8F5E9"/>
+  <text x="310" y="299" text-anchor="middle" font-size="12" fill="#333">💡 Any sprite can listen for the same broadcast — they ALL respond!</text>
+</svg>
+</div>
+
+<div class="key-concept">
+  🔑 <strong>Key Concept:</strong> <span class="scratch-block block-events">broadcast</span> sends a message to ALL sprites. Any sprite with a matching <span class="scratch-block block-events">when I receive</span> block will run its script. This is how sprites coordinate!
+</div>
+
+<hr class="section-divider">
+
+<h3>Sound Deep Dive <span class="time-badge">15 min</span></h3>
+
+<h4>Key Sound Blocks</h4>
+
+<table>
+  <tr><th>Block</th><th>What It Does</th></tr>
+  <tr><td><span class="scratch-block block-sound">play sound [Meow] until done</span></td><td>Plays a sound and waits for it to finish</td></tr>
+  <tr><td><span class="scratch-block block-sound">start sound [Meow]</span></td><td>Plays a sound without waiting</td></tr>
+  <tr><td><span class="scratch-block block-sound">stop all sounds</span></td><td>Stops everything playing</td></tr>
+  <tr><td><span class="scratch-block block-sound">change [pitch] effect by (10)</span></td><td>Changes pitch up or down</td></tr>
+  <tr><td><span class="scratch-block block-sound">set [pitch] effect to (100)</span></td><td>Sets exact pitch</td></tr>
+  <tr><td><span class="scratch-block block-sound">change volume by (-10)</span></td><td>Makes quieter or louder</td></tr>
+  <tr><td><span class="scratch-block block-sound">set volume to (100) %</span></td><td>Sets exact volume</td></tr>
+</table>
+
+<h4>Understanding Sound: Pitch &amp; Volume</h4>
+
+<!-- SVG 3: Sound Wave Visualization -->
+<div class="svg-container">
+<svg width="620" height="340" viewBox="0 0 620 340">
+  <rect x="0" y="0" width="620" height="340" rx="12" fill="#f8f9ff" stroke="#CF63CF" stroke-width="2"/>
+  <text x="310" y="28" text-anchor="middle" font-size="15" fill="#333" font-weight="bold">Sound Waves: Pitch &amp; Volume</text>
+
+  <!-- Normal sound wave -->
+  <text x="80" y="65" text-anchor="middle" font-size="12" fill="#CF63CF" font-weight="bold">Normal Sound</text>
+  <line x1="30" y1="100" x2="290" y2="100" stroke="#eee" stroke-width="1" stroke-dasharray="3"/>
+  <path d="M 30,100 Q 55,55 80,100 Q 105,145 130,100 Q 155,55 180,100 Q 205,145 230,100 Q 255,55 280,100" fill="none" stroke="#CF63CF" stroke-width="3"/>
+  <!-- Speaker icon -->
+  <text x="15" y="105" font-size="16">🔊</text>
+
+  <!-- High pitch wave (more frequent) -->
+  <text x="450" y="65" text-anchor="middle" font-size="12" fill="#E91E63" font-weight="bold">High Pitch</text>
+  <text x="450" y="80" text-anchor="middle" font-size="10" fill="#999">(waves closer together)</text>
+  <line x1="330" y1="100" x2="590" y2="100" stroke="#eee" stroke-width="1" stroke-dasharray="3"/>
+  <path d="M 330,100 Q 345,65 360,100 Q 375,135 390,100 Q 405,65 420,100 Q 435,135 450,100 Q 465,65 480,100 Q 495,135 510,100 Q 525,65 540,100 Q 555,135 570,100 Q 585,65 590,100" fill="none" stroke="#E91E63" stroke-width="2.5"/>
+
+  <!-- Divider -->
+  <line x1="30" y1="155" x2="590" y2="155" stroke="#eee" stroke-width="1"/>
+
+  <!-- Loud volume wave (tall) -->
+  <text x="80" y="185" text-anchor="middle" font-size="12" fill="#4C97FF" font-weight="bold">Loud (High Volume)</text>
+  <text x="80" y="200" text-anchor="middle" font-size="10" fill="#999">(tall waves)</text>
+  <line x1="30" y1="240" x2="290" y2="240" stroke="#eee" stroke-width="1" stroke-dasharray="3"/>
+  <path d="M 30,240 Q 55,180 80,240 Q 105,300 130,240 Q 155,180 180,240 Q 205,300 230,240 Q 255,180 280,240" fill="none" stroke="#4C97FF" stroke-width="3"/>
+  <!-- Volume label -->
+  <line x1="25" y1="180" x2="25" y2="300" stroke="#4C97FF" stroke-width="1.5"/>
+  <line x1="20" y1="180" x2="30" y2="180" stroke="#4C97FF" stroke-width="1.5"/>
+  <line x1="20" y1="300" x2="30" y2="300" stroke="#4C97FF" stroke-width="1.5"/>
+  <text x="18" y="245" text-anchor="middle" font-size="9" fill="#4C97FF" transform="rotate(-90, 18, 245)">Volume</text>
+
+  <!-- Quiet volume wave (short) -->
+  <text x="450" y="185" text-anchor="middle" font-size="12" fill="#4CAF50" font-weight="bold">Quiet (Low Volume)</text>
+  <text x="450" y="200" text-anchor="middle" font-size="10" fill="#999">(short waves)</text>
+  <line x1="330" y1="240" x2="590" y2="240" stroke="#eee" stroke-width="1" stroke-dasharray="3"/>
+  <path d="M 330,240 Q 355,225 380,240 Q 405,255 430,240 Q 455,225 480,240 Q 505,255 530,240 Q 555,225 580,240" fill="none" stroke="#4CAF50" stroke-width="2.5"/>
+  <!-- Volume label -->
+  <line x1="325" y1="225" x2="325" y2="255" stroke="#4CAF50" stroke-width="1.5"/>
+  <line x1="320" y1="225" x2="330" y2="225" stroke="#4CAF50" stroke-width="1.5"/>
+  <line x1="320" y1="255" x2="330" y2="255" stroke="#4CAF50" stroke-width="1.5"/>
+  <text x="318" y="245" text-anchor="middle" font-size="9" fill="#4CAF50" transform="rotate(-90, 318, 245)">Vol</text>
+
+  <!-- Bottom legend -->
+  <rect x="80" y="305" width="460" height="26" rx="8" fill="#FCE4EC"/>
+  <text x="310" y="323" text-anchor="middle" font-size="11" fill="#333">🎵 Pitch = how high/low the sound is &nbsp;&nbsp;|&nbsp;&nbsp; 🔊 Volume = how loud/quiet the sound is</text>
+</svg>
+</div>
+
+<h4>Adding Sounds</h4>
+<ol>
+  <li>Click the <strong>"Sounds"</strong> tab at the top</li>
+  <li>Click the speaker icon (bottom left) to browse the sound library</li>
+  <li>You can also record your own sound or upload a file</li>
+  <li>Each sprite has its own sounds</li>
+</ol>
+
+<div class="activity-box">
+  <strong>🎮 Activity:</strong> Have kids:
+  <ol>
+    <li>Go to the Sounds tab</li>
+    <li>Add 3 different sounds from the library</li>
+    <li>Create a script that plays them in sequence</li>
+  </ol>
+</div>
+
+<hr class="section-divider">
+
+<h3>Guided Project: Interactive Pet <span class="time-badge">15 min</span></h3>
+
+<p>Build this together step by step — a cat that responds to clicks and key presses!</p>
+
+<div class="code-block">when green flag clicked
+say [Click me or press keys!] for (3) seconds
+
+when this sprite clicked
+start sound [Meow]
+change size by (20)
+wait (0.3) seconds
+change size by (-20)
+
+when [space] key pressed
+next costume
+start sound [Pop]
+
+when [up arrow] key pressed
+change y by (30)
+wait (0.3) seconds
+change y by (-30)
+start sound [Boing]</div>
+
+<p>Walk through each script:</p>
+<ol>
+  <li><span class="scratch-block block-events">when green flag clicked</span> — shows instructions when the project starts</li>
+  <li><span class="scratch-block block-events">when this sprite clicked</span> — cat meows and "bounces" (grows then shrinks) when clicked</li>
+  <li><span class="scratch-block block-events">when [space] key pressed</span> — changes costume and plays a pop sound</li>
+  <li><span class="scratch-block block-events">when [up arrow] key pressed</span> — cat jumps up and comes back down with a boing sound</li>
+</ol>
+
+<div class="tip-box">
+  💡 <strong>Tip:</strong> Notice how each script starts with a different event block. One sprite can have MANY scripts, each triggered by a different event!
+</div>
+
+<h3>Free Build Time <span class="time-badge">10 min</span></h3>
+<p>Kids pick a sample project or create their own interactive sprite!</p>
+
+<hr class="section-divider">
+
+<h2 class="page-break">🛠️ Project Work</h2>
+
+<div class="project-card">
+  <h4>Project 1: Piano Keyboard</h4>
+  <p><strong>Goal:</strong> Press different keys to play different musical notes.</p>
+  <ol>
+    <li>You need the "Music" extension — click "Add Extension" (bottom left) → "Music"</li>
+    <li>Add a <span class="scratch-block block-events">when [1] key pressed</span> event block for each key (1 through 8)</li>
+    <li>Under each, add <span class="scratch-block block-sound">play note (X) for (0.5) beats</span> with different note values</li>
+    <li>Note values: 60 = Middle C, 62 = D, 64 = E, 65 = F, 67 = G, 69 = A, 71 = B, 72 = High C</li>
+  </ol>
+  <p><em>Concepts practiced: Key events, music extension, note values.</em></p>
+</div>
+
+<div class="project-card">
+  <h4>Project 2: Click the Sprite Game</h4>
+  <p><strong>Goal:</strong> Sprite appears in random places. Click it before it moves!</p>
+  <ol>
+    <li>Use a <span class="scratch-block block-control">forever</span> loop to keep the sprite moving</li>
+    <li>Inside the loop: <span class="scratch-block block-motion">go to</span> a random position, <span class="scratch-block block-looks">show</span>, <span class="scratch-block block-control">wait</span>, then <span class="scratch-block block-looks">hide</span></li>
+    <li>Add a separate <span class="scratch-block block-events">when this sprite clicked</span> script that says something and plays a sound</li>
+    <li>Use <code>pick random</code> for x (-200 to 200) and y (-150 to 150)</li>
+  </ol>
+  <p><em>Concepts practiced: when this sprite clicked, pick random, show/hide, combining events.</em></p>
+</div>
+
+<div class="project-card">
+  <h4>Project 3: Sound Board</h4>
+  <p><strong>Goal:</strong> Multiple sprites, each plays a different sound when clicked.</p>
+  <ol>
+    <li>Add 4 sprites (Drum, Guitar, Singer, Bell — or any you like)</li>
+    <li>Give each sprite a different sound from the sound library</li>
+    <li>Add a <span class="scratch-block block-events">when this sprite clicked</span> script to each</li>
+    <li>Add visual feedback (size change, color change, or rotation) when clicked</li>
+  </ol>
+  <p><em>Concepts practiced: Each sprite has its own scripts and sounds, visual feedback on click.</em></p>
+</div>
+
+<div class="project-card">
+  <h4>Project 4: Story with Broadcast Messages</h4>
+  <p><strong>Goal:</strong> Two characters tell a story using broadcast to coordinate.</p>
+  <ol>
+    <li>Add a "Wizard" and "Dragon" sprite, plus a castle backdrop</li>
+    <li>Wizard speaks first, then uses <span class="scratch-block block-events">broadcast [dragon responds]</span></li>
+    <li>Dragon has a <span class="scratch-block block-events">when I receive [dragon responds]</span> script to reply</li>
+    <li>Wizard broadcasts <span class="scratch-block block-events">[spell cast]</span> and Dragon fades away using the ghost effect</li>
+    <li>Use <span class="scratch-block block-control">wait</span> blocks to time the dialogue</li>
+  </ol>
+  <p><em>Concepts practiced: broadcast and when I receive for coordinating between sprites, ghost effect.</em></p>
+</div>
+
+<hr class="section-divider">
+
+<h2 class="page-break">✅ Project Solutions</h2>
+
+<div class="project-card">
+  <h4>Project 1: Piano Keyboard — Solution</h4>
+  <p><em>Setup: Add the "Music" extension. Click "Add Extension" (bottom left) → "Music".</em></p>
+  <div class="code-block">when [1] key pressed
+play note (60) for (0.5) beats
+
+when [2] key pressed
+play note (62) for (0.5) beats
+
+when [3] key pressed
+play note (64) for (0.5) beats
+
+when [4] key pressed
+play note (65) for (0.5) beats
+
+when [5] key pressed
+play note (67) for (0.5) beats
+
+when [6] key pressed
+play note (69) for (0.5) beats
+
+when [7] key pressed
+play note (71) for (0.5) beats
+
+when [8] key pressed
+play note (72) for (0.5) beats</div>
+  <p><em>Note values: 60 = Middle C, 62 = D, 64 = E, 65 = F, 67 = G, 69 = A, 71 = B, 72 = High C</em></p>
+</div>
+
+<div class="project-card">
+  <h4>Project 2: Click the Sprite Game — Solution</h4>
+  <div class="code-block">when green flag clicked
+forever
+  go to x: (pick random (-200) to (200)) y: (pick random (-150) to (150))
+  show
+  start sound [Pop]
+  wait (1) seconds
+  hide
+  wait (0.5) seconds
+end
+
+when this sprite clicked
+say [You got me!] for (0.5) seconds
+start sound [Collect]
+hide</div>
+</div>
+
+<div class="project-card">
+  <h4>Project 3: Sound Board — Solution</h4>
+  <p><em>Setup: Add 4 sprites (Drum, Guitar, Singer, Bell). Give each a different sound.</em></p>
+  <p><strong>Drum sprite:</strong></p>
+  <div class="code-block">when this sprite clicked
+start sound [Drum Buzz]
+change size by (10)
+wait (0.1) seconds
+change size by (-10)</div>
+  <p><strong>Guitar sprite:</strong></p>
+  <div class="code-block">when this sprite clicked
+start sound [Guitar Strum]
+change [color] effect by (25)
+wait (0.3) seconds
+clear graphic effects</div>
+  <p><strong>Singer sprite:</strong></p>
+  <div class="code-block">when this sprite clicked
+start sound [Singer1]
+say [La la la!] for (1) seconds</div>
+  <p><strong>Bell sprite:</strong></p>
+  <div class="code-block">when this sprite clicked
+start sound [Bell Toll]
+turn right (30) degrees
+wait (0.2) seconds
+turn left (30) degrees</div>
+</div>
+
+<div class="project-card">
+  <h4>Project 4: Story with Broadcast Messages — Solution</h4>
+  <p><em>Setup: Add a "Wizard" and "Dragon" sprite. Add a castle backdrop.</em></p>
+  <p><strong>Wizard script:</strong></p>
+  <div class="code-block">when green flag clicked
+go to x: (-150) y: (-50)
+say [Halt, dragon!] for (2) seconds
+broadcast [dragon responds]
+wait (3) seconds
+say [Then I shall cast a spell!] for (2) seconds
+broadcast [spell cast]
+
+when I receive [dragon responds]
+think [Hmm, a tough one...] for (2) seconds</div>
+  <p><strong>Dragon script:</strong></p>
+  <div class="code-block">when I receive [dragon responds]
+go to x: (150) y: (-50)
+say [You cannot stop me!] for (2) seconds
+
+when I receive [spell cast]
+repeat (5)
+  change [ghost] effect by (20)
+  wait (0.3) seconds
+end
+say [Nooo!] for (1) seconds
+hide</div>
+</div>
+
+</div><!-- end content -->
+</div><!-- end container -->
+</body>
+</html>

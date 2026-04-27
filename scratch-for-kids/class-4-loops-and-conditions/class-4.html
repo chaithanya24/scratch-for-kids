@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 4: Loops &amp; Conditions</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f4ff; color: #333; line-height: 1.7; padding: 20px; }
+  .container { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
+  .header { background: linear-gradient(135deg, #4C97FF, #855CD6); color: white; padding: 40px; text-align: center; }
+  .header h1 { font-size: 2.2em; margin-bottom: 8px; }
+  .header .subtitle { font-size: 1.1em; opacity: 0.9; }
+  .meta { display: flex; justify-content: center; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
+  .meta span { background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 20px; font-size: 0.9em; }
+  .content { padding: 40px; }
+  h2 { color: #4C97FF; font-size: 1.6em; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 3px solid #4C97FF; }
+  h3 { color: #855CD6; font-size: 1.3em; margin: 24px 0 12px; }
+  h4 { color: #CF63CF; font-size: 1.1em; margin: 20px 0 10px; }
+  .objectives { background: #f0f4ff; border-left: 4px solid #4C97FF; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .objectives li { margin: 6px 0; margin-left: 20px; }
+  .time-badge { display: inline-block; background: #FFBF00; color: #333; padding: 2px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; margin-left: 8px; }
+  .tip-box { background: #FFF3CD; border-left: 4px solid #FFBF00; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .activity-box { background: #E8F5E9; border-left: 4px solid #4CAF50; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .key-concept { background: #FCE4EC; border-left: 4px solid #E91E63; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  ul, ol { margin: 10px 0 10px 24px; }
+  li { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  th { background: #4C97FF; color: white; padding: 10px 14px; text-align: left; }
+  td { padding: 10px 14px; border-bottom: 1px solid #e0e0e0; }
+  tr:nth-child(even) { background: #f8f9ff; }
+  .scratch-block { display: inline-block; padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 0.95em; margin: 2px 0; }
+  .block-motion { background: #4C97FF; color: white; }
+  .block-looks { background: #855CD6; color: white; }
+  .block-events { background: #FFBF00; color: #333; }
+  .block-control { background: #FFAB19; color: #333; }
+  .block-sound { background: #CF63CF; color: white; }
+  .block-sensing { background: #5CB1D6; color: white; }
+  .block-variables { background: #FF8C1A; color: white; }
+  .svg-container { text-align: center; margin: 24px 0; }
+  .project-card { background: #f8f9ff; border: 2px solid #e0e0ff; border-radius: 12px; padding: 20px; margin: 20px 0; }
+  .project-card h4 { color: #4C97FF; margin-top: 0; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 16px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9em; margin: 12px 0; overflow-x: auto; white-space: pre-wrap; }
+  .section-divider { border: none; height: 2px; background: linear-gradient(to right, #4C97FF, #855CD6, #CF63CF); margin: 32px 0; }
+  .page-break { page-break-before: always; }
+  @media print { body { background: white; padding: 0; } .container { box-shadow: none; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🔄 Class 4: Loops &amp; Conditions</h1>
+  <div class="subtitle">Repeating actions and making decisions</div>
+  <div class="meta">
+    <span>⏱ 1 Hour</span>
+    <span>👶 Ages 7–12</span>
+    <span>📋 Classes 1–3 completed</span>
+    <span>💻 Scratch 3.0</span>
+  </div>
+</div>
+
+<div class="content">
+
+<h2>🎯 Learning Objectives</h2>
+<div class="objectives">
+<ul>
+  <li>Understand and use <span class="scratch-block block-control">forever</span>, <span class="scratch-block block-control">repeat</span>, and <span class="scratch-block block-control">repeat until</span> loops</li>
+  <li>Understand and use <span class="scratch-block block-control">if</span> and <span class="scratch-block block-control">if-else</span> conditional blocks</li>
+  <li>Combine loops and conditions to create game logic</li>
+  <li>Use sensing blocks to detect collisions and input</li>
+</ul>
+</div>
+
+<hr class="section-divider">
+
+<h2>📖 Session Breakdown</h2>
+
+<h3>Review &amp; Warm-Up <span class="time-badge">5 min</span></h3>
+<ul>
+  <li>"Remember how we kept copying the same block over and over? Today we learn the shortcut — <strong>loops</strong>!"</li>
+  <li>Show the spinning star from Class 1 (4 turn blocks) and ask: "What if we wanted it to spin 100 times?"</li>
+</ul>
+
+<hr class="section-divider">
+
+<h3>Loops Deep Dive <span class="time-badge">15 min</span></h3>
+
+<h4>Key Loop Blocks</h4>
+<table>
+  <tr><th>Block</th><th>What It Does</th></tr>
+  <tr><td><span class="scratch-block block-control">forever</span></td><td>Repeats everything inside it non-stop until you press the stop sign</td></tr>
+  <tr><td><span class="scratch-block block-control">repeat (10)</span></td><td>Repeats everything inside it a specific number of times</td></tr>
+  <tr><td><span class="scratch-block block-control">repeat until &lt;condition&gt;</span></td><td>Repeats until something becomes true</td></tr>
+</table>
+
+<h4>1. Repeat Block — Refactor the Spinning Star</h4>
+
+<!-- SVG DIAGRAM 1: Loop Comparison -->
+<div class="svg-container">
+<svg width="750" height="320" viewBox="0 0 750 320" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="375" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">Loop Comparison: Old Way vs New Way</text>
+
+  <!-- OLD WAY (left side) -->
+  <rect x="30" y="50" width="310" height="255" rx="12" fill="#FFF3CD" stroke="#FFBF00" stroke-width="2"/>
+  <text x="185" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#E65100">❌ Old Way (4 separate blocks)</text>
+
+  <!-- 4 separate blocks -->
+  <rect x="70" y="95" width="230" height="36" rx="6" fill="#4C97FF"/>
+  <text x="185" y="118" text-anchor="middle" font-size="13" fill="white" font-family="monospace">turn right (45) degrees</text>
+  <rect x="70" y="138" width="230" height="36" rx="6" fill="#4C97FF"/>
+  <text x="185" y="161" text-anchor="middle" font-size="13" fill="white" font-family="monospace">turn right (45) degrees</text>
+  <rect x="70" y="181" width="230" height="36" rx="6" fill="#4C97FF"/>
+  <text x="185" y="204" text-anchor="middle" font-size="13" fill="white" font-family="monospace">turn right (45) degrees</text>
+  <rect x="70" y="224" width="230" height="36" rx="6" fill="#4C97FF"/>
+  <text x="185" y="247" text-anchor="middle" font-size="13" fill="white" font-family="monospace">turn right (45) degrees</text>
+  <text x="185" y="285" text-anchor="middle" font-size="13" fill="#E65100" font-weight="bold">4 blocks needed! 😩</text>
+
+  <!-- Arrow between -->
+  <polygon points="365,175 395,155 395,168 430,168 430,182 395,182 395,195" fill="#4CAF50"/>
+  <text x="397" y="215" font-size="13" fill="#4CAF50" font-weight="bold">Better!</text>
+
+  <!-- NEW WAY (right side) -->
+  <rect x="420" y="50" width="310" height="255" rx="12" fill="#E8F5E9" stroke="#4CAF50" stroke-width="2"/>
+  <text x="575" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#2E7D32">✅ New Way (with loop)</text>
+
+  <!-- Repeat block (C-shape) -->
+  <rect x="460" y="95" width="230" height="36" rx="6" fill="#FFAB19"/>
+  <text x="575" y="118" text-anchor="middle" font-size="13" fill="#333" font-family="monospace" font-weight="bold">repeat (4)</text>
+  <!-- Left bar of C-shape -->
+  <rect x="460" y="131" width="16" height="60" fill="#FFAB19"/>
+  <!-- Inner block -->
+  <rect x="490" y="140" width="200" height="36" rx="6" fill="#4C97FF"/>
+  <text x="590" y="163" text-anchor="middle" font-size="13" fill="white" font-family="monospace">turn right (45) degrees</text>
+  <!-- Bottom of C-shape -->
+  <rect x="460" y="191" width="230" height="16" rx="0 0 6 6" fill="#FFAB19"/>
+
+  <text x="575" y="240" text-anchor="middle" font-size="13" fill="#2E7D32" font-weight="bold">Only 2 blocks! 🎉</text>
+  <text x="575" y="262" text-anchor="middle" font-size="12" fill="#555">Change 4 to 100? Easy!</text>
+</svg>
+</div>
+
+<div class="tip-box">
+  💡 <strong>Same result, way less work!</strong> What if we change 4 to 100? With loops, it's just changing one number!
+</div>
+
+<h4>2. Forever Block — Make the Cat Walk Forever</h4>
+<div class="code-block">forever
+  move (5) steps
+  if on edge, bounce
+end</div>
+<p>"This never stops until you hit the red stop sign."</p>
+
+<h4>3. Repeat Until — Walk Until Touching Something</h4>
+<div class="code-block">repeat until &lt;touching [edge]?&gt;
+  move (5) steps
+end
+say [I reached the edge!] for (2) seconds</div>
+
+<div class="key-concept">
+  🧠 <strong>Real-life Analogies:</strong>
+  <ul>
+    <li><span class="scratch-block block-control">repeat 10</span> = "Brush your teeth 10 times"</li>
+    <li><span class="scratch-block block-control">forever</span> = "Keep breathing"</li>
+    <li><span class="scratch-block block-control">repeat until</span> = "Keep walking until you reach the door"</li>
+  </ul>
+</div>
+
+<hr class="section-divider">
+
+<h3>Conditions Deep Dive <span class="time-badge">15 min</span></h3>
+
+<h4>Key Condition Blocks</h4>
+<table>
+  <tr><th>Block</th><th>What It Does</th></tr>
+  <tr><td><span class="scratch-block block-control">if &lt;&gt; then</span></td><td>Runs the code inside only if the condition is true</td></tr>
+  <tr><td><span class="scratch-block block-control">if &lt;&gt; then / else</span></td><td>Runs one set of code if true, another if false</td></tr>
+</table>
+
+<h4>Key Sensing Blocks (used as conditions)</h4>
+<table>
+  <tr><th>Block</th><th>What It Does</th></tr>
+  <tr><td><span class="scratch-block block-sensing">&lt;touching [mouse-pointer]?&gt;</span></td><td>True if sprite touches the mouse</td></tr>
+  <tr><td><span class="scratch-block block-sensing">&lt;touching [Sprite2]?&gt;</span></td><td>True if sprite touches another sprite</td></tr>
+  <tr><td><span class="scratch-block block-sensing">&lt;touching color [#ff0000]?&gt;</span></td><td>True if sprite touches a specific color</td></tr>
+  <tr><td><span class="scratch-block block-sensing">&lt;key [space] pressed?&gt;</span></td><td>True if a key is currently held down</td></tr>
+  <tr><td><span class="scratch-block block-sensing">&lt;mouse down?&gt;</span></td><td>True if mouse button is held</td></tr>
+</table>
+
+<h4>1. Simple If</h4>
+<div class="code-block">forever
+  if &lt;key [right arrow] pressed?&gt; then
+    move (5) steps
+  end
+end</div>
+<p>"The cat only moves when you hold the right arrow."</p>
+
+<h4>2. If-Else</h4>
+
+<!-- SVG DIAGRAM 2: If/Else Flowchart -->
+<div class="svg-container">
+<svg width="520" height="340" viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
+  <text x="260" y="24" text-anchor="middle" font-size="17" font-weight="bold" fill="#333">If/Else Flowchart</text>
+
+  <!-- Start -->
+  <rect x="195" y="40" width="130" height="36" rx="18" fill="#4CAF50"/>
+  <text x="260" y="63" text-anchor="middle" font-size="13" fill="white" font-weight="bold">Start (forever)</text>
+
+  <!-- Arrow down -->
+  <line x1="260" y1="76" x2="260" y2="105" stroke="#555" stroke-width="2"/>
+  <polygon points="260,112 254,102 266,102" fill="#555"/>
+
+  <!-- Diamond -->
+  <polygon points="260,115 380,170 260,225 140,170" fill="#5CB1D6" stroke="#3A8FB7" stroke-width="2"/>
+  <text x="260" y="165" text-anchor="middle" font-size="12" fill="white" font-weight="bold">touching</text>
+  <text x="260" y="182" text-anchor="middle" font-size="12" fill="white" font-weight="bold">edge?</text>
+
+  <!-- YES arrow (left) -->
+  <line x1="140" y1="170" x2="70" y2="170" stroke="#E91E63" stroke-width="2"/>
+  <polygon points="63,170 73,164 73,176" fill="#E91E63"/>
+  <text x="108" y="160" font-size="12" fill="#E91E63" font-weight="bold">Yes</text>
+
+  <!-- YES box -->
+  <rect x="10" y="200" width="130" height="70" rx="8" fill="#855CD6"/>
+  <text x="75" y="225" text-anchor="middle" font-size="11" fill="white" font-weight="bold">say</text>
+  <text x="75" y="243" text-anchor="middle" font-size="11" fill="white">"I hit the wall!"</text>
+  <text x="75" y="261" text-anchor="middle" font-size="10" fill="#ddd">for 1 second</text>
+  <line x1="70" y1="170" x2="70" y2="200" stroke="#E91E63" stroke-width="2"/>
+
+  <!-- NO arrow (right) -->
+  <line x1="380" y1="170" x2="450" y2="170" stroke="#4CAF50" stroke-width="2"/>
+  <polygon points="457,170 447,164 447,176" fill="#4CAF50"/>
+  <text x="412" y="160" font-size="12" fill="#4CAF50" font-weight="bold">No</text>
+
+  <!-- NO box -->
+  <rect x="380" y="200" width="130" height="70" rx="8" fill="#4C97FF"/>
+  <text x="445" y="225" text-anchor="middle" font-size="11" fill="white" font-weight="bold">move</text>
+  <text x="445" y="243" text-anchor="middle" font-size="11" fill="white">(3) steps</text>
+  <line x1="450" y1="170" x2="450" y2="200" stroke="#4CAF50" stroke-width="2"/>
+
+  <!-- Both arrows merge back -->
+  <line x1="75" y1="270" x2="75" y2="305" stroke="#555" stroke-width="2"/>
+  <line x1="445" y1="270" x2="445" y2="305" stroke="#555" stroke-width="2"/>
+  <line x1="75" y1="305" x2="445" y2="305" stroke="#555" stroke-width="2"/>
+  <line x1="260" y1="305" x2="260" y2="325" stroke="#555" stroke-width="2"/>
+
+  <!-- Loop back arrow -->
+  <rect x="215" y="318" width="90" height="22" rx="11" fill="#FFAB19"/>
+  <text x="260" y="333" text-anchor="middle" font-size="10" fill="#333" font-weight="bold">↩ loop back</text>
+</svg>
+</div>
+
+<div class="code-block">forever
+  if &lt;touching [edge]?&gt; then
+    say [I hit the wall!] for (1) seconds
+  else
+    move (3) steps
+  end
+end</div>
+
+<h4>3. Combining Conditions in a Loop — 4-Direction Movement</h4>
+<div class="code-block">forever
+  if &lt;key [right arrow] pressed?&gt; then
+    change x by (5)
+  end
+  if &lt;key [left arrow] pressed?&gt; then
+    change x by (-5)
+  end
+  if &lt;key [up arrow] pressed?&gt; then
+    change y by (5)
+  end
+  if &lt;key [down arrow] pressed?&gt; then
+    change y by (-5)
+  end
+end</div>
+<p>"Now you can move in all 4 directions!"</p>
+
+<hr class="section-divider">
+
+<h3>Guided Project: Simple Maze <span class="time-badge">15 min</span></h3>
+
+<div class="activity-box">
+  🎮 <strong>Build together!</strong> We'll create a maze game where the player navigates through walls to reach the goal.
+</div>
+
+<h4>Setup</h4>
+<ul>
+  <li>Use the paint editor to draw a simple maze as the backdrop (thick black walls, green start area, red end area)</li>
+  <li>Use a small sprite (shrink the cat or use the "Ball" sprite)</li>
+</ul>
+
+<!-- SVG DIAGRAM 3: Maze Game Diagram -->
+<div class="svg-container">
+<svg width="480" height="400" viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg">
+  <text x="240" y="24" text-anchor="middle" font-size="17" font-weight="bold" fill="#333">Maze Game Layout</text>
+
+  <!-- Maze border -->
+  <rect x="40" y="40" width="400" height="340" rx="4" fill="#f5f5f5" stroke="#333" stroke-width="4"/>
+
+  <!-- Start area (green) -->
+  <rect x="44" y="44" width="70" height="60" fill="#4CAF50" opacity="0.5"/>
+  <text x="79" y="80" text-anchor="middle" font-size="12" fill="#1B5E20" font-weight="bold">START</text>
+
+  <!-- End area (red) -->
+  <rect x="366" y="316" width="70" height="60" fill="#F44336" opacity="0.5"/>
+  <text x="401" y="352" text-anchor="middle" font-size="12" fill="#B71C1C" font-weight="bold">END</text>
+
+  <!-- Maze walls (black) -->
+  <!-- Horizontal walls -->
+  <rect x="100" y="100" width="200" height="10" rx="2" fill="#333"/>
+  <rect x="180" y="160" width="260" height="10" rx="2" fill="#333"/>
+  <rect x="40" y="220" width="220" height="10" rx="2" fill="#333"/>
+  <rect x="140" y="280" width="200" height="10" rx="2" fill="#333"/>
+
+  <!-- Vertical walls -->
+  <rect x="300" y="40" width="10" height="70" rx="2" fill="#333"/>
+  <rect x="120" y="100" width="10" height="70" rx="2" fill="#333"/>
+  <rect x="340" y="220" width="10" height="70" rx="2" fill="#333"/>
+  <rect x="200" y="280" width="10" height="100" rx="2" fill="#333"/>
+
+  <!-- Sprite (small cat/ball) -->
+  <circle cx="79" cy="65" r="10" fill="#FFAB19" stroke="#FF8C1A" stroke-width="2"/>
+  <text x="79" y="69" text-anchor="middle" font-size="10" fill="#333">🐱</text>
+
+  <!-- Path arrows (dotted) -->
+  <line x1="79" y1="80" x2="79" y2="140" stroke="#4C97FF" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="79" y1="140" x2="160" y2="140" stroke="#4C97FF" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="160" y1="140" x2="160" y2="200" stroke="#4C97FF" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="160" y1="200" x2="280" y2="200" stroke="#4C97FF" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="280" y1="200" x2="280" y2="260" stroke="#4C97FF" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="280" y1="260" x2="380" y2="260" stroke="#4C97FF" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="380" y1="260" x2="380" y2="330" stroke="#4C97FF" stroke-width="2" stroke-dasharray="5,5"/>
+
+  <!-- Legend -->
+  <rect x="44" y="340" width="12" height="12" fill="#333"/>
+  <text x="62" y="351" font-size="10" fill="#333">= Walls (black)</text>
+  <rect x="140" y="340" width="12" height="12" fill="#4CAF50" opacity="0.5"/>
+  <text x="158" y="351" font-size="10" fill="#333">= Start (green)</text>
+  <rect x="240" y="340" width="12" height="12" fill="#F44336" opacity="0.5"/>
+  <text x="258" y="351" font-size="10" fill="#333">= End (red)</text>
+  <line x1="320" y1="346" x2="345" y2="346" stroke="#4C97FF" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="350" y="351" font-size="10" fill="#333">= Path</text>
+</svg>
+</div>
+
+<h4>Maze Code</h4>
+<div class="code-block">when green flag clicked
+go to x: (-200) y: (150)
+set size to (30) %
+forever
+  if &lt;key [right arrow] pressed?&gt; then
+    change x by (3)
+  end
+  if &lt;key [left arrow] pressed?&gt; then
+    change x by (-3)
+  end
+  if &lt;key [up arrow] pressed?&gt; then
+    change y by (3)
+  end
+  if &lt;key [down arrow] pressed?&gt; then
+    change y by (-3)
+  end
+  if &lt;touching color [#000000]?&gt; then
+    go to x: (-200) y: (150)
+    say [Oops! Back to start!] for (1) seconds
+  end
+  if &lt;touching color [#ff0000]?&gt; then
+    say [You win!] for (2) seconds
+    stop [all]
+  end
+end</div>
+
+<div class="tip-box">
+  💡 <strong>How it works:</strong> Arrow keys move the sprite. Touch a black wall? Back to start! Touch the red end zone? You win!
+</div>
+
+<hr class="section-divider">
+
+<h3>Wrap-Up <span class="time-badge">5 min</span></h3>
+<div class="key-concept">
+  🧠 <strong>Key Takeaways:</strong>
+  <ul>
+    <li><strong>Loops</strong> save us from repeating blocks over and over.</li>
+    <li><strong>Conditions</strong> let our program make decisions.</li>
+    <li>Combining loops + conditions = game logic!</li>
+  </ul>
+</div>
+<p>🔮 <strong>Preview:</strong> "Next class we add scores and lives using <em>variables</em>!"</p>
+
+<hr class="section-divider">
+<div class="page-break"></div>
+
+<h2>🛠️ Project Work</h2>
+<p>Four projects to practice loops and conditional logic. Try them all!</p>
+
+<!-- PROJECT 1 -->
+<div class="project-card">
+  <h4>🎮 Project 1: Dodge the Obstacles</h4>
+  <p><strong>Goal:</strong> A sprite moves left/right to dodge falling objects.</p>
+  <h4>Instructions</h4>
+  <ol>
+    <li>Place the Cat at the bottom of the stage</li>
+    <li>Add a "Ball" sprite</li>
+    <li>Cat uses <span class="scratch-block block-control">forever</span> loop with <span class="scratch-block block-control">if key pressed</span> to move left/right</li>
+    <li>Ball uses <span class="scratch-block block-control">forever</span> loop: goes to random x at top, then <span class="scratch-block block-control">repeat until</span> it reaches the bottom</li>
+    <li>Ball resets to top and repeats</li>
+  </ol>
+  <p><strong>Concepts practiced:</strong> <span class="scratch-block block-control">repeat until</span> with a condition, combining loops with key controls.</p>
+</div>
+
+<!-- PROJECT 2 -->
+<div class="project-card">
+  <h4>🎨 Project 2: Color Touch Game</h4>
+  <p><strong>Goal:</strong> Sprite changes color when touching different colored areas on the backdrop.</p>
+  <h4>Instructions</h4>
+  <ol>
+    <li>Paint a backdrop with 4 colored quadrants (red, blue, green, yellow)</li>
+    <li>Use arrow keys to move the sprite around</li>
+    <li>Inside a <span class="scratch-block block-control">forever</span> loop, add <span class="scratch-block block-sensing">if touching color</span> blocks for each color</li>
+    <li>Each color triggers a different <span class="scratch-block block-looks">say</span> message and <span class="scratch-block block-looks">set color effect</span></li>
+  </ol>
+  <p><strong>Concepts practiced:</strong> Color sensing, multiple if blocks, color effects.</p>
+</div>
+
+<!-- PROJECT 3 -->
+<div class="project-card">
+  <h4>🐱 Project 3: Chase Game</h4>
+  <p><strong>Goal:</strong> A cat chases the mouse pointer. If it catches it, it says "Got you!"</p>
+  <h4>Instructions</h4>
+  <ol>
+    <li>Use <span class="scratch-block block-motion">point towards [mouse-pointer]</span> inside a <span class="scratch-block block-control">forever</span> loop</li>
+    <li>Add <span class="scratch-block block-motion">move</span> steps after pointing</li>
+    <li>Add an <span class="scratch-block block-control">if touching [mouse-pointer]</span> condition</li>
+    <li>When caught: say something, go back to center, wait, then resume</li>
+  </ol>
+  <p><strong>Extension:</strong> Add a second sprite that runs away from the cat using <span class="scratch-block block-motion">point towards</span> + <span class="scratch-block block-motion">turn 180 degrees</span>.</p>
+  <p><strong>Concepts practiced:</strong> <span class="scratch-block block-motion">point towards</span>, combining motion with conditions, simple AI behavior.</p>
+</div>
+
+<!-- PROJECT 4 -->
+<div class="project-card">
+  <h4>🚦 Project 4: Traffic Light Simulator</h4>
+  <p><strong>Goal:</strong> A traffic light that cycles through red, yellow, green with a walking character that responds.</p>
+  <h4>Instructions</h4>
+  <ol>
+    <li>Create a sprite with 3 costumes (red light, yellow light, green light)</li>
+    <li>Use a <span class="scratch-block block-control">forever</span> loop to cycle through costumes with <span class="scratch-block block-control">wait</span> blocks</li>
+    <li><span class="scratch-block block-events">broadcast</span> a message for each light color</li>
+    <li>Add a person sprite that walks on green and stops on red/yellow</li>
+    <li>Use <span class="scratch-block block-events">when I receive</span> blocks on the person sprite</li>
+  </ol>
+  <p><strong>Concepts practiced:</strong> Broadcast + conditions, costume switching for state, <span class="scratch-block block-control">stop [other scripts in sprite]</span>.</p>
+</div>
+
+<hr class="section-divider">
+<div class="page-break"></div>
+
+<h2>✅ Project Solutions</h2>
+<p>Complete block-by-block solutions for all 4 projects.</p>
+
+<!-- SOLUTION 1 -->
+<h3>Project 1: Dodge the Obstacles — Solution</h3>
+<p><strong>Setup:</strong> Player sprite (Cat) at bottom. Add a "Ball" sprite.</p>
+
+<h4>Cat Script</h4>
+<div class="code-block">when green flag clicked
+go to x: (0) y: (-150)
+forever
+  if &lt;key [left arrow] pressed?&gt; then
+    change x by (-7)
+  end
+  if &lt;key [right arrow] pressed?&gt; then
+    change x by (7)
+  end
+end</div>
+
+<h4>Ball Script</h4>
+<div class="code-block">when green flag clicked
+forever
+  go to x: (pick random (-200) to (200)) y: (180)
+  repeat until &lt;(y position) &lt; (-170)&gt;
+    change y by (-5)
+  end
+end</div>
+
+<hr class="section-divider">
+
+<!-- SOLUTION 2 -->
+<h3>Project 2: Color Touch Game — Solution</h3>
+<p><strong>Setup:</strong> Paint a backdrop with 4 colored quadrants (red, blue, green, yellow).</p>
+
+<div class="code-block">when green flag clicked
+forever
+  if &lt;key [right arrow] pressed?&gt; then
+    change x by (5)
+  end
+  if &lt;key [left arrow] pressed?&gt; then
+    change x by (-5)
+  end
+  if &lt;key [up arrow] pressed?&gt; then
+    change y by (5)
+  end
+  if &lt;key [down arrow] pressed?&gt; then
+    change y by (-5)
+  end
+  if &lt;touching color [#ff0000]?&gt; then
+    say [Red zone!] for (0.5) seconds
+    set [color] effect to (0)
+  end
+  if &lt;touching color [#0000ff]?&gt; then
+    say [Blue zone!] for (0.5) seconds
+    set [color] effect to (100)
+  end
+  if &lt;touching color [#00ff00]?&gt; then
+    say [Green zone!] for (0.5) seconds
+    set [color] effect to (50)
+  end
+  if &lt;touching color [#ffff00]?&gt; then
+    say [Yellow zone!] for (0.5) seconds
+    set [color] effect to (150)
+  end
+end</div>
+
+<hr class="section-divider">
+
+<!-- SOLUTION 3 -->
+<h3>Project 3: Chase Game — Solution</h3>
+
+<div class="code-block">when green flag clicked
+forever
+  point towards [mouse-pointer]
+  move (3) steps
+  if &lt;touching [mouse-pointer]?&gt; then
+    say [Got you!] for (1) seconds
+    go to x: (0) y: (0)
+    wait (1) seconds
+  end
+end</div>
+
+<h4>Extension — Second Sprite That Runs Away</h4>
+<div class="code-block">when green flag clicked
+forever
+  point towards [Cat]
+  turn right (180) degrees
+  move (2) steps
+  if on edge, bounce
+end</div>
+
+<hr class="section-divider">
+
+<!-- SOLUTION 4 -->
+<h3>Project 4: Traffic Light Simulator — Solution</h3>
+<p><strong>Setup:</strong> Create a sprite with 3 costumes (red light, yellow light, green light). Add a person sprite.</p>
+
+<h4>Traffic Light Script</h4>
+<div class="code-block">when green flag clicked
+forever
+  switch costume to [red]
+  broadcast [red light]
+  wait (3) seconds
+  switch costume to [green]
+  broadcast [green light]
+  wait (3) seconds
+  switch costume to [yellow]
+  broadcast [yellow light]
+  wait (1) seconds
+end</div>
+
+<h4>Person Script</h4>
+<div class="code-block">when green flag clicked
+go to x: (-200) y: (-100)
+
+when I receive [green light]
+repeat until &lt;(x position) &gt; (200)&gt;
+  move (3) steps
+  next costume
+  wait (0.1) seconds
+end
+go to x: (-200) y: (-100)
+
+when I receive [red light]
+stop [other scripts in sprite]
+
+when I receive [yellow light]
+stop [other scripts in sprite]</div>
+
+</div><!-- end content -->
+</div><!-- end container -->
+</body>
+</html>

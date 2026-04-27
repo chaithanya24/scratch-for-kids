@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 2: Motion &amp; Looks</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f4ff; color: #333; line-height: 1.7; padding: 20px; }
+  .container { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
+  .header { background: linear-gradient(135deg, #4C97FF, #855CD6); color: white; padding: 40px; text-align: center; }
+  .header h1 { font-size: 2.2em; margin-bottom: 8px; }
+  .header .subtitle { font-size: 1.1em; opacity: 0.9; }
+  .meta { display: flex; justify-content: center; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
+  .meta span { background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 20px; font-size: 0.9em; }
+  .content { padding: 40px; }
+  h2 { color: #4C97FF; font-size: 1.6em; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 3px solid #4C97FF; }
+  h3 { color: #855CD6; font-size: 1.3em; margin: 24px 0 12px; }
+  h4 { color: #CF63CF; font-size: 1.1em; margin: 20px 0 10px; }
+  .objectives { background: #f0f4ff; border-left: 4px solid #4C97FF; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .objectives li { margin: 6px 0; margin-left: 20px; }
+  .time-badge { display: inline-block; background: #FFBF00; color: #333; padding: 2px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; margin-left: 8px; }
+  .tip-box { background: #FFF3CD; border-left: 4px solid #FFBF00; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .activity-box { background: #E8F5E9; border-left: 4px solid #4CAF50; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .key-concept { background: #FCE4EC; border-left: 4px solid #E91E63; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  ul, ol { margin: 10px 0 10px 24px; }
+  li { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  th { background: #4C97FF; color: white; padding: 10px 14px; text-align: left; }
+  td { padding: 10px 14px; border-bottom: 1px solid #e0e0e0; }
+  tr:nth-child(even) { background: #f8f9ff; }
+  .scratch-block { display: inline-block; padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 0.95em; margin: 2px 0; }
+  .block-motion { background: #4C97FF; color: white; }
+  .block-looks { background: #855CD6; color: white; }
+  .block-events { background: #FFBF00; color: #333; }
+  .block-control { background: #FFAB19; color: #333; }
+  .block-sound { background: #CF63CF; color: white; }
+  .block-sensing { background: #5CB1D6; color: white; }
+  .block-variables { background: #FF8C1A; color: white; }
+  .svg-container { text-align: center; margin: 24px 0; }
+  .project-card { background: #f8f9ff; border: 2px solid #e0e0ff; border-radius: 12px; padding: 20px; margin: 20px 0; }
+  .project-card h4 { color: #4C97FF; margin-top: 0; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 16px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9em; margin: 12px 0; overflow-x: auto; white-space: pre-wrap; }
+  .section-divider { border: none; height: 2px; background: linear-gradient(to right, #4C97FF, #855CD6, #CF63CF); margin: 32px 0; }
+  .page-break { page-break-before: always; }
+  @media print { body { background: white; padding: 0; } .container { box-shadow: none; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🏃 Class 2: Motion &amp; Looks</h1>
+  <div class="subtitle">Controlling sprite movement and appearance</div>
+  <div class="meta">
+    <span>⏱ 1 Hour</span>
+    <span>👶 Ages 7–12</span>
+    <span>📋 Class 1 completed</span>
+    <span>💻 Scratch 3.0</span>
+  </div>
+</div>
+
+<div class="content">
+
+<h2>🎯 Learning Objectives</h2>
+<div class="objectives">
+<ul>
+  <li>Use motion blocks to control sprite position, direction, and movement</li>
+  <li>Use looks blocks to change appearance, costumes, and size</li>
+  <li>Understand the Scratch coordinate system (x, y)</li>
+</ul>
+</div>
+
+<hr class="section-divider">
+
+<h2>📖 Session Breakdown</h2>
+
+<h3>Review &amp; Warm-Up <span class="time-badge">5 min</span></h3>
+<ul>
+  <li>Quick recap: "Last time we made the cat move and talk. Who remembers what the green flag does?"</li>
+  <li>Challenge: "Can you make the cat move to the right side of the stage in under 10 seconds? Go!"</li>
+</ul>
+
+<hr class="section-divider">
+
+<h3>Motion Blocks Deep Dive <span class="time-badge">15 min</span></h3>
+
+<h4>Key Motion Blocks</h4>
+
+<table>
+  <tr><th>Block</th><th>What It Does</th></tr>
+  <tr><td><span class="scratch-block block-motion">move (10) steps</span></td><td>Moves sprite forward in the direction it's facing</td></tr>
+  <tr><td><span class="scratch-block block-motion">turn right (15) degrees</span></td><td>Rotates sprite clockwise</td></tr>
+  <tr><td><span class="scratch-block block-motion">turn left (15) degrees</span></td><td>Rotates sprite counter-clockwise</td></tr>
+  <tr><td><span class="scratch-block block-motion">go to x: (0) y: (0)</span></td><td>Instantly moves sprite to a position</td></tr>
+  <tr><td><span class="scratch-block block-motion">glide (1) secs to x: (0) y: (0)</span></td><td>Smoothly slides sprite to a position</td></tr>
+  <tr><td><span class="scratch-block block-motion">point in direction (90)</span></td><td>Sets which way the sprite faces</td></tr>
+  <tr><td><span class="scratch-block block-motion">if on edge, bounce</span></td><td>Reverses direction when hitting the stage edge</td></tr>
+</table>
+
+<h4>Coordinate System Explanation</h4>
+
+<p>The Scratch stage uses an x/y coordinate system. Understanding it is key to controlling where your sprites go!</p>
+
+<!-- SVG 1: Coordinate System with Move/Glide Arrows -->
+<div class="svg-container">
+<svg width="620" height="480" viewBox="0 0 620 480">
+  <rect x="0" y="0" width="620" height="480" rx="12" fill="#f8f9ff" stroke="#4C97FF" stroke-width="2"/>
+  <text x="310" y="28" text-anchor="middle" font-size="16" fill="#333" font-weight="bold">The Scratch Stage Coordinate System</text>
+
+  <!-- Stage outline -->
+  <rect x="70" y="45" width="480" height="360" rx="4" fill="white" stroke="#ccc" stroke-width="1"/>
+
+  <!-- Grid lines (light) -->
+  <line x1="310" y1="45" x2="310" y2="405" stroke="#e8e8e8" stroke-width="1" stroke-dasharray="4"/>
+  <line x1="70" y1="225" x2="550" y2="225" stroke="#e8e8e8" stroke-width="1" stroke-dasharray="4"/>
+  <line x1="190" y1="45" x2="190" y2="405" stroke="#f0f0f0" stroke-width="1" stroke-dasharray="2"/>
+  <line x1="430" y1="45" x2="430" y2="405" stroke="#f0f0f0" stroke-width="1" stroke-dasharray="2"/>
+  <line x1="70" y1="135" x2="550" y2="135" stroke="#f0f0f0" stroke-width="1" stroke-dasharray="2"/>
+  <line x1="70" y1="315" x2="550" y2="315" stroke="#f0f0f0" stroke-width="1" stroke-dasharray="2"/>
+
+  <!-- X Axis -->
+  <line x1="60" y1="225" x2="560" y2="225" stroke="#E53935" stroke-width="2.5"/>
+  <polygon points="558,220 570,225 558,230" fill="#E53935"/>
+  <text x="580" y="230" font-size="14" fill="#E53935" font-weight="bold">X</text>
+
+  <!-- Y Axis -->
+  <line x1="310" y1="410" x2="310" y2="40" stroke="#1E88E5" stroke-width="2.5"/>
+  <polygon points="305,42 310,28 315,42" fill="#1E88E5"/>
+  <text x="322" y="40" font-size="14" fill="#1E88E5" font-weight="bold">Y</text>
+
+  <!-- Origin -->
+  <circle cx="310" cy="225" r="5" fill="#333"/>
+  <text x="325" y="242" font-size="12" fill="#333" font-weight="bold">(0, 0)</text>
+
+  <!-- Axis labels -->
+  <text x="80" y="218" font-size="11" fill="#E53935" font-weight="bold">-240</text>
+  <text x="530" y="218" font-size="11" fill="#E53935" font-weight="bold">+240</text>
+  <text x="318" y="58" font-size="11" fill="#1E88E5" font-weight="bold">+180</text>
+  <text x="318" y="400" font-size="11" fill="#1E88E5" font-weight="bold">-180</text>
+
+  <!-- Cat sprite at starting position -->
+  <text x="170" y="230" text-anchor="middle" font-size="26">🐱</text>
+  <text x="170" y="255" text-anchor="middle" font-size="10" fill="#555">Start: (-100, 0)</text>
+
+  <!-- Move arrow (short, forward) -->
+  <defs>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4C97FF"/>
+    </marker>
+  </defs>
+
+  <!-- Move steps arrow -->
+  <line x1="190" y1="225" x2="270" y2="225" stroke="#4CAF50" stroke-width="3" marker-end="url(#arrowGreen)"/>
+  <text x="230" y="215" text-anchor="middle" font-size="10" fill="#4CAF50" font-weight="bold">move (80) steps</text>
+
+  <!-- Glide arrow (curved, to a different point) -->
+  <path d="M 285,225 Q 370,120 450,150" fill="none" stroke="#4C97FF" stroke-width="2.5" stroke-dasharray="6" marker-end="url(#arrowBlue)"/>
+  <text x="395" y="115" text-anchor="middle" font-size="10" fill="#4C97FF" font-weight="bold">glide to x:150 y:80</text>
+
+  <!-- Destination cat -->
+  <text x="460" y="155" text-anchor="middle" font-size="22">🐱</text>
+  <text x="460" y="175" text-anchor="middle" font-size="10" fill="#555">End: (150, 80)</text>
+
+  <!-- Legend -->
+  <rect x="80" y="420" width="460" height="45" rx="8" fill="#E8F5E9"/>
+  <line x1="100" y1="440" x2="150" y2="440" stroke="#4CAF50" stroke-width="3"/>
+  <text x="160" y="444" font-size="11" fill="#333">move steps = instant forward movement</text>
+  <line x1="340" y1="440" x2="390" y2="440" stroke="#4C97FF" stroke-width="2.5" stroke-dasharray="6"/>
+  <text x="400" y="444" font-size="11" fill="#333">glide = smooth slide</text>
+</svg>
+</div>
+
+<ul>
+  <li>Center of stage = <strong>x: 0, y: 0</strong></li>
+  <li>Right = positive x (up to 240), Left = negative x (down to -240)</li>
+  <li>Up = positive y (up to 180), Down = negative y (down to -180)</li>
+</ul>
+
+<div class="activity-box">
+  <strong>🎮 Activity:</strong> Call out positions and have kids guess where on the stage they are: "x: 200, y: 150" → top right corner!
+</div>
+
+<!-- SVG 2: Direction Compass Diagram -->
+<h4>Direction Values</h4>
+<p>In Scratch, the <span class="scratch-block block-motion">point in direction</span> block uses these values:</p>
+
+<div class="svg-container">
+<svg width="400" height="420" viewBox="0 0 400 420">
+  <rect x="0" y="0" width="400" height="420" rx="12" fill="#f8f9ff" stroke="#4C97FF" stroke-width="2"/>
+  <text x="200" y="28" text-anchor="middle" font-size="15" fill="#333" font-weight="bold">Scratch Direction Values</text>
+
+  <!-- Outer circle -->
+  <circle cx="200" cy="220" r="140" fill="none" stroke="#ddd" stroke-width="2"/>
+  <!-- Inner circle -->
+  <circle cx="200" cy="220" r="100" fill="none" stroke="#eee" stroke-width="1" stroke-dasharray="4"/>
+
+  <!-- Center cat -->
+  <circle cx="200" cy="220" r="24" fill="#fff" stroke="#4C97FF" stroke-width="2"/>
+  <text x="200" y="228" text-anchor="middle" font-size="22">🐱</text>
+
+  <!-- Up (0°) -->
+  <line x1="200" y1="196" x2="200" y2="85" stroke="#E53935" stroke-width="3"/>
+  <polygon points="195,88 200,72 205,88" fill="#E53935"/>
+  <rect x="165" y="48" width="70" height="26" rx="8" fill="#E53935"/>
+  <text x="200" y="66" text-anchor="middle" font-size="13" fill="white" font-weight="bold">0° Up</text>
+
+  <!-- Right (90°) -->
+  <line x1="224" y1="220" x2="335" y2="220" stroke="#4C97FF" stroke-width="3"/>
+  <polygon points="332,215 348,220 332,225" fill="#4C97FF"/>
+  <rect x="348" y="207" width="48" height="26" rx="8" fill="#4C97FF"/>
+  <text x="372" y="225" text-anchor="middle" font-size="12" fill="white" font-weight="bold">90°</text>
+  <text x="372" y="248" text-anchor="middle" font-size="11" fill="#4C97FF" font-weight="bold">Right</text>
+
+  <!-- Down (180°) -->
+  <line x1="200" y1="244" x2="200" y2="355" stroke="#4CAF50" stroke-width="3"/>
+  <polygon points="195,352 200,368 205,352" fill="#4CAF50"/>
+  <rect x="158" y="372" width="84" height="26" rx="8" fill="#4CAF50"/>
+  <text x="200" y="390" text-anchor="middle" font-size="13" fill="white" font-weight="bold">180° Down</text>
+
+  <!-- Left (-90°) -->
+  <line x1="176" y1="220" x2="65" y2="220" stroke="#855CD6" stroke-width="3"/>
+  <polygon points="68,215 52,220 68,225" fill="#855CD6"/>
+  <rect x="4" y="207" width="52" height="26" rx="8" fill="#855CD6"/>
+  <text x="30" y="225" text-anchor="middle" font-size="12" fill="white" font-weight="bold">-90°</text>
+  <text x="30" y="248" text-anchor="middle" font-size="11" fill="#855CD6" font-weight="bold">Left</text>
+
+  <!-- Diagonal hints -->
+  <text x="310" y="130" text-anchor="middle" font-size="10" fill="#999">45°</text>
+  <text x="310" y="320" text-anchor="middle" font-size="10" fill="#999">135°</text>
+  <text x="90" y="320" text-anchor="middle" font-size="10" fill="#999">-135°</text>
+  <text x="90" y="130" text-anchor="middle" font-size="10" fill="#999">-45°</text>
+</svg>
+</div>
+
+<div class="key-concept">
+  🔑 <strong>Key Concept:</strong> Direction 90 = right (the default). 0 = up, 180 = down, -90 = left. Think of it like a compass!
+</div>
+
+<hr class="section-divider">
+
+<h3>Looks Blocks Deep Dive <span class="time-badge">15 min</span></h3>
+
+<h4>Key Looks Blocks</h4>
+
+<table>
+  <tr><th>Block</th><th>What It Does</th></tr>
+  <tr><td><span class="scratch-block block-looks">say [Hello!] for (2) seconds</span></td><td>Speech bubble that disappears</td></tr>
+  <tr><td><span class="scratch-block block-looks">say [Hello!]</span></td><td>Speech bubble that stays</td></tr>
+  <tr><td><span class="scratch-block block-looks">think [Hmm...] for (2) seconds</span></td><td>Thought bubble</td></tr>
+  <tr><td><span class="scratch-block block-looks">switch costume to [costume2]</span></td><td>Changes the sprite's image</td></tr>
+  <tr><td><span class="scratch-block block-looks">next costume</span></td><td>Cycles to the next costume</td></tr>
+  <tr><td><span class="scratch-block block-looks">change size by (10)</span></td><td>Makes sprite bigger (+) or smaller (−)</td></tr>
+  <tr><td><span class="scratch-block block-looks">set size to (100) %</span></td><td>Sets exact size (100% = normal)</td></tr>
+  <tr><td><span class="scratch-block block-looks">show</span> / <span class="scratch-block block-looks">hide</span></td><td>Makes sprite visible or invisible</td></tr>
+  <tr><td><span class="scratch-block block-looks">change [color] effect by (25)</span></td><td>Applies visual effects</td></tr>
+  <tr><td><span class="scratch-block block-looks">clear graphic effects</span></td><td>Removes all effects</td></tr>
+</table>
+
+<h4>Costumes — Creating Animation</h4>
+
+<p>Sprites can have multiple <strong>costumes</strong> (different images). Switching between them quickly creates animation — just like a flipbook!</p>
+
+<!-- SVG 3: Costume Switching Animation Diagram -->
+<div class="svg-container">
+<svg width="620" height="260" viewBox="0 0 620 260">
+  <rect x="0" y="0" width="620" height="260" rx="12" fill="#f8f9ff" stroke="#855CD6" stroke-width="2"/>
+  <text x="310" y="28" text-anchor="middle" font-size="15" fill="#333" font-weight="bold">Costume Switching = Walking Animation</text>
+
+  <!-- Costume 1 frame -->
+  <rect x="40" y="50" width="120" height="140" rx="10" fill="white" stroke="#855CD6" stroke-width="2"/>
+  <text x="100" y="75" text-anchor="middle" font-size="11" fill="#855CD6" font-weight="bold">costume1</text>
+  <!-- Cat body -->
+  <ellipse cx="100" cy="120" rx="28" ry="22" fill="#FFAB19"/>
+  <!-- Head -->
+  <circle cx="100" cy="95" r="16" fill="#FFAB19"/>
+  <!-- Eyes -->
+  <circle cx="94" cy="92" r="3" fill="#333"/>
+  <circle cx="106" cy="92" r="3" fill="#333"/>
+  <!-- Ears -->
+  <polygon points="88,82 84,68 94,82" fill="#FFAB19" stroke="#E68A00" stroke-width="1"/>
+  <polygon points="112,82 116,68 106,82" fill="#FFAB19" stroke="#E68A00" stroke-width="1"/>
+  <!-- Legs down -->
+  <line x1="82" y1="140" x2="78" y2="170" stroke="#FFAB19" stroke-width="5" stroke-linecap="round"/>
+  <line x1="118" y1="140" x2="122" y2="170" stroke="#FFAB19" stroke-width="5" stroke-linecap="round"/>
+  <text x="100" y="190" text-anchor="middle" font-size="10" fill="#666">Legs together</text>
+
+  <!-- Arrow 1 -->
+  <defs>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#855CD6"/>
+    </marker>
+  </defs>
+  <line x1="170" y1="120" x2="210" y2="120" stroke="#855CD6" stroke-width="2.5" marker-end="url(#arrowPurple)"/>
+  <text x="190" y="110" text-anchor="middle" font-size="9" fill="#855CD6">next</text>
+  <text x="190" y="140" text-anchor="middle" font-size="9" fill="#855CD6">costume</text>
+
+  <!-- Costume 2 frame -->
+  <rect x="220" y="50" width="120" height="140" rx="10" fill="white" stroke="#CF63CF" stroke-width="2"/>
+  <text x="280" y="75" text-anchor="middle" font-size="11" fill="#CF63CF" font-weight="bold">costume2</text>
+  <!-- Cat body -->
+  <ellipse cx="280" cy="120" rx="28" ry="22" fill="#FFAB19"/>
+  <!-- Head -->
+  <circle cx="280" cy="95" r="16" fill="#FFAB19"/>
+  <!-- Eyes -->
+  <circle cx="274" cy="92" r="3" fill="#333"/>
+  <circle cx="286" cy="92" r="3" fill="#333"/>
+  <!-- Ears -->
+  <polygon points="268,82 264,68 274,82" fill="#FFAB19" stroke="#E68A00" stroke-width="1"/>
+  <polygon points="292,82 296,68 286,82" fill="#FFAB19" stroke="#E68A00" stroke-width="1"/>
+  <!-- Legs apart (walking) -->
+  <line x1="82" y1="140" x2="68" y2="168" stroke="#FFAB19" stroke-width="5" stroke-linecap="round" transform="translate(198,0)"/>
+  <line x1="118" y1="140" x2="132" y2="168" stroke="#FFAB19" stroke-width="5" stroke-linecap="round" transform="translate(162,0)"/>
+  <text x="280" y="190" text-anchor="middle" font-size="10" fill="#666">Legs apart</text>
+
+  <!-- Arrow 2 -->
+  <line x1="350" y1="120" x2="390" y2="120" stroke="#855CD6" stroke-width="2.5" marker-end="url(#arrowPurple)"/>
+  <text x="370" y="110" text-anchor="middle" font-size="9" fill="#855CD6">next</text>
+  <text x="370" y="140" text-anchor="middle" font-size="9" fill="#855CD6">costume</text>
+
+  <!-- Costume 1 again frame -->
+  <rect x="400" y="50" width="120" height="140" rx="10" fill="white" stroke="#855CD6" stroke-width="2"/>
+  <text x="460" y="75" text-anchor="middle" font-size="11" fill="#855CD6" font-weight="bold">costume1</text>
+  <!-- Cat body -->
+  <ellipse cx="460" cy="120" rx="28" ry="22" fill="#FFAB19"/>
+  <!-- Head -->
+  <circle cx="460" cy="95" r="16" fill="#FFAB19"/>
+  <!-- Eyes -->
+  <circle cx="454" cy="92" r="3" fill="#333"/>
+  <circle cx="466" cy="92" r="3" fill="#333"/>
+  <!-- Ears -->
+  <polygon points="448,82 444,68 454,82" fill="#FFAB19" stroke="#E68A00" stroke-width="1"/>
+  <polygon points="472,82 476,68 466,82" fill="#FFAB19" stroke="#E68A00" stroke-width="1"/>
+  <!-- Legs down again -->
+  <line x1="442" y1="140" x2="438" y2="170" stroke="#FFAB19" stroke-width="5" stroke-linecap="round"/>
+  <line x1="478" y1="140" x2="482" y2="170" stroke="#FFAB19" stroke-width="5" stroke-linecap="round"/>
+  <text x="460" y="190" text-anchor="middle" font-size="10" fill="#666">Legs together</text>
+
+  <!-- Repeat arrow (curved, back to start) -->
+  <path d="M 520,120 Q 560,50 540,40 Q 520,30 310,40 Q 100,50 50,80" fill="none" stroke="#CF63CF" stroke-width="2" stroke-dasharray="5"/>
+  <text x="310" y="235" text-anchor="middle" font-size="12" fill="#CF63CF" font-weight="bold">🔄 Repeating = Walking Animation!</text>
+
+  <!-- Bottom note -->
+  <rect x="80" y="245" width="460" height="0" rx="6" fill="none"/>
+</svg>
+</div>
+
+<div class="tip-box">
+  💡 <strong>Tip:</strong> Click the "Costumes" tab at the top to see all costumes. The cat has two costumes with legs in different positions. You can also draw your own costumes or upload images!
+</div>
+
+<hr class="section-divider">
+
+<h3>Guided Project: Dancing Cat <span class="time-badge">15 min</span></h3>
+
+<p>Build this together step by step:</p>
+
+<div class="code-block">when green flag clicked
+go to x: (0) y: (0)
+set size to (100) %
+forever
+  move (10) steps
+  next costume
+  if on edge, bounce
+  change [color] effect by (10)
+  wait (0.2) seconds
+end</div>
+
+<p>Walk through each block and explain what it adds:</p>
+<ol>
+  <li><span class="scratch-block block-events">when green flag clicked</span> — starts the script</li>
+  <li><span class="scratch-block block-motion">go to x: (0) y: (0)</span> — puts the cat in the center</li>
+  <li><span class="scratch-block block-looks">set size to (100) %</span> — makes sure the cat is normal size</li>
+  <li><span class="scratch-block block-control">forever</span> — repeats everything inside over and over</li>
+  <li><span class="scratch-block block-motion">move (10) steps</span> — moves the cat forward</li>
+  <li><span class="scratch-block block-looks">next costume</span> — switches legs for walking animation</li>
+  <li><span class="scratch-block block-motion">if on edge, bounce</span> — turns around at the edges</li>
+  <li><span class="scratch-block block-looks">change [color] effect by (10)</span> — rainbow color cycling</li>
+  <li><span class="scratch-block block-control">wait (0.2) seconds</span> — controls animation speed</li>
+</ol>
+
+<div class="key-concept">
+  🔑 <strong>Key Concept:</strong> The <span class="scratch-block block-control">forever</span> block is a preview of loops from Class 4 — just tell kids "this block makes everything inside it repeat over and over."
+</div>
+
+<h3>Free Build Time <span class="time-badge">10 min</span></h3>
+<p>Kids pick one of the sample projects below or experiment on their own!</p>
+
+<hr class="section-divider">
+
+<h2 class="page-break">🛠️ Project Work</h2>
+
+<div class="project-card">
+  <h4>Project 1: Walking Animation</h4>
+  <p><strong>Goal:</strong> Make the cat walk back and forth across the stage with a walking animation.</p>
+  <ol>
+    <li>Use <span class="scratch-block block-motion">set rotation style [left-right]</span> so the cat doesn't flip upside down</li>
+    <li>Put movement and costume switching inside a <span class="scratch-block block-control">forever</span> loop</li>
+    <li>Add <span class="scratch-block block-motion">if on edge, bounce</span> so the cat turns around at the edges</li>
+    <li>Add a small <span class="scratch-block block-control">wait</span> to control animation speed</li>
+  </ol>
+  <p><em>Concepts practiced: Rotation style, costume switching for animation, forever loop preview.</em></p>
+</div>
+
+<div class="project-card">
+  <h4>Project 2: Growing and Shrinking Sprite</h4>
+  <p><strong>Goal:</strong> A sprite that grows big, then shrinks back to normal.</p>
+  <ol>
+    <li>Start by setting the size to 100%</li>
+    <li>Use a <span class="scratch-block block-control">repeat (10)</span> block with <span class="scratch-block block-looks">change size by (10)</span> to grow</li>
+    <li>Add a small <span class="scratch-block block-control">wait</span> between each size change</li>
+    <li>Use another <span class="scratch-block block-control">repeat (10)</span> block with <span class="scratch-block block-looks">change size by (-10)</span> to shrink</li>
+  </ol>
+  <p><em>Concepts practiced: change size by with positive and negative numbers, repeat block preview.</em></p>
+</div>
+
+<div class="project-card">
+  <h4>Project 3: Color Changing Parrot</h4>
+  <p><strong>Goal:</strong> A parrot that flies across the screen changing colors.</p>
+  <ol>
+    <li>Choose the "Parrot" sprite (it has multiple costumes for wing flapping)</li>
+    <li>Start the parrot at the left side of the stage: <span class="scratch-block block-motion">go to x: (-200) y: (50)</span></li>
+    <li>Use a <span class="scratch-block block-control">repeat</span> loop combining <span class="scratch-block block-motion">move</span>, <span class="scratch-block block-looks">next costume</span>, and <span class="scratch-block block-looks">change [color] effect</span></li>
+    <li>End with <span class="scratch-block block-looks">clear graphic effects</span> and a <span class="scratch-block block-looks">say</span> block</li>
+  </ol>
+  <p><em>Concepts practiced: Graphic effects, combining motion with looks, clear graphic effects.</em></p>
+</div>
+
+<div class="project-card">
+  <h4>Project 4: Sprite Parade</h4>
+  <p><strong>Goal:</strong> Three sprites walk across the stage one after another.</p>
+  <ol>
+    <li>Add 3 sprites (Cat, Dog, Duck)</li>
+    <li>Position them all at x: -200 but at different y values (100, 0, -100)</li>
+    <li>Use <span class="scratch-block block-motion">glide</span> blocks to move each across the stage</li>
+    <li>Use <span class="scratch-block block-control">wait</span> blocks on the 2nd and 3rd sprites so they start after the previous one</li>
+    <li>Add <span class="scratch-block block-looks">say</span> blocks at the end of each glide</li>
+  </ol>
+  <p><em>Concepts practiced: Multiple sprites, wait for staggered timing, glide for smooth movement, y-positioning.</em></p>
+</div>
+
+<hr class="section-divider">
+
+<h2 class="page-break">✅ Project Solutions</h2>
+
+<div class="project-card">
+  <h4>Project 1: Walking Animation — Solution</h4>
+  <div class="code-block">when green flag clicked
+set rotation style [left-right]
+forever
+  move (5) steps
+  next costume
+  if on edge, bounce
+  wait (0.1) seconds
+end</div>
+</div>
+
+<div class="project-card">
+  <h4>Project 2: Growing and Shrinking Sprite — Solution</h4>
+  <div class="code-block">when green flag clicked
+set size to (100) %
+repeat (10)
+  change size by (10)
+  wait (0.1) seconds
+end
+repeat (10)
+  change size by (-10)
+  wait (0.1) seconds
+end</div>
+</div>
+
+<div class="project-card">
+  <h4>Project 3: Color Changing Parrot — Solution</h4>
+  <p><em>Setup: Choose the "Parrot" sprite.</em></p>
+  <div class="code-block">when green flag clicked
+go to x: (-200) y: (50)
+repeat (40)
+  move (10) steps
+  next costume
+  change [color] effect by (5)
+  wait (0.05) seconds
+end
+clear graphic effects
+say [I made it!] for (2) seconds</div>
+</div>
+
+<div class="project-card">
+  <h4>Project 4: Sprite Parade — Solution</h4>
+  <p><em>Setup: Add 3 sprites (Cat, Dog, Duck). Position them all at x: -200.</em></p>
+  <p><strong>Cat script:</strong></p>
+  <div class="code-block">when green flag clicked
+go to x: (-200) y: (100)
+glide (2) secs to x: (200) y: (100)
+say [Cat is here!] for (1) seconds</div>
+  <p><strong>Dog script:</strong></p>
+  <div class="code-block">when green flag clicked
+go to x: (-200) y: (0)
+wait (1) seconds
+glide (2) secs to x: (200) y: (0)
+say [Dog is here!] for (1) seconds</div>
+  <p><strong>Duck script:</strong></p>
+  <div class="code-block">when green flag clicked
+go to x: (-200) y: (-100)
+wait (2) seconds
+glide (2) secs to x: (200) y: (-100)
+say [Quack!] for (1) seconds</div>
+</div>
+
+</div><!-- end content -->
+</div><!-- end container -->
+</body>
+</html>

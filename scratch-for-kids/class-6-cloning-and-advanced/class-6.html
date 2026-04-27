@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 6: Cloning &amp; Advanced Techniques</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f4ff; color: #333; line-height: 1.7; padding: 20px; }
+  .container { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); overflow: hidden; }
+  .header { background: linear-gradient(135deg, #4C97FF, #855CD6); color: white; padding: 40px; text-align: center; }
+  .header h1 { font-size: 2.2em; margin-bottom: 8px; }
+  .header .subtitle { font-size: 1.1em; opacity: 0.9; }
+  .meta { display: flex; justify-content: center; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
+  .meta span { background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 20px; font-size: 0.9em; }
+  .content { padding: 40px; }
+  h2 { color: #4C97FF; font-size: 1.6em; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 3px solid #4C97FF; }
+  h3 { color: #855CD6; font-size: 1.3em; margin: 24px 0 12px; }
+  h4 { color: #CF63CF; font-size: 1.1em; margin: 20px 0 10px; }
+  .objectives { background: #f0f4ff; border-left: 4px solid #4C97FF; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .objectives li { margin: 6px 0; margin-left: 20px; }
+  .time-badge { display: inline-block; background: #FFBF00; color: #333; padding: 2px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; margin-left: 8px; }
+  .tip-box { background: #FFF3CD; border-left: 4px solid #FFBF00; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .activity-box { background: #E8F5E9; border-left: 4px solid #4CAF50; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .key-concept { background: #FCE4EC; border-left: 4px solid #E91E63; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  ul, ol { margin: 10px 0 10px 24px; }
+  li { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  th { background: #4C97FF; color: white; padding: 10px 14px; text-align: left; }
+  td { padding: 10px 14px; border-bottom: 1px solid #e0e0e0; }
+  tr:nth-child(even) { background: #f8f9ff; }
+  .scratch-block { display: inline-block; padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 0.95em; margin: 2px 0; }
+  .block-motion { background: #4C97FF; color: white; }
+  .block-looks { background: #855CD6; color: white; }
+  .block-events { background: #FFBF00; color: #333; }
+  .block-control { background: #FFAB19; color: #333; }
+  .block-sound { background: #CF63CF; color: white; }
+  .block-sensing { background: #5CB1D6; color: white; }
+  .block-variables { background: #FF8C1A; color: white; }
+  .svg-container { text-align: center; margin: 24px 0; }
+  .project-card { background: #f8f9ff; border: 2px solid #e0e0ff; border-radius: 12px; padding: 20px; margin: 20px 0; }
+  .project-card h4 { color: #4C97FF; margin-top: 0; }
+  .code-block { background: #2d2d2d; color: #f8f8f2; padding: 16px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9em; margin: 12px 0; overflow-x: auto; white-space: pre-wrap; }
+  .section-divider { border: none; height: 2px; background: linear-gradient(to right, #4C97FF, #855CD6, #CF63CF); margin: 32px 0; }
+  .page-break { page-break-before: always; }
+  @media print { body { background: white; padding: 0; } .container { box-shadow: none; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>🧬 Class 6: Cloning &amp; Advanced Techniques</h1>
+    <div class="subtitle">Creating clones and combining all concepts</div>
+    <div class="meta">
+      <span>⏱ 1 Hour</span>
+      <span>👶 Ages 7–12</span>
+      <span>📋 Classes 1–5 completed</span>
+      <span>💻 Scratch 3.0</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- LEARNING OBJECTIVES -->
+    <h2>🎯 Learning Objectives</h2>
+    <div class="objectives">
+      <ul>
+        <li>Understand what cloning is and when to use it</li>
+        <li>Create, control, and delete clones</li>
+        <li>Use broadcast messages for complex sprite communication</li>
+        <li>Combine all previous concepts into more sophisticated projects</li>
+      </ul>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- SESSION BREAKDOWN -->
+    <h2>📚 Session Breakdown</h2>
+
+    <!-- Review & Warm-Up -->
+    <h3>Review &amp; Warm-Up <span class="time-badge">5 min</span></h3>
+    <p>"We've learned motion, looks, events, sounds, loops, conditions, and variables. That's a LOT! Today we learn one more powerful tool — <strong>cloning</strong>."</p>
+    <div class="tip-box">
+      <strong>💡 Quick Question:</strong> "In the apple catching game, what if we wanted 5 apples falling at the same time? Would we need 5 apple sprites?" <br>
+      <strong>Answer:</strong> No — we can use clones!
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Cloning Deep Dive -->
+    <h3>Cloning Deep Dive <span class="time-badge">20 min</span></h3>
+
+    <h4>What is a Clone?</h4>
+    <ul>
+      <li>"A clone is a copy of a sprite that's created while the program is running."</li>
+      <li>"It looks the same, acts the same, but it's a separate copy."</li>
+      <li>"Think of it like a copy machine — you put in one sprite, and it makes as many copies as you need."</li>
+    </ul>
+
+    <!-- SVG DIAGRAM 1: Clone Lifecycle -->
+    <div class="svg-container">
+      <svg width="800" height="420" viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg">
+        <!-- Title -->
+        <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#4C97FF">Clone Lifecycle: Template → Create → Act → Delete</text>
+
+        <!-- Original/Template Sprite -->
+        <rect x="30" y="120" width="120" height="120" rx="16" fill="#4C97FF" stroke="#3373CC" stroke-width="2"/>
+        <text x="90" y="165" text-anchor="middle" font-size="13" fill="white" font-weight="bold">ORIGINAL</text>
+        <text x="90" y="185" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">Template</text>
+        <text x="90" y="205" text-anchor="middle" font-size="22">🐱</text>
+        <text x="90" y="228" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">Size: 100%</text>
+
+        <!-- Arrows from original to clones -->
+        <defs>
+          <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4C97FF"/>
+          </marker>
+          <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+          </marker>
+          <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#E91E63"/>
+          </marker>
+        </defs>
+
+        <!-- Arrow to Clone 1 -->
+        <line x1="150" y1="150" x2="210" y2="80" stroke="#4C97FF" stroke-width="2" marker-end="url(#arrowBlue)"/>
+        <!-- Arrow to Clone 2 -->
+        <line x1="150" y1="165" x2="210" y2="165" stroke="#4C97FF" stroke-width="2" marker-end="url(#arrowBlue)"/>
+        <!-- Arrow to Clone 3 -->
+        <line x1="150" y1="180" x2="210" y2="250" stroke="#4C97FF" stroke-width="2" marker-end="url(#arrowBlue)"/>
+        <!-- Arrow to Clone 4 -->
+        <line x1="150" y1="200" x2="210" y2="335" stroke="#4C97FF" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+        <!-- "create clone" label -->
+        <rect x="155" y="55" width="55" height="20" rx="4" fill="#FFAB19"/>
+        <text x="182" y="69" text-anchor="middle" font-size="8" fill="#333" font-weight="bold">create clone</text>
+
+        <!-- Clone 1 -->
+        <rect x="220" y="50" width="100" height="70" rx="12" fill="#855CD6" stroke="#6B3FA0" stroke-width="2"/>
+        <text x="270" y="72" text-anchor="middle" font-size="11" fill="white" font-weight="bold">Clone 1</text>
+        <text x="270" y="90" text-anchor="middle" font-size="16">🐱</text>
+        <text x="270" y="108" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)">Size: 50%</text>
+
+        <!-- Clone 2 -->
+        <rect x="220" y="135" width="100" height="70" rx="12" fill="#CF63CF" stroke="#A84DA8" stroke-width="2"/>
+        <text x="270" y="157" text-anchor="middle" font-size="11" fill="white" font-weight="bold">Clone 2</text>
+        <text x="270" y="175" text-anchor="middle" font-size="16">🐱</text>
+        <text x="270" y="193" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)">Size: 80%</text>
+
+        <!-- Clone 3 -->
+        <rect x="220" y="220" width="100" height="70" rx="12" fill="#5CB1D6" stroke="#3D8EB3" stroke-width="2"/>
+        <text x="270" y="242" text-anchor="middle" font-size="11" fill="white" font-weight="bold">Clone 3</text>
+        <text x="270" y="260" text-anchor="middle" font-size="16">🐱</text>
+        <text x="270" y="278" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)">Size: 120%</text>
+
+        <!-- Clone 4 -->
+        <rect x="220" y="305" width="100" height="70" rx="12" fill="#FF8C1A" stroke="#CC6600" stroke-width="2"/>
+        <text x="270" y="327" text-anchor="middle" font-size="11" fill="white" font-weight="bold">Clone 4</text>
+        <text x="270" y="345" text-anchor="middle" font-size="16">🐱</text>
+        <text x="270" y="363" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)">Size: 150%</text>
+
+        <!-- Lifecycle Flow (right side) -->
+        <!-- Step 1: create clone -->
+        <rect x="420" y="70" width="160" height="50" rx="10" fill="#FFAB19" stroke="#CC8800" stroke-width="2"/>
+        <text x="500" y="92" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">create clone of</text>
+        <text x="500" y="108" text-anchor="middle" font-size="11" fill="#333">[myself]</text>
+
+        <!-- Arrow down -->
+        <line x1="500" y1="120" x2="500" y2="150" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+        <!-- Step 2: when I start as a clone -->
+        <rect x="420" y="155" width="160" height="50" rx="10" fill="#FFBF00" stroke="#CC9900" stroke-width="2"/>
+        <text x="500" y="177" text-anchor="middle" font-size="11" fill="#333" font-weight="bold">when I start</text>
+        <text x="500" y="193" text-anchor="middle" font-size="11" fill="#333">as a clone</text>
+
+        <!-- Arrow down -->
+        <line x1="500" y1="205" x2="500" y2="235" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+        <!-- Step 3: Clone does stuff -->
+        <rect x="420" y="240" width="160" height="60" rx="10" fill="#4CAF50" stroke="#388E3C" stroke-width="2"/>
+        <text x="500" y="262" text-anchor="middle" font-size="12" fill="white" font-weight="bold">Clone Acts!</text>
+        <text x="500" y="280" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)">move, show, interact...</text>
+        <text x="500" y="293" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)">own position &amp; size</text>
+
+        <!-- Arrow down -->
+        <line x1="500" y1="300" x2="500" y2="330" stroke="#E91E63" stroke-width="2" marker-end="url(#arrowRed)"/>
+
+        <!-- Step 4: delete this clone -->
+        <rect x="420" y="335" width="160" height="50" rx="10" fill="#E91E63" stroke="#C2185B" stroke-width="2"/>
+        <text x="500" y="357" text-anchor="middle" font-size="12" fill="white" font-weight="bold">delete this clone</text>
+        <text x="500" y="373" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Clean up memory!</text>
+
+        <!-- Info box -->
+        <rect x="630" y="100" width="150" height="200" rx="10" fill="#f0f4ff" stroke="#4C97FF" stroke-width="1.5"/>
+        <text x="705" y="125" text-anchor="middle" font-size="11" fill="#4C97FF" font-weight="bold">Clone Rules</text>
+        <text x="705" y="148" text-anchor="middle" font-size="10" fill="#555">Max 300 clones</text>
+        <text x="705" y="168" text-anchor="middle" font-size="10" fill="#555">Each has own</text>
+        <text x="705" y="183" text-anchor="middle" font-size="10" fill="#555">position &amp; size</text>
+        <text x="705" y="208" text-anchor="middle" font-size="10" fill="#555">Disappear on</text>
+        <text x="705" y="223" text-anchor="middle" font-size="10" fill="#555">stop sign</text>
+        <text x="705" y="248" text-anchor="middle" font-size="10" fill="#E91E63">⚠ Always delete</text>
+        <text x="705" y="263" text-anchor="middle" font-size="10" fill="#E91E63">when done!</text>
+        <text x="705" y="288" text-anchor="middle" font-size="10" fill="#555">Original = template</text>
+      </svg>
+    </div>
+
+    <h4>Key Clone Blocks</h4>
+    <table>
+      <tr><th>Block</th><th>What It Does</th></tr>
+      <tr>
+        <td><span class="scratch-block block-control">create clone of [myself]</span></td>
+        <td>Makes a copy of this sprite</td>
+      </tr>
+      <tr>
+        <td><span class="scratch-block block-control">create clone of [Sprite2]</span></td>
+        <td>Makes a copy of another sprite</td>
+      </tr>
+      <tr>
+        <td><span class="scratch-block block-events">when I start as a clone</span></td>
+        <td>Runs when a new clone is created (like green flag but for clones)</td>
+      </tr>
+      <tr>
+        <td><span class="scratch-block block-control">delete this clone</span></td>
+        <td>Removes this clone from the stage</td>
+      </tr>
+    </table>
+
+    <div class="key-concept">
+      <strong>🔑 Important Rules:</strong>
+      <ul>
+        <li>Scratch allows a maximum of <strong>300 clones</strong> at once</li>
+        <li>Clones disappear when you press the stop sign</li>
+        <li>Each clone can have its own position, direction, size, and effects</li>
+        <li>The original sprite is like the "template" — clones copy from it</li>
+      </ul>
+    </div>
+
+    <h4>Step-by-Step Teaching</h4>
+
+    <p><strong>1. Basic clone creation:</strong></p>
+    <div class="code-block">when green flag clicked
+forever
+  create clone of [myself]
+  wait (1) seconds
+end
+
+when I start as a clone
+go to x: (pick random (-200) to (200)) y: (180)
+show
+repeat (36)
+  change y by (-10)
+end
+delete this clone</div>
+    <p>"Every second, a new clone appears at the top and falls down."</p>
+
+    <p><strong>2. Clone with behavior:</strong></p>
+    <div class="code-block">when I start as a clone
+set size to (pick random (50) to (150)) %
+set [color] effect to (pick random (0) to (200))
+show
+repeat until &lt;(y position) &lt; (-170)&gt;
+  change y by (-5)
+  turn right (5) degrees
+end
+delete this clone</div>
+    <p>"Each clone is a different size and color!"</p>
+
+    <p><strong>3. Why delete clones?</strong></p>
+    <div class="tip-box">
+      <strong>⚠️ Memory Warning:</strong> "If you don't delete clones, they pile up and slow down your project. Always delete clones when they're done (off screen, caught by player, etc.)"
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Broadcast Messages Section -->
+    <h3>Broadcast Messages for Complex Games <span class="time-badge">10 min</span></h3>
+
+    <h4>When to use broadcasts:</h4>
+    <ul>
+      <li>When one sprite needs to tell other sprites something happened</li>
+      <li>When you need to coordinate timing between sprites</li>
+      <li>When a game state changes (game over, level up, etc.)</li>
+    </ul>
+
+    <h4>Pattern: Game State Management</h4>
+    <div class="code-block">-- In the main game sprite:
+when green flag clicked
+broadcast [start game]
+
+-- When player loses:
+broadcast [game over]
+
+-- In each sprite:
+when I receive [start game]
+  ... start doing things ...
+
+when I receive [game over]
+  stop [other scripts in sprite]
+  hide</div>
+
+    <!-- SVG DIAGRAM 3: Broadcast Game State Diagram -->
+    <div class="svg-container">
+      <svg width="780" height="320" viewBox="0 0 780 320" xmlns="http://www.w3.org/2000/svg">
+        <text x="390" y="28" text-anchor="middle" font-size="17" font-weight="bold" fill="#855CD6">Broadcast Game State Flow</text>
+
+        <!-- Start Game State -->
+        <rect x="30" y="80" width="150" height="70" rx="14" fill="#4CAF50" stroke="#388E3C" stroke-width="2"/>
+        <text x="105" y="108" text-anchor="middle" font-size="13" fill="white" font-weight="bold">🟢 Start</text>
+        <text x="105" y="128" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)">green flag clicked</text>
+        <text x="105" y="142" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)">broadcast [start game]</text>
+
+        <!-- Arrow -->
+        <line x1="180" y1="115" x2="230" y2="115" stroke="#4CAF50" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+
+        <!-- Gameplay State -->
+        <rect x="240" y="60" width="170" height="110" rx="14" fill="#4C97FF" stroke="#3373CC" stroke-width="2"/>
+        <text x="325" y="88" text-anchor="middle" font-size="13" fill="white" font-weight="bold">🎮 Gameplay</text>
+        <text x="325" y="108" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)">Sprites are active</text>
+        <text x="325" y="123" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)">Clones spawning</text>
+        <text x="325" y="138" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)">Score changing</text>
+        <text x="325" y="153" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)">Player interacting</text>
+
+        <!-- Arrow -->
+        <line x1="410" y1="115" x2="460" y2="115" stroke="#E91E63" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+        <text x="435" y="105" text-anchor="middle" font-size="9" fill="#E91E63">lives = 0</text>
+
+        <!-- Game Over State -->
+        <rect x="470" y="80" width="150" height="70" rx="14" fill="#E91E63" stroke="#C2185B" stroke-width="2"/>
+        <text x="545" y="108" text-anchor="middle" font-size="13" fill="white" font-weight="bold">💀 Game Over</text>
+        <text x="545" y="128" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)">broadcast [game over]</text>
+        <text x="545" y="142" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.9)">stop [all]</text>
+
+        <!-- Receiving sprites below -->
+        <text x="390" y="210" text-anchor="middle" font-size="13" font-weight="bold" fill="#855CD6">All sprites listen for broadcasts:</text>
+
+        <!-- Sprite boxes -->
+        <rect x="60" y="230" width="130" height="60" rx="10" fill="#f0f4ff" stroke="#4C97FF" stroke-width="1.5"/>
+        <text x="125" y="253" text-anchor="middle" font-size="11" fill="#4C97FF" font-weight="bold">🚀 Spaceship</text>
+        <text x="125" y="270" text-anchor="middle" font-size="9" fill="#555">receive [game over]</text>
+        <text x="125" y="283" text-anchor="middle" font-size="9" fill="#555">→ show score, stop</text>
+
+        <rect x="230" y="230" width="130" height="60" rx="10" fill="#f0f4ff" stroke="#855CD6" stroke-width="1.5"/>
+        <text x="295" y="253" text-anchor="middle" font-size="11" fill="#855CD6" font-weight="bold">👾 Enemy</text>
+        <text x="295" y="270" text-anchor="middle" font-size="9" fill="#555">receive [game over]</text>
+        <text x="295" y="283" text-anchor="middle" font-size="9" fill="#555">→ stop scripts, hide</text>
+
+        <rect x="400" y="230" width="130" height="60" rx="10" fill="#f0f4ff" stroke="#CF63CF" stroke-width="1.5"/>
+        <text x="465" y="253" text-anchor="middle" font-size="11" fill="#CF63CF" font-weight="bold">💫 Bullet</text>
+        <text x="465" y="270" text-anchor="middle" font-size="9" fill="#555">receive [game over]</text>
+        <text x="465" y="283" text-anchor="middle" font-size="9" fill="#555">→ delete clones</text>
+
+        <rect x="570" y="230" width="130" height="60" rx="10" fill="#f0f4ff" stroke="#FF8C1A" stroke-width="1.5"/>
+        <text x="635" y="253" text-anchor="middle" font-size="11" fill="#FF8C1A" font-weight="bold">🎵 Music</text>
+        <text x="635" y="270" text-anchor="middle" font-size="9" fill="#555">receive [game over]</text>
+        <text x="635" y="283" text-anchor="middle" font-size="9" fill="#555">→ stop sounds</text>
+
+        <!-- Broadcast wave lines -->
+        <line x1="545" y1="150" x2="125" y2="230" stroke="#E91E63" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="545" y1="150" x2="295" y2="230" stroke="#E91E63" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="545" y1="150" x2="465" y2="230" stroke="#E91E63" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="545" y1="150" x2="635" y2="230" stroke="#E91E63" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <div class="activity-box">
+      <strong>🎯 Activity:</strong> Add broadcasts to the apple game from last class:
+      <ul>
+        <li><span class="scratch-block block-events">broadcast [game over]</span> when lives = 0</li>
+        <li>All sprites listen for <span class="scratch-block block-events">[game over]</span> and stop</li>
+      </ul>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Guided Project: Space Shooter -->
+    <h3>Guided Project: Space Shooter 🚀 <span class="time-badge">15 min</span></h3>
+
+    <!-- SVG DIAGRAM 2: Space Shooter Game Layout -->
+    <div class="svg-container">
+      <svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+        <text x="250" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#4C97FF">Space Shooter — Game Layout</text>
+
+        <!-- Stage background -->
+        <rect x="50" y="40" width="400" height="400" rx="12" fill="#1a1a2e" stroke="#4C97FF" stroke-width="2"/>
+
+        <!-- Stars -->
+        <circle cx="100" cy="80" r="1.5" fill="white" opacity="0.7"/>
+        <circle cx="200" cy="60" r="1" fill="white" opacity="0.5"/>
+        <circle cx="350" cy="90" r="1.5" fill="white" opacity="0.6"/>
+        <circle cx="420" cy="70" r="1" fill="white" opacity="0.4"/>
+        <circle cx="150" cy="120" r="1" fill="white" opacity="0.5"/>
+        <circle cx="300" cy="100" r="1.5" fill="white" opacity="0.7"/>
+        <circle cx="380" cy="150" r="1" fill="white" opacity="0.4"/>
+        <circle cx="120" cy="200" r="1" fill="white" opacity="0.6"/>
+        <circle cx="400" cy="250" r="1.5" fill="white" opacity="0.5"/>
+
+        <!-- Score display -->
+        <rect x="60" y="50" width="90" height="28" rx="6" fill="rgba(255,140,26,0.8)"/>
+        <text x="105" y="69" text-anchor="middle" font-size="12" fill="white" font-weight="bold">Score: 5</text>
+
+        <!-- Enemy sprites (clones) coming down -->
+        <text x="250" y="80" text-anchor="middle" font-size="10" fill="#FF6B6B" font-style="italic">↓ Enemies spawn at top (clones) ↓</text>
+
+        <!-- Enemy 1 -->
+        <text x="150" y="120" text-anchor="middle" font-size="28">👾</text>
+        <rect x="125" y="128" width="50" height="16" rx="4" fill="rgba(231,76,60,0.7)"/>
+        <text x="150" y="140" text-anchor="middle" font-size="8" fill="white">CLONE</text>
+
+        <!-- Enemy 2 -->
+        <text x="300" y="160" text-anchor="middle" font-size="28">👾</text>
+        <rect x="275" y="168" width="50" height="16" rx="4" fill="rgba(231,76,60,0.7)"/>
+        <text x="300" y="180" text-anchor="middle" font-size="8" fill="white">CLONE</text>
+
+        <!-- Enemy 3 -->
+        <text x="380" y="200" text-anchor="middle" font-size="28">👾</text>
+        <rect x="355" y="208" width="50" height="16" rx="4" fill="rgba(231,76,60,0.7)"/>
+        <text x="380" y="220" text-anchor="middle" font-size="8" fill="white">CLONE</text>
+
+        <!-- Enemy 4 -->
+        <text x="200" y="230" text-anchor="middle" font-size="28">👾</text>
+        <rect x="175" y="238" width="50" height="16" rx="4" fill="rgba(231,76,60,0.7)"/>
+        <text x="200" y="250" text-anchor="middle" font-size="8" fill="white">CLONE</text>
+
+        <!-- Down arrows for enemies -->
+        <line x1="150" y1="145" x2="150" y2="170" stroke="#FF6B6B" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <line x1="300" y1="185" x2="300" y2="210" stroke="#FF6B6B" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <line x1="380" y1="225" x2="380" y2="250" stroke="#FF6B6B" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+        <!-- Bullets going up (clones) -->
+        <rect x="245" y="280" width="6" height="16" rx="2" fill="#FFBF00"/>
+        <rect x="245" y="250" width="6" height="16" rx="2" fill="#FFBF00"/>
+        <rect x="245" y="220" width="6" height="16" rx="2" fill="#FFBF00" opacity="0.7"/>
+        <rect x="175" y="310" width="6" height="16" rx="2" fill="#FFBF00"/>
+        <rect x="175" y="280" width="6" height="16" rx="2" fill="#FFBF00" opacity="0.7"/>
+
+        <!-- Bullet labels -->
+        <rect x="260" y="260" width="55" height="16" rx="4" fill="rgba(255,191,0,0.7)"/>
+        <text x="287" y="272" text-anchor="middle" font-size="8" fill="#333" font-weight="bold">CLONES ↑</text>
+
+        <!-- Spaceship (player) -->
+        <text x="250" y="390" text-anchor="middle" font-size="40">🚀</text>
+
+        <!-- Left/Right arrows for spaceship -->
+        <text x="180" y="395" text-anchor="middle" font-size="16" fill="#4C97FF">◀</text>
+        <text x="320" y="395" text-anchor="middle" font-size="16" fill="#4C97FF">▶</text>
+        <text x="250" y="425" text-anchor="middle" font-size="10" fill="#4C97FF">← → Arrow Keys to Move</text>
+
+        <!-- Space bar label -->
+        <rect x="190" y="430" width="120" height="20" rx="4" fill="rgba(76,151,255,0.2)" stroke="#4C97FF" stroke-width="1"/>
+        <text x="250" y="444" text-anchor="middle" font-size="9" fill="#4C97FF">SPACE = Shoot (clone bullet)</text>
+
+        <!-- Labels on right side -->
+        <rect x="460" y="100" width="35" height="80" rx="4" fill="none"/>
+        <text x="475" y="115" text-anchor="middle" font-size="9" fill="#FF6B6B" transform="rotate(90, 475, 140)">enemies fall ↓</text>
+
+        <rect x="460" y="260" width="35" height="80" rx="4" fill="none"/>
+        <text x="475" y="275" text-anchor="middle" font-size="9" fill="#FFBF00" transform="rotate(90, 475, 300)">bullets rise ↑</text>
+      </svg>
+    </div>
+
+    <h4>Setup</h4>
+    <ul>
+      <li>Spaceship sprite at the bottom (use "Rocketship" or draw one)</li>
+      <li>Enemy sprite (use "Bug" or "Crab")</li>
+      <li>Create variables: <span class="scratch-block block-variables">Score</span></li>
+    </ul>
+
+    <h4>Spaceship Script</h4>
+    <div class="code-block">when green flag clicked
+go to x: (0) y: (-150)
+set [Score] to (0)
+forever
+  if &lt;key [left arrow] pressed?&gt; then
+    change x by (-7)
+  end
+  if &lt;key [right arrow] pressed?&gt; then
+    change x by (7)
+  end
+end
+
+when [space] key pressed
+create clone of [Bullet]</div>
+
+    <h4>Bullet Sprite (draw a small yellow rectangle)</h4>
+    <div class="code-block">when green flag clicked
+hide
+
+when I start as a clone
+go to [Rocketship]
+show
+repeat until &lt;(y position) &gt; (170)&gt;
+  change y by (10)
+  if &lt;touching [Enemy]?&gt; then
+    change [Score] by (1)
+    start sound [Collect]
+    delete this clone
+  end
+end
+delete this clone</div>
+
+    <h4>Enemy Sprite</h4>
+    <div class="code-block">when green flag clicked
+hide
+forever
+  create clone of [myself]
+  wait (pick random (1) to (3))
+end
+
+when I start as a clone
+go to x: (pick random (-200) to (200)) y: (180)
+show
+repeat until &lt;(y position) &lt; (-170)&gt;
+  change y by (-3)
+  if &lt;touching [Rocketship]?&gt; then
+    broadcast [game over]
+    say [Hit!] for (1) seconds
+    delete this clone
+  end
+end
+delete this clone</div>
+
+    <h4>Game Over Handler (add to Spaceship)</h4>
+    <div class="code-block">when I receive [game over]
+say (join [Game Over! Score: ] (Score)) for (3) seconds
+stop [all]</div>
+
+    <hr class="section-divider">
+
+    <!-- Wrap-Up -->
+    <h3>Wrap-Up <span class="time-badge">5 min</span></h3>
+    <div class="key-concept">
+      <strong>🎉 Key Takeaways:</strong>
+      <ul>
+        <li>"Clones let us create many copies of a sprite without adding them manually."</li>
+        <li>"Combined with everything else we've learned, you can now build real games!"</li>
+        <li><strong>Preview:</strong> "Next class is YOUR class — you'll design and build your own project from scratch!"</li>
+      </ul>
+    </div>
+
+    <hr class="section-divider">
+    <div class="page-break"></div>
+
+    <!-- PROJECT WORK -->
+    <h2>🛠️ Project Work</h2>
+    <p>These are the 4 projects for Class 6. Each focuses on cloning and combining concepts.</p>
+
+    <!-- Project 1 -->
+    <div class="project-card">
+      <h4>❄️ Project 1: Snowfall Animation</h4>
+      <p><strong>Goal:</strong> Snowflakes fall from the sky in random positions and sizes.</p>
+      <h4>Instructions:</h4>
+      <ol>
+        <li>Draw a small white circle sprite (snowflake). Add a winter backdrop.</li>
+        <li>Hide the original sprite on green flag</li>
+        <li>Use a <span class="scratch-block block-control">forever</span> loop to <span class="scratch-block block-control">create clone of [myself]</span> every 0.2 seconds</li>
+        <li>In <span class="scratch-block block-events">when I start as a clone</span>: go to random x at top, set random size, show</li>
+        <li>Fall down with slight random horizontal drift</li>
+        <li>Delete the clone when it reaches the bottom</li>
+      </ol>
+      <div class="tip-box">
+        <strong>Concepts practiced:</strong> Clones with randomized properties, natural-looking animation.
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <h4>🎈 Project 2: Balloon Pop Game</h4>
+      <p><strong>Goal:</strong> Balloons float up from the bottom. Click them to pop them and score points.</p>
+      <h4>Instructions:</h4>
+      <ol>
+        <li>Use the "Balloon1" sprite. Create variable <span class="scratch-block block-variables">Score</span>.</li>
+        <li>Hide original, create clones in a <span class="scratch-block block-control">forever</span> loop</li>
+        <li>Clones start at bottom with random x, size, and color</li>
+        <li>Clones float upward and delete when off screen</li>
+        <li>Add a second <span class="scratch-block block-events">when I start as a clone</span> script for click detection</li>
+        <li>On click: increase score, play pop sound, animate with ghost effect, delete</li>
+      </ol>
+      <div class="tip-box">
+        <strong>Concepts practiced:</strong> Click detection on clones, ghost effect for pop animation, parallel scripts on clones.
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <h4>😊 Project 3: Rain of Emojis</h4>
+      <p><strong>Goal:</strong> Different emoji sprites fall from the sky. Catch the happy faces (+1), avoid the sad faces (-1).</p>
+      <h4>Instructions:</h4>
+      <ol>
+        <li>Create a sprite with 2 costumes: happy face and sad face</li>
+        <li>Add a Player sprite at the bottom that follows the mouse</li>
+        <li>Clones fall from random positions, each randomly picking happy or sad costume</li>
+        <li>If clone touches player: check costume name to decide +1 or -1 score</li>
+        <li>Delete clone after being caught or reaching the bottom</li>
+      </ol>
+      <div class="tip-box">
+        <strong>Concepts practiced:</strong> Costume-based logic, mouse following, positive and negative scoring.
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-card">
+      <h4>🎆 Project 4: Fireworks Display</h4>
+      <p><strong>Goal:</strong> Click anywhere on the stage to launch a firework that explodes into particles.</p>
+      <h4>Instructions:</h4>
+      <ol>
+        <li>Create a "Launcher" sprite (small arrow/rocket) and a "Particle" sprite (small dot)</li>
+        <li>Launcher: on mouse click, glide from bottom to mouse position, then <span class="scratch-block block-events">broadcast [explode]</span></li>
+        <li>Particle: on receiving <span class="scratch-block block-events">[explode]</span>, create 20 clones of itself</li>
+        <li>Each particle clone: go to launcher position, pick random direction, move outward</li>
+        <li>Particles fade out using ghost effect and shrink, then delete</li>
+      </ol>
+      <div class="tip-box">
+        <strong>Concepts practiced:</strong> Broadcast triggering clones, particle effects, combining multiple techniques.
+      </div>
+    </div>
+
+    <hr class="section-divider">
+    <div class="page-break"></div>
+
+    <!-- PROJECT SOLUTIONS -->
+    <h2>✅ Project Solutions</h2>
+    <p>Complete block-by-block solutions for all 4 projects.</p>
+
+    <!-- Solution 1 -->
+    <h3>❄️ Project 1: Snowfall Animation — Solution</h3>
+    <p><strong>Setup:</strong> Draw a small white circle sprite (snowflake). Add a winter backdrop.</p>
+    <div class="code-block">when green flag clicked
+hide
+forever
+  create clone of [myself]
+  wait (0.2) seconds
+end
+
+when I start as a clone
+go to x: (pick random (-240) to (240)) y: (180)
+set size to (pick random (20) to (80)) %
+show
+repeat until &lt;(y position) &lt; (-175)&gt;
+  change y by (pick random (-3) to (-1))
+  change x by (pick random (-2) to (2))
+  turn right (pick random (-5) to (5)) degrees
+end
+delete this clone</div>
+
+    <hr class="section-divider">
+
+    <!-- Solution 2 -->
+    <h3>🎈 Project 2: Balloon Pop Game — Solution</h3>
+    <p><strong>Setup:</strong> Use the "Balloon1" sprite. Create variable <span class="scratch-block block-variables">Score</span>.</p>
+    <div class="code-block">when green flag clicked
+hide
+set [Score] to (0)
+forever
+  create clone of [myself]
+  wait (pick random (0.5) to (2))
+end
+
+when I start as a clone
+go to x: (pick random (-200) to (200)) y: (-180)
+set size to (pick random (50) to (100)) %
+set [color] effect to (pick random (0) to (200))
+show
+repeat until &lt;(y position) &gt; (180)&gt;
+  change y by (pick random (1) to (4))
+  change x by (pick random (-1) to (1))
+end
+delete this clone
+
+when I start as a clone
+wait until &lt;mouse down? and touching [mouse-pointer]?&gt;
+change [Score] by (1)
+start sound [Pop]
+repeat (5)
+  change size by (10)
+  change [ghost] effect by (20)
+end
+delete this clone</div>
+
+    <div class="tip-box">
+      <strong>💡 Note:</strong> The two <span class="scratch-block block-events">when I start as a clone</span> scripts both run on each clone simultaneously. This is how we handle both movement and click detection at the same time!
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Solution 3 -->
+    <h3>😊 Project 3: Rain of Emojis — Solution</h3>
+    <p><strong>Setup:</strong> Create a sprite with 2 costumes: happy face and sad face. Player sprite at bottom. Variable: <span class="scratch-block block-variables">Score</span>.</p>
+
+    <h4>Emoji Sprite</h4>
+    <div class="code-block">when green flag clicked
+hide
+forever
+  create clone of [myself]
+  wait (0.8) seconds
+end
+
+when I start as a clone
+go to x: (pick random (-200) to (200)) y: (180)
+switch costume to (pick random (1) to (2))
+show
+repeat until &lt;(y position) &lt; (-170)&gt;
+  change y by (-4)
+  if &lt;touching [Player]?&gt; then
+    if &lt;(costume [name]) = [happy]&gt; then
+      change [Score] by (1)
+      start sound [Collect]
+    else
+      change [Score] by (-1)
+      start sound [Oops]
+    end
+    delete this clone
+  end
+end
+delete this clone</div>
+
+    <h4>Player Script</h4>
+    <div class="code-block">when green flag clicked
+set [Score] to (0)
+go to x: (0) y: (-150)
+forever
+  go to x: (mouse x) y: (-150)
+end</div>
+
+    <hr class="section-divider">
+
+    <!-- Solution 4 -->
+    <h3>🎆 Project 4: Fireworks Display — Solution</h3>
+    <p><strong>Setup:</strong> Draw a small colored dot sprite (Particle). Create a "Launcher" sprite (small arrow or rocket).</p>
+
+    <h4>Launcher Script</h4>
+    <div class="code-block">when green flag clicked
+hide
+forever
+  if &lt;mouse down?&gt; then
+    go to x: (mouse x) y: (-180)
+    show
+    glide (0.5) secs to x: (mouse x) y: (mouse y)
+    broadcast [explode]
+    hide
+    wait (0.5) seconds
+  end
+end</div>
+
+    <h4>Particle Sprite (small colored circle)</h4>
+    <div class="code-block">when green flag clicked
+hide
+
+when I receive [explode]
+repeat (20)
+  create clone of [myself]
+end
+
+when I start as a clone
+go to [Launcher]
+set [color] effect to (pick random (0) to (200))
+set size to (pick random (30) to (80)) %
+show
+point in direction (pick random (-180) to (180))
+repeat (20)
+  move (pick random (3) to (8)) steps
+  change [ghost] effect by (5)
+  change size by (-2)
+end
+delete this clone</div>
+
+  </div><!-- end content -->
+</div><!-- end container -->
+</body>
+</html>
