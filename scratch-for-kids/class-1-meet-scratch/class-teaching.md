@@ -85,6 +85,122 @@ Walk kids through each part of the screen:
 
 **Activity:** Have kids click through each block category and read a few block names out loud.
 
+### Sprites, Costumes, Stages & Backdrops (10 min)
+
+These are the 4 building blocks of every Scratch project. Let's learn each one!
+
+#### What is a Sprite? 🎭
+
+A **sprite** is any character or object in your project. It's the "actor" on your stage.
+
+- The default sprite is the **Scratch Cat** — but you can have as many sprites as you want
+- Each sprite has its own scripts (code), costumes, and sounds
+- Sprites can move, talk, change appearance, and interact with each other
+
+**How to add a sprite:**
+1. Look at the bottom-right of the screen — you'll see the **Sprite List**
+2. Hover over the blue cat icon with a "+" sign
+3. You get 4 options:
+   - 🔍 **Choose a Sprite** — pick from Scratch's library (hundreds of characters, animals, objects)
+   - 🎨 **Paint** — draw your own sprite
+   - 🎲 **Surprise** — get a random sprite
+   - 📁 **Upload** — use your own image file
+
+**How to delete a sprite:**
+- Right-click the sprite in the Sprite List → click "delete"
+- Or click the sprite, then click the trash can icon
+
+**Sprite properties (shown below the stage):**
+- **Name:** You can rename your sprite (click the name to edit)
+- **Position:** Shows the x and y coordinates
+- **Show/Hide:** The eye icon toggles visibility
+- **Size:** 100 = normal, 200 = double size, 50 = half size
+- **Direction:** Which way the sprite is facing (90 = right)
+
+#### What are Costumes? 👗
+
+A **costume** is what a sprite looks like. Each sprite can have multiple costumes — like different outfits!
+
+- The Scratch Cat has **2 costumes** (legs in different positions)
+- Switching between costumes quickly creates **animation** (like a flipbook)
+- Click the **"Costumes" tab** at the top to see and edit costumes
+
+**What you can do in the Costumes tab:**
+- See all costumes for the selected sprite
+- Click a costume to switch to it
+- **Draw a new costume** using the paint editor
+- **Upload** an image as a costume
+- **Duplicate** a costume and modify it
+- **Delete** costumes you don't need
+- Use the paint tools to edit: brush, eraser, fill, text, shapes
+
+**Fun facts about costumes:**
+- Some sprites have LOTS of costumes (dancers have 4+, letters have uppercase/lowercase)
+- The `next costume` block cycles through all costumes in order
+- The `switch costume to [name]` block jumps to a specific costume
+- Costume names matter — you can use them in your code!
+
+#### What is the Stage? 🎬
+
+The **stage** is the background area where your project plays — think of it as the "theater" where your sprites perform.
+
+- The stage is **480 pixels wide** and **360 pixels tall**
+- The center of the stage is position **(0, 0)**
+- The stage is always behind all sprites (it's the back layer)
+- The stage can have its own scripts too! (useful for game timers, score displays, etc.)
+
+**The stage is NOT a sprite** — it's special:
+- It can't move or change size
+- It can't use motion blocks
+- But it CAN use looks, sound, event, control, sensing, and variable blocks
+- It has its own scripts area (click the stage icon to select it)
+
+#### What are Backdrops? 🖼️
+
+A **backdrop** is a costume for the stage — it's the background image of your project.
+
+- Just like sprites have costumes, the stage has **backdrops**
+- You can have multiple backdrops and switch between them (great for scene changes in stories!)
+- The default backdrop is plain white
+
+**How to add a backdrop:**
+1. Look at the bottom-right corner — next to the sprite chooser, there's a **backdrop icon** (looks like a small landscape)
+2. Hover over it for 4 options:
+   - 🔍 **Choose a Backdrop** — pick from Scratch's library (outdoor scenes, rooms, patterns, etc.)
+   - 🎨 **Paint** — draw your own backdrop
+   - 🎲 **Surprise** — get a random backdrop
+   - 📁 **Upload** — use your own image
+
+**Switching backdrops in code:**
+- `switch backdrop to [name]` — instantly changes the background
+- `next backdrop` — cycles to the next one
+- `when backdrop switches to [name]` — triggers a script when the backdrop changes (great for stories!)
+
+**How sprites and backdrops work together:**
+- Backdrops set the **scene** (forest, space, classroom, underwater)
+- Sprites are the **characters and objects** in that scene
+- Changing the backdrop = changing the scene (like acts in a play)
+
+#### Quick Reference: Sprites vs Stage
+
+| Feature | Sprite | Stage |
+|---------|--------|-------|
+| Can move? | ✅ Yes | ❌ No |
+| Has costumes? | ✅ Yes (called "costumes") | ✅ Yes (called "backdrops") |
+| Has scripts? | ✅ Yes | ✅ Yes |
+| Has sounds? | ✅ Yes | ✅ Yes |
+| Can change size? | ✅ Yes | ❌ No |
+| Can be duplicated? | ✅ Yes | ❌ No |
+| Uses motion blocks? | ✅ Yes | ❌ No |
+| Position on stage? | x, y coordinates | Always fills the background |
+
+**Activity:** Have kids:
+1. Add 2 new sprites from the library (an animal and an object)
+2. Add a backdrop (try "Blue Sky" or "Beach Malibu")
+3. Click the Costumes tab on the cat — see the 2 costumes
+4. Click the Backdrops tab on the stage — see the backdrop they added
+5. Try renaming a sprite by clicking its name
+
 ### Understanding the Scratch Stage: The 2D Coordinate System (5 min)
 
 Before we start coding, let's understand how Scratch knows WHERE to put things on the stage. It uses a **2D graph** — just like the ones in math class, but way more fun because we use it to move characters around!
