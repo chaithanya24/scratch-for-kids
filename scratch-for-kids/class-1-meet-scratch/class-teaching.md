@@ -8,6 +8,7 @@
 
 ## Learning Objectives
 - Understand what programming is in simple terms
+- Learn how a computer works and executes tasks
 - Navigate the Scratch interface confidently
 - Create and run a simple script using drag-and-drop blocks
 
@@ -25,6 +26,51 @@
 - Created by MIT for kids to learn coding
 - Used by millions of kids worldwide
 - No typing needed — just drag and drop
+
+### How Does a Computer Work? (5 min)
+
+Before we start coding, let's understand what's happening inside the computer when we give it instructions!
+
+**A computer has 4 main parts that work together — like a team:**
+
+#### 1. Input (The Ears & Eyes) 👀👂
+- This is how the computer receives information from YOU
+- Examples: keyboard, mouse, microphone, camera, touchscreen
+- "When you press a key or click the mouse, that's INPUT — you're telling the computer something"
+
+#### 2. CPU — The Brain 🧠
+- CPU stands for "Central Processing Unit"
+- It's the brain of the computer — it thinks and makes decisions
+- It reads your instructions (the program) and figures out what to do
+- "When you tell Scratch to move the cat 10 steps, the CPU calculates where the cat should go"
+- The CPU is VERY fast — it can do billions of calculations per second!
+
+#### 3. Memory (The Notebook) 📝
+- **RAM (short-term memory):** Like a whiteboard — stores what the computer is working on RIGHT NOW. When you turn off the computer, it gets erased.
+- **Storage (long-term memory):** Like a filing cabinet — stores your files, games, and programs permanently. Your Scratch projects are saved here!
+- "When you create a variable called 'Score' in Scratch, the computer stores that number in memory"
+
+#### 4. Output (The Mouth & Hands) 🖥️🔊
+- This is how the computer shows you the results
+- Examples: screen (monitor), speakers, printer
+- "When the cat moves on the Scratch stage or says 'Hello!' — that's OUTPUT"
+
+#### How They Work Together — Step by Step
+
+Here's what happens when you click the Green Flag in Scratch:
+
+1. **INPUT:** You click the green flag with your mouse
+2. **CPU:** The brain reads your blocks from top to bottom: "First say Hello, then move 10 steps"
+3. **MEMORY:** The computer remembers where the cat is, what it's saying, and any variables
+4. **OUTPUT:** The cat appears on screen, shows a speech bubble, and moves!
+
+**Kid-friendly analogy — The Restaurant:**
+- **Input** = The customer (you) gives an order to the waiter
+- **CPU** = The chef reads the order and cooks the food
+- **Memory** = The recipe book and the counter where food is being prepared
+- **Output** = The finished meal is served to you on a plate
+
+**Key point:** "A program is just a list of instructions. The computer reads them one by one, from top to bottom, and does exactly what they say. That's why the ORDER of your Scratch blocks matters!"
 
 ### Interface Tour (10 min)
 
